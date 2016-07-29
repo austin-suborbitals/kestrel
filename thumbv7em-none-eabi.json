@@ -12,7 +12,7 @@
     "target-pointer-width": "32",
     "no-compiler-rt": true,
     "pre-link-args": [
-        "-mcpu=cortex-m4", "-mthumb",
+        "-mcpu=cortex-m4", "-mthumb"
     ],
     "post-link-args": [
         "-nostdlib", "-nostartfiles"

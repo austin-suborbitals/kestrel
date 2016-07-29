@@ -1,0 +1,13 @@
+sudo: false
+language: rust
+
+# TODO: use rustup to pin version?
+rust:
+    - nightly
+
+matrix:
+    # thumbv7em build
+    - env: RUSTFLAGS="--target thumbv7em-none-eabi"
+
+# TODO: add tests
+script: cargo build --verbose $RUSTFLAGS
