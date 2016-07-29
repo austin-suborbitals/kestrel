@@ -1,0 +1,9 @@
+target
+Cargo.lock
+
+*.swo
+*.swp
+*.bin
+*.hex
+*.a
+*.o
