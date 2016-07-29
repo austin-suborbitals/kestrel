@@ -5,7 +5,7 @@ authors = ["Zach Marcantel <zmarcantel@gmail.com>"]
 build = "build.rs"
 
 [dependencies]
-peregrine = { path = "../peregrine" }
+peregrine = { git = "https://github.com/austin-suborbitals/peregrine" }
 
 [target.thumbv7em-none-eabi.dependencies.rust-libcore]
 git = "https://github.com/hackndev/rust-libcore"
