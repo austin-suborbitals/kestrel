@@ -2,7 +2,6 @@
 name = "kestrel"
 version = "0.1.0"
 authors = ["Zach Marcantel <zmarcantel@gmail.com>"]
-build = "build.rs"
 
 [dependencies]
 peregrine = { git = "https://github.com/austin-suborbitals/peregrine" }
