@@ -6,3 +6,7 @@ rust:
     - nightly
 
 script: cargo build --verbose --target thumbv7em-none-eabi
+
+after_success:
+    - cargo doc
+    - ./scripts/ghp_upload.sh
