@@ -1,8 +1,0 @@
-sudo: false
-language: rust
-
-# TODO: use rustup to pin version?
-rust:
-    - nightly
-
-script: cargo build --verbose --target thumbv7em-none-eabi
