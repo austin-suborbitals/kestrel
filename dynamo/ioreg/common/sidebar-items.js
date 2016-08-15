@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["FunctionType",""],["FunctionValueType",""],["RegisterPermissions",""],["RegisterWidth",""]],"fn":[["offset_width_to_ty",""],["reg_width_to_ty",""]],"struct":[["IoRegFuncDef",""],["IoRegInfo",""],["IoRegOffsetIndexInfo",""],["IoRegOffsetInfo",""],["IoRegSegmentInfo",""]]});

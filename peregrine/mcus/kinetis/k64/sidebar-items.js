@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Watchdog","Pointer wrapper that implements the Watchdog operations"]]});

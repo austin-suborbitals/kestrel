@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["memcmp","Compares two regions of memory."],["memcmp_t","Compare regions of memory with a generic iterator size."],["memcpy","Copies one region of memory to another."],["memset","Set a region of memory to a given byte value."]]});

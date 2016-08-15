@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Watchdog` struct in crate `peregrine`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Watchdog">
+
+    <title>peregrine::mcus::kinetis::k64::Watchdog - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../../index.html'>peregrine</a>::<wbr><a href='../../index.html'>mcus</a>::<wbr><a href='../index.html'>kinetis</a>::<wbr><a href='index.html'>k64</a></p><script>window.sidebarCurrent = {name: 'Watchdog', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../../index.html'>peregrine</a>::<wbr><a href='../../index.html'>mcus</a>::<wbr><a href='../index.html'>kinetis</a>::<wbr><a href='index.html'>k64</a>::<wbr><a class='struct' href=''>Watchdog</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-61' class='srclink' href='../../../../src/peregrine/mcus/kinetis/k64/mod.rs.html#5' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Watchdog(pub *const u8);</pre><div class='docblock'><p>Pointer wrapper that implements the Watchdog operations</p>
+
+<p>source: <a href="http://www.nxp.com/files/microcontrollers/doc/ref_manual/K64P144M120SF5RM.pdf">http://www.nxp.com/files/microcontrollers/doc/ref_manual/K64P144M120SF5RM.pdf</a></p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-64' class='srclink' href='../../../../src/peregrine/mcus/kinetis/k64/mod.rs.html#5' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedconstant.DISABLED' class='associatedconstant'><code>const <a href='#associatedconstant.DISABLED' class='constant'>DISABLED</a>: u32 = 0u32</code></h4>
+<h4 id='associatedconstant.ENABLED' class='associatedconstant'><code>const <a href='#associatedconstant.ENABLED' class='constant'>ENABLED</a>: u32 = 1u32</code></h4>
+<h4 id='method.read_prescaler' class='method'><code>fn <a href='#method.read_prescaler' class='fnname'>read_prescaler</a>(&amp;self) -&gt; u32</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>prescaler</code> register at relative address 0x16</p>
+</div><h4 id='method.set_prescaler' class='method'><code>fn <a href='#method.set_prescaler' class='fnname'>set_prescaler</a>(&amp;self, val: u8)</code></h4>
+<div class='docblock'><p>Writes the value of the given argument to the <code>prescaler</code> register at relative address 0x16 and offset 8 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='associatedconstant.REFRESH_VALUE_ONE' class='associatedconstant'><code>const <a href='#associatedconstant.REFRESH_VALUE_ONE' class='constant'>REFRESH_VALUE_ONE</a>: u32 = 42498u32</code></h4>
+<h4 id='associatedconstant.REFRESH_VALUE_TWO' class='associatedconstant'><code>const <a href='#associatedconstant.REFRESH_VALUE_TWO' class='constant'>REFRESH_VALUE_TWO</a>: u32 = 46208u32</code></h4>
+<h4 id='method.refresh' class='method'><code>fn <a href='#method.refresh' class='fnname'>refresh</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Consecutively writes the values <code>[REFRESH_VALUE_ONE, REFRESH_VALUE_TWO]</code> to the <code>refresh</code> register at relative address 0xC and offset 0 bits.</p>
+</div><h4 id='method.read_reset_count' class='method'><code>fn <a href='#method.read_reset_count' class='fnname'>read_reset_count</a>(&amp;self) -&gt; u32</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>reset_count</code> register at relative address 0x14</p>
+</div><h4 id='method.clear_reset_count' class='method'><code>fn <a href='#method.clear_reset_count' class='fnname'>clear_reset_count</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>0xFFFF</code> to the <code>reset_count</code> register at relative address 0x14 and offset 0 bits.</p>
+</div><h4 id='associatedconstant.STATUS_CONTROL_ALT_CLOCK_SRC' class='associatedconstant'><code>const <a href='#associatedconstant.STATUS_CONTROL_ALT_CLOCK_SRC' class='constant'>STATUS_CONTROL_ALT_CLOCK_SRC</a>: u32 = 1u32</code></h4>
+<h4 id='associatedconstant.STATUS_CONTROL_BYTE_TEST' class='associatedconstant'><code>const <a href='#associatedconstant.STATUS_CONTROL_BYTE_TEST' class='constant'>STATUS_CONTROL_BYTE_TEST</a>: u32 = 1u32</code></h4>
+<h4 id='associatedconstant.STATUS_CONTROL_LPO_CLOCK_SRC' class='associatedconstant'><code>const <a href='#associatedconstant.STATUS_CONTROL_LPO_CLOCK_SRC' class='constant'>STATUS_CONTROL_LPO_CLOCK_SRC</a>: u32 = 0u32</code></h4>
+<h4 id='associatedconstant.STATUS_CONTROL_QUICK_TEST' class='associatedconstant'><code>const <a href='#associatedconstant.STATUS_CONTROL_QUICK_TEST' class='constant'>STATUS_CONTROL_QUICK_TEST</a>: u32 = 0u32</code></h4>
+<h4 id='method.read_status_control' class='method'><code>fn <a href='#method.read_status_control' class='fnname'>read_status_control</a>(&amp;self) -&gt; u16</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u16</code>) of the <code>status_control</code> register at relative address 0x0</p>
+</div><h4 id='method.disable' class='method'><code>fn <a href='#method.disable' class='fnname'>disable</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 0 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable' class='method'><code>fn <a href='#method.enable' class='fnname'>enable</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 0 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_alt_clock' class='method'><code>fn <a href='#method.use_alt_clock' class='fnname'>use_alt_clock</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>STATUS_CONTROL_ALT_CLOCK_SRC</code> to the <code>status_control</code> register at relative address 0x0 and offset 1 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_lpo_clock' class='method'><code>fn <a href='#method.use_lpo_clock' class='fnname'>use_lpo_clock</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>STATUS_CONTROL_LPO_CLOCK_SRC</code> to the <code>status_control</code> register at relative address 0x0 and offset 1 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.reset_breadcrumb_mode' class='method'><code>fn <a href='#method.reset_breadcrumb_mode' class='fnname'>reset_breadcrumb_mode</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 2 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.reset_default_mode' class='method'><code>fn <a href='#method.reset_default_mode' class='fnname'>reset_default_mode</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 2 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_windowing' class='method'><code>fn <a href='#method.disable_windowing' class='fnname'>disable_windowing</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 3 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_windowing' class='method'><code>fn <a href='#method.enable_windowing' class='fnname'>enable_windowing</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 3 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.allow_updates' class='method'><code>fn <a href='#method.allow_updates' class='fnname'>allow_updates</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 4 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disallow_updates' class='method'><code>fn <a href='#method.disallow_updates' class='fnname'>disallow_updates</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 4 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_in_debug' class='method'><code>fn <a href='#method.disable_in_debug' class='fnname'>disable_in_debug</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 5 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_in_debug' class='method'><code>fn <a href='#method.enable_in_debug' class='fnname'>enable_in_debug</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 5 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_in_stop' class='method'><code>fn <a href='#method.disable_in_stop' class='fnname'>disable_in_stop</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 6 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_in_stop' class='method'><code>fn <a href='#method.enable_in_stop' class='fnname'>enable_in_stop</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 6 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_in_wait' class='method'><code>fn <a href='#method.disable_in_wait' class='fnname'>disable_in_wait</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 7 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_in_wait' class='method'><code>fn <a href='#method.enable_in_wait' class='fnname'>enable_in_wait</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 7 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.run_self_test' class='method'><code>fn <a href='#method.run_self_test' class='fnname'>run_self_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 10 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_byte_test' class='method'><code>fn <a href='#method.use_byte_test' class='fnname'>use_byte_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>STATUS_CONTROL_BYTE_TEST</code> to the <code>status_control</code> register at relative address 0x0 and offset 11 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_quick_test' class='method'><code>fn <a href='#method.use_quick_test' class='fnname'>use_quick_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>STATUS_CONTROL_QUICK_TEST</code> to the <code>status_control</code> register at relative address 0x0 and offset 11 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_byte_one_test' class='method'><code>fn <a href='#method.use_byte_one_test' class='fnname'>use_byte_one_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>status_control</code> register at relative address 0x0 and offset 12 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_byte_three_test' class='method'><code>fn <a href='#method.use_byte_three_test' class='fnname'>use_byte_three_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>status_control</code> register at relative address 0x0 and offset 12 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_byte_two_test' class='method'><code>fn <a href='#method.use_byte_two_test' class='fnname'>use_byte_two_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>status_control</code> register at relative address 0x0 and offset 12 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_byte_zero_test' class='method'><code>fn <a href='#method.use_byte_zero_test' class='fnname'>use_byte_zero_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>status_control</code> register at relative address 0x0 and offset 12 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_self_test' class='method'><code>fn <a href='#method.disable_self_test' class='fnname'>disable_self_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 14 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_self_test' class='method'><code>fn <a href='#method.enable_self_test' class='fnname'>enable_self_test</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control</code> register at relative address 0x0 and offset 14 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_status_control_low' class='method'><code>fn <a href='#method.read_status_control_low' class='fnname'>read_status_control_low</a>(&amp;self) -&gt; u16</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u16</code>) of the <code>status_control_low</code> register at relative address 0x2</p>
+</div><h4 id='method.set_interrupt_flag' class='method'><code>fn <a href='#method.set_interrupt_flag' class='fnname'>set_interrupt_flag</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>status_control_low</code> register at relative address 0x2 and offset 15 bits.</p>
+
+<p><strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_timeout' class='method'><code>fn <a href='#method.read_timeout' class='fnname'>read_timeout</a>(&amp;self) -&gt; u32</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>timeout</code> register at relative address 0x4</p>
+</div><h4 id='method.set_timeout' class='method'><code>fn <a href='#method.set_timeout' class='fnname'>set_timeout</a>(&amp;self, val: u32)</code></h4>
+<div class='docblock'><p>Writes the value of the given argument to the <code>timeout</code> register at relative address 0x4 and offset 0 bits.</p>
+</div><h4 id='method.read_timer_output' class='method'><code>fn <a href='#method.read_timer_output' class='fnname'>read_timer_output</a>(&amp;self) -&gt; u32</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>timer_output</code> register at relative address 0x10</p>
+</div><h4 id='method.set_timer_output' class='method'><code>fn <a href='#method.set_timer_output' class='fnname'>set_timer_output</a>(&amp;self, val: u32)</code></h4>
+<div class='docblock'><p>Writes the value of the given argument to the <code>timer_output</code> register at relative address 0x10 and offset 0 bits.</p>
+</div><h4 id='associatedconstant.UNLOCK_VALUE_ONE' class='associatedconstant'><code>const <a href='#associatedconstant.UNLOCK_VALUE_ONE' class='constant'>UNLOCK_VALUE_ONE</a>: u32 = 50464u32</code></h4>
+<h4 id='associatedconstant.UNLOCK_VALUE_TWO' class='associatedconstant'><code>const <a href='#associatedconstant.UNLOCK_VALUE_TWO' class='constant'>UNLOCK_VALUE_TWO</a>: u32 = 55592u32</code></h4>
+<h4 id='method.unlock' class='method'><code>fn <a href='#method.unlock' class='fnname'>unlock</a>(&amp;self)</code></h4>
+<div class='docblock'><p>Consecutively writes the values <code>[UNLOCK_VALUE_ONE, UNLOCK_VALUE_TWO]</code> to the <code>unlock</code> register at relative address 0xE and offset 0 bits.</p>
+</div><h4 id='method.read_window' class='method'><code>fn <a href='#method.read_window' class='fnname'>read_window</a>(&amp;self) -&gt; u32</code></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>window</code> register at relative address 0x8</p>
+</div><h4 id='method.set_window' class='method'><code>fn <a href='#method.set_window' class='fnname'>set_window</a>(&amp;self, val: u32)</code></h4>
+<div class='docblock'><p>Writes the value of the given argument to the <code>window</code> register at relative address 0x8 and offset 0 bits.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-40' class='srclink' href='../../../../src/peregrine/lib.rs.html#1' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-46' class='srclink' href='../../../../src/peregrine/lib.rs.html#1' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a></code></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-50' class='srclink' href='../../../../src/peregrine/lib.rs.html#1' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a>) -&gt; bool</code></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../../../../peregrine/mcus/kinetis/k64/struct.Watchdog.html' title='peregrine::mcus::kinetis::k64::Watchdog'>Watchdog</a>) -&gt; bool</code></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "peregrine";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>
