@@ -3,8 +3,14 @@ name = "kestrel"
 version = "0.1.0"
 authors = ["Zach Marcantel <zmarcantel@gmail.com>"]
 
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
 [dependencies]
 peregrine = { git = "https://github.com/austin-suborbitals/peregrine" }
 
-[target.thumbv7em-none-eabi.dependencies.rust-libcore]
+[target.thumbv7m-none-eabi.dependencies.rust-libcore]
 git = "https://github.com/hackndev/rust-libcore"
