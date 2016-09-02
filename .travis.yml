@@ -3,6 +3,8 @@ language: rust
 
 addons:
     apt:
+        sources:
+            - debian-sid
         packages:
             - gcc-arm-none-eabi
 
