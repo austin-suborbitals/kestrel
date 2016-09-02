@@ -227,6 +227,8 @@
 <span id="183">183</span>
 <span id="184">184</span>
 <span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>aster</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>syntax</span>;
@@ -345,6 +347,7 @@
 <span class='doccomment'>/// Internal structure for the builder which describes the parsed MCU block.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>McuInfo</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>: <span class='ident'>String</span>,
+    <span class='kw'>pub</span> <span class='ident'>no_init</span>: <span class='ident'>bool</span>,
     <span class='kw'>pub</span> <span class='ident'>docs</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>constants</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>StaticValue</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>externs</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, (<span class='ident'>ast</span>::<span class='ident'>TyKind</span>, <span class='ident'>Span</span>)<span class='op'>&gt;</span>,
@@ -368,6 +371,7 @@
         <span class='kw'>let</span> <span class='ident'>bldr</span> <span class='op'>=</span> <span class='ident'>aster</span>::<span class='ident'>AstBuilder</span>::<span class='ident'>new</span>();
         <span class='ident'>McuInfo</span>{
             <span class='ident'>name</span>: <span class='string'>&quot;&quot;</span>.<span class='ident'>to_string</span>(),
+            <span class='ident'>no_init</span>: <span class='bool-val'>false</span>,
             <span class='ident'>docs</span>: <span class='macro'>vec</span><span class='macro'>!</span>(),
             <span class='ident'>constants</span>: <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>(),
             <span class='ident'>externs</span>: <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>(),

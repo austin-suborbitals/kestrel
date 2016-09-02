@@ -356,6 +356,17 @@
 <span id="312">312</span>
 <span id="313">313</span>
 <span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>core</span>::<span class='ident'>intrinsics</span>;
 <span class='kw'>use</span> <span class='ident'>core</span>::<span class='ident'>cmp</span>::{<span class='ident'>PartialOrd</span>, <span class='ident'>PartialEq</span>};
@@ -363,15 +374,26 @@
 
 <span class='comment'>//------------------------------------------------</span>
 <span class='comment'>//</span>
-<span class='comment'>// memset</span>
+<span class='comment'>// missing intrinsics</span>
 <span class='comment'>//</span>
 <span class='comment'>//------------------------------------------------</span>
-
 
 <span class='attribute'>#[<span class='ident'>no_mangle</span>]</span>
 <span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>__aeabi_memclr</span>(<span class='ident'>dest</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>u8</span>, <span class='ident'>val</span>: <span class='ident'>u8</span>, <span class='ident'>cnt</span>: <span class='ident'>usize</span>) {
     <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='ident'>cnt</span> { <span class='op'>*</span>(<span class='ident'>dest</span>.<span class='ident'>offset</span>(<span class='ident'>i</span> <span class='kw'>as</span> <span class='ident'>isize</span>)) <span class='op'>=</span> <span class='ident'>val</span>; }
 }
+
+<span class='attribute'>#[<span class='ident'>no_mangle</span>]</span>
+<span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>__aeabi_memset</span>(<span class='ident'>dest</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>u8</span>, <span class='ident'>val</span>: <span class='ident'>u8</span>, <span class='ident'>cnt</span>: <span class='ident'>usize</span>) {
+    <span class='ident'>__aeabi_memclr</span>(<span class='ident'>dest</span>, <span class='ident'>val</span>, <span class='ident'>cnt</span>);
+}
+
+
+<span class='comment'>//------------------------------------------------</span>
+<span class='comment'>//</span>
+<span class='comment'>// memset</span>
+<span class='comment'>//</span>
+<span class='comment'>//------------------------------------------------</span>
 
 <span class='doccomment'>/// Set a region of memory to a given byte value.</span>
 <span class='doccomment'>///</span>

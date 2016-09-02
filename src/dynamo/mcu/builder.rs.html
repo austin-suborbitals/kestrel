@@ -1038,6 +1038,9 @@
 <span id="994">994</span>
 <span id="995">995</span>
 <span id="996">996</span>
+<span id="997">997</span>
+<span id="998">998</span>
+<span id="999">999</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>aster</span>;
 
@@ -1202,7 +1205,7 @@
 
         <span class='ident'>result</span>.<span class='ident'>push</span>(<span class='self'>self</span>.<span class='ident'>build_struct</span>());
         <span class='ident'>result</span>.<span class='ident'>push</span>(<span class='self'>self</span>.<span class='ident'>build_impl</span>());
-        <span class='ident'>result</span>.<span class='ident'>push</span>(<span class='self'>self</span>.<span class='ident'>build_init</span>());
+        <span class='kw'>if</span> <span class='op'>!</span> <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>no_init</span> { <span class='ident'>result</span>.<span class='ident'>push</span>(<span class='self'>self</span>.<span class='ident'>build_init</span>()); }
 
         <span class='ident'>result</span>.<span class='ident'>extend</span>(<span class='self'>self</span>.<span class='ident'>build_interrupts</span>());
 
@@ -1485,7 +1488,7 @@
             <span class='bool-val'>false</span> <span class='op'>=&gt;</span> { <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>span</span>).<span class='ident'>ty</span>().<span class='ident'>u32</span>() }
         };
 
-        <span class='kw'>let</span> <span class='ident'>num_ints</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>ints</span>.<span class='ident'>is_empty</span>() <span class='op'>||</span> <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>total_ints</span> <span class='op'>==</span> <span class='number'>0</span> {
+        <span class='kw'>let</span> <span class='ident'>num_ints</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>total_ints</span> <span class='op'>==</span> <span class='number'>0</span> {
             <span class='number'>1</span>
         } <span class='kw'>else</span> {
             <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>total_ints</span>
@@ -1509,7 +1512,9 @@
 
         <span class='comment'>// TODO: I don&#39;t really like the -1 stuff because of stack</span>
         <span class='comment'>// add the entry pointer to the interrupt list</span>
-        <span class='ident'>ints</span>[<span class='number'>0</span>] <span class='op'>=</span> <span class='macro'>core_option</span><span class='macro'>!</span>(<span class='self'>self</span>, <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>id</span>(<span class='string'>&quot;init&quot;</span>));
+        <span class='kw'>if</span> <span class='op'>!</span> <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>no_init</span> {
+            <span class='ident'>ints</span>[<span class='number'>0</span>] <span class='op'>=</span> <span class='macro'>core_option</span><span class='macro'>!</span>(<span class='self'>self</span>, <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>id</span>(<span class='string'>&quot;init&quot;</span>));
+        }
 
         <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>ints</span> {
             <span class='kw'>if</span> <span class='ident'>i</span>.<span class='number'>0</span>.<span class='ident'>contains</span>(<span class='number'>0</span>) {
@@ -2008,6 +2013,7 @@
         <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>item</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>init</span>.<span class='ident'>span</span>.<span class='ident'>clone</span>())
             .<span class='ident'>attr</span>().<span class='ident'>doc</span>(<span class='string'>&quot;/// Generated reset handler that creates a new mcu, calls mcu.init(), and calls&quot;</span>)
             .<span class='ident'>attr</span>().<span class='ident'>doc</span>(<span class='string'>&quot;/// the function given to `bootloader_exit` with a reference to the mcu instance.&quot;</span>)
+            .<span class='ident'>attr</span>().<span class='ident'>word</span>(<span class='string'>&quot;no_mangle&quot;</span>)
             .<span class='ident'>pub_</span>().<span class='ident'>fn_</span>(<span class='string'>&quot;init&quot;</span>).<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>init</span>.<span class='ident'>span</span>.<span class='ident'>clone</span>())
             .<span class='ident'>default_return</span>()
             .<span class='ident'>block</span>()
