@@ -22,4 +22,4 @@ symtab: release
 
 info: binary
 	@echo "ELF Size: "$(shell ls -lh $(RELEASE_FNAME)     | awk '{print $$5}')" KiB"
-	@echo "ELF Size: "$(shell ls -lh $(RELEASE_FNAME).bin | awk '{print $$5}')" KiB"
+	@echo "BIN Size: "$(shell ls -lh $(RELEASE_FNAME).bin | awk '{print $$5}')" KiB"
