@@ -3,6 +3,7 @@
  */
 
 
+ENTRY(init)
 OUTPUT_ARCH(arm)
 
 MEMORY {
@@ -47,9 +48,6 @@ SECTIONS
 
         *(.text*)
 
-        KEEP(*(.init))
-        KEEP(*(.fini))
-
         *(.rodata*)
         *(.eh_frame*)
 
@@ -88,7 +86,7 @@ SECTIONS
     .data : {
         . = ALIGN(0x4);
         __data_begin = .;
-            *(.data*)
+        *(.data*)
         __data_end = .;
     } >RAM AT>FLASH
 
@@ -98,8 +96,8 @@ SECTIONS
     .heap : {
         . = ALIGN(0x4);             /* align heap to a word aligned address */
         __heap_begin = .;
-            /* all remaining RAM is used for the heap */
-            . += LENGTH(RAM) - (__data_end - __data_begin) - (__bss_end - __bss_begin);
+        /* all remaining RAM is used for the heap */
+        . += LENGTH(RAM) - (__data_end - __data_begin) - (__bss_end - __bss_begin);
         __heap_end = .;
     } >RAM
 
