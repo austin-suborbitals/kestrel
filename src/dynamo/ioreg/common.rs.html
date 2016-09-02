@@ -340,6 +340,51 @@
 <span id="296">296</span>
 <span id="297">297</span>
 <span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>aster</span>;
 
@@ -360,6 +405,7 @@
 <span class='comment'>// primitive type to_type and to_lit trait</span>
 <span class='comment'>//</span>
 
+<span class='doccomment'>/// Convert the width of the register to the representative ast::Ty (i.e. R8 -&gt; u8)</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>reg_width_to_ty</span>(<span class='ident'>width</span>: <span class='kw-2'>&amp;</span><span class='ident'>RegisterWidth</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span> {
     <span class='kw'>match</span> <span class='ident'>width</span> {
         <span class='kw-2'>&amp;</span><span class='ident'>RegisterWidth</span>::<span class='ident'>R8</span> <span class='op'>=&gt;</span> { <span class='ident'>u8</span>::<span class='ident'>to_type</span>() }
@@ -374,6 +420,11 @@
 <span class='comment'>// function value type</span>
 <span class='comment'>//</span>
 
+<span class='doccomment'>/// Representation of register function types.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// * Static meaning all values are explicitly literal.</span>
+<span class='doccomment'>/// * Argument meaning it takes arguments, and is used for setters only.</span>
+<span class='doccomment'>/// * Reference meaning it uses non-constant values and cannot be compile-time optimized with literals.</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>FunctionValueType</span> {
     <span class='ident'>Static</span>(<span class='ident'>u32</span>, <span class='ident'>Span</span>),   <span class='comment'>// TODO: generic? convert in the func def?</span>
     <span class='ident'>Argument</span>(<span class='ident'>String</span>, <span class='ident'>Span</span>),
@@ -398,6 +449,11 @@
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>PartialEq</span>)]</span>
+<span class='doccomment'>/// Internal representation of function-type classification.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// * A Getter is a reader function.</span>
+<span class='doccomment'>/// * A Setter is a setter function that either takes arguments, or uses FunctionValueType::Reference values</span>
+<span class='doccomment'>/// * A StaticSetter is also a setter, but uses only compile-time constants or literals.</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>FunctionType</span> {
     <span class='ident'>Getter</span>,
     <span class='ident'>Setter</span>,
@@ -419,6 +475,7 @@
 <span class='comment'>//</span>
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>PartialEq</span>)]</span>
+<span class='doccomment'>/// Represents the acces permissions of a register. Guards against writes/reads to registers that do not support it.</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>RegisterPermissions</span> {
     <span class='ident'>ReadOnly</span>,
     <span class='ident'>WriteOnly</span>,
@@ -441,6 +498,7 @@
 <span class='comment'>// register width</span>
 <span class='comment'>//</span>
 
+<span class='doccomment'>/// Represents the width of the register. Curretnly, only supports registers up to 32bits.</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>RegisterWidth</span> {
     <span class='ident'>R8</span>,
     <span class='ident'>R16</span>,
@@ -493,6 +551,9 @@
 <span class='comment'>//</span>
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='doccomment'>/// Represents the offset from the segment, and the index into the register of a register-portion.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// This is used to define where functions can access and gives mask/optimization info to the Builder.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>IoRegOffsetIndexInfo</span> {
     <span class='kw'>pub</span> <span class='ident'>offset</span>: <span class='ident'>u8</span>,
     <span class='kw'>pub</span> <span class='ident'>width</span>:  <span class='ident'>u8</span>,
@@ -518,14 +579,17 @@
     }
 }
 
+<span class='doccomment'>/// Converts the offset+index information into the smallest primitive numeric type we can.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// For example, for a 4bit value we use a u8, but for a 17bit value we must use a u32.</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>offset_width_to_ty</span>(<span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>IoRegOffsetIndexInfo</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span> {
     <span class='kw'>if</span> <span class='ident'>off</span>.<span class='ident'>width</span> <span class='op'>==</span> <span class='number'>0</span> {
         <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;cannot support offset widths of 0&quot;</span>); <span class='comment'>// TODO: check before calling?</span>
     }
 
-    <span class='kw'>if</span> <span class='ident'>off</span>.<span class='ident'>width</span> <span class='op'>&lt;</span> <span class='number'>16</span> {
+    <span class='kw'>if</span> <span class='ident'>off</span>.<span class='ident'>width</span> <span class='op'>&lt;=</span> <span class='number'>8</span> {
         <span class='kw'>return</span> <span class='ident'>u8</span>::<span class='ident'>to_type</span>();
-    } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>off</span>.<span class='ident'>width</span> <span class='op'>&gt;=</span> <span class='number'>16</span> <span class='op'>&amp;&amp;</span> <span class='ident'>off</span>.<span class='ident'>width</span> <span class='op'>&lt;</span> <span class='number'>32</span> {
+    } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>off</span>.<span class='ident'>width</span> <span class='op'>&lt;=</span> <span class='number'>16</span> {
         <span class='kw'>return</span> <span class='ident'>u16</span>::<span class='ident'>to_type</span>();
     } <span class='kw'>else</span> {
         <span class='kw'>return</span> <span class='ident'>u32</span>::<span class='ident'>to_type</span>();
@@ -534,6 +598,9 @@
 
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='doccomment'>/// Internal descriptor for a function definition.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// This includes the type of function and any values it may use.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>IoRegFuncDef</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>:       <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>values</span>:     <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>FunctionValueType</span><span class='op'>&gt;</span>,
@@ -542,6 +609,9 @@
 }
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='doccomment'>/// Internal descriptor for an offset into a Segment.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Offsets are what have functions associated with them and represent a window into an &quot;actual&quot; register.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>IoRegOffsetInfo</span> {
     <span class='kw'>pub</span> <span class='ident'>index</span>:          <span class='ident'>IoRegOffsetIndexInfo</span>,
     <span class='kw'>pub</span> <span class='ident'>functions</span>:      <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>IoRegFuncDef</span><span class='op'>&gt;</span>,
@@ -549,6 +619,10 @@
 }
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='doccomment'>/// Internal representation of a Segment.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Segments are typically what the mcu will expose as a register, but we want to group all related segments into one struct.</span>
+<span class='doccomment'>/// Segments contain multiple offsets which themselves contain the functions that act on that &quot;register&quot;.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>IoRegSegmentInfo</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>:           <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>address</span>:        <span class='ident'>u32</span>, <span class='comment'>// TODO: usize?</span>
@@ -559,10 +633,12 @@
     <span class='kw'>pub</span> <span class='ident'>span</span>:           <span class='ident'>Span</span>,
 }
 <span class='kw'>impl</span> <span class='ident'>IoRegSegmentInfo</span> {
+    <span class='doccomment'>/// Add an offset to the segment.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>push_offset</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>off</span>: <span class='ident'>IoRegOffsetInfo</span>) {
         <span class='self'>self</span>.<span class='ident'>offsets</span>.<span class='ident'>push</span>(<span class='ident'>off</span>);
     }
 
+    <span class='doccomment'>/// Truthy calue on whether the segment can be read from.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>can_read</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>access_perms</span> {
             <span class='ident'>RegisterPermissions</span>::<span class='ident'>ReadOnly</span> <span class='op'>|</span> <span class='ident'>RegisterPermissions</span>::<span class='ident'>ReadWrite</span>  <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -570,6 +646,7 @@
         }
     }
 
+    <span class='doccomment'>/// Truthy calue on whether the segment can be written to.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>can_write</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>access_perms</span> {
             <span class='ident'>RegisterPermissions</span>::<span class='ident'>WriteOnly</span> <span class='op'>|</span> <span class='ident'>RegisterPermissions</span>::<span class='ident'>ReadWrite</span>  <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -580,11 +657,24 @@
 
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>InitInfo</span> {
+    <span class='kw'>pub</span> <span class='ident'>defined</span>: <span class='ident'>bool</span>,
+    <span class='kw'>pub</span> <span class='ident'>item</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>ImplItem</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>span</span>: <span class='ident'>Span</span>,
+}
+
+
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='doccomment'>/// Internal representation used to build the ioreg definition.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Contains a logical grouping of mcu-proper-registers.</span>
+<span class='doccomment'>/// Also holds constants and documentation sources given in the macro expansion.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>IoRegInfo</span> {
     <span class='kw'>pub</span> <span class='ident'>name</span>:       <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>doc_srcs</span>:   <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>segments</span>:   <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>IoRegSegmentInfo</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>const_vals</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>parser</span>::<span class='ident'>StaticValue</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>init</span>:       <span class='ident'>InitInfo</span>,
     <span class='kw'>pub</span> <span class='ident'>span</span>:       <span class='ident'>Span</span>,
 }
 

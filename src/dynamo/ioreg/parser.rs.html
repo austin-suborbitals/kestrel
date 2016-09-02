@@ -216,6 +216,16 @@
 <span id="172">172</span>
 <span id="173">173</span>
 <span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>aster</span>;
 
@@ -238,15 +248,14 @@
     }}
 }
 
+<span class='doccomment'>/// Thin wrapper around the CommonParser so we can add ioreg-specific functions to it.</span>
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>Parser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>parser</span>::<span class='ident'>CommonParser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>;
 
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>Parser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-
-    <span class='comment'>// parse and index span</span>
-    <span class='comment'>// can be a single number (i.e. 3) or a range (i.e. 1..5)</span>
-    <span class='comment'>// returned as a tuple of (begin, length)</span>
-    <span class='comment'>// TODO: Result&lt;(u8,u8), _&gt; perhaps?</span>
+    <span class='doccomment'>/// Parses a register offset and index.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Checks the range is not inverted, and width &gt;= 1.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_index</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>common</span>::<span class='ident'>IoRegOffsetIndexInfo</span> {
         <span class='kw'>let</span> <span class='ident'>start_span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>;
         <span class='kw'>let</span> <span class='ident'>begin</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>parse_uint</span>::<span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;</span>() <span class='kw'>as</span> <span class='ident'>u8</span>;
@@ -278,11 +287,16 @@
     <span class='comment'>// parse function parts</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Parses a setter definition that uses static/literal values.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// The values used may be internal constants or literals.</span>
+    <span class='doccomment'>/// If an internal constant is specified, we lookup up the constant value and use it directly.</span>
+    <span class='doccomment'>/// If a constant (StaticValue) is found to not be numeric, a syntax error is placed.</span>
     <span class='kw'>fn</span> <span class='ident'>parse_static_setter_values</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>result</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>width</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>RegisterWidth</span>) {
         <span class='comment'>// until the end of the values</span>
         <span class='kw'>while</span> <span class='op'>!</span> <span class='self'>self</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>CloseDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Bracket</span>)) {
             <span class='comment'>// inspect the token we are currently considering</span>
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>raw_parser</span>().<span class='ident'>token</span> {
+            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>token</span> {
                 <span class='comment'>// if we have a literal, we expect it to be an integral, so parse that</span>
                 <span class='ident'>token</span>::<span class='ident'>Token</span>::<span class='ident'>Literal</span>(<span class='ident'>token</span>::<span class='ident'>Lit</span>::<span class='ident'>Integer</span>(_), _) <span class='op'>=&gt;</span> {  <span class='comment'>// TODO: consider float</span>
                     <span class='kw'>match</span> <span class='macro'>read_uint_for_register</span><span class='macro'>!</span>(<span class='self'>self</span>, <span class='ident'>width</span>) {
@@ -312,7 +326,9 @@
         <span class='self'>self</span>.<span class='ident'>expect_semi</span>();                       <span class='comment'>// expect a close to the definition</span>
     }
 
-    <span class='comment'>// parse a function definition from the name to the semicolon after the argument values</span>
+    <span class='doccomment'>/// Parses a function definition on a register.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Consumes `fn_name =&gt; [....];` or `fn_name =&gt; ();` depending on function type.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_func_def</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='ident'>String</span>, <span class='ident'>width</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>RegisterWidth</span>) <span class='op'>-&gt;</span> <span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span> {
         <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>.<span class='ident'>clone</span>();
 
@@ -352,6 +368,7 @@
     <span class='comment'>// register metadata</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Parses the width of a register (i.e. r8, r16, r32) into the internal representation common::RegisterWidth.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_reg_width</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>common</span>::<span class='ident'>RegisterWidth</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parse_ident_string</span>().<span class='ident'>as_str</span>() {
             <span class='string'>&quot;r8&quot;</span> <span class='op'>=&gt;</span> { <span class='ident'>common</span>::<span class='ident'>RegisterWidth</span>::<span class='ident'>R8</span> },
@@ -364,6 +381,7 @@
         }
     }
 
+    <span class='doccomment'>/// Parses the access permissions of a register (i.e. ro, rw, wo) into the internal representation common::RegisterPermissions.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_reg_access</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>common</span>::<span class='ident'>RegisterPermissions</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parse_ident_string</span>().<span class='ident'>as_str</span>() {
             <span class='string'>&quot;ro&quot;</span> <span class='op'>=&gt;</span> { <span class='ident'>common</span>::<span class='ident'>RegisterPermissions</span>::<span class='ident'>ReadOnly</span> },
@@ -381,12 +399,14 @@
     <span class='comment'>// passthrough</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Shortcut to self.parser.eat()</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>tok</span>: <span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>Token</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='ident'>tok</span>);
         <span class='kw'>if</span> <span class='op'>!</span> <span class='ident'>r</span> { <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>expected_tokens</span>.<span class='ident'>pop</span>(); }
         <span class='ident'>r</span>
     }
 
+    <span class='doccomment'>/// Shortcut to self.parser.token</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>curr_token</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>Token</span> {
         <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>token</span>
     }

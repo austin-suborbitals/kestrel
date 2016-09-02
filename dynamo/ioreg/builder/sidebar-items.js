@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Builder",""]]});
+initSidebarItems({"struct":[["Builder","Builds the AST from the parsed ioreg!() macro."]]});

@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["except",""]]});
+initSidebarItems({"fn":[["entry",""]]});

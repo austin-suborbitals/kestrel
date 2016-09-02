@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.21.1/src/method.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.26.1/src/method.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>method.rs.html -- source</title>
@@ -148,7 +148,7 @@
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>abi</span>::<span class='ident'>Abi</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ast</span>;
-<span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>codemap</span>::{<span class='ident'>DUMMY_SP</span>, <span class='ident'>Span</span>};
+<span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>codemap</span>::{<span class='ident'>DUMMY_SP</span>, <span class='ident'>respan</span>, <span class='ident'>Span</span>};
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ptr</span>::<span class='ident'>P</span>;
 
 <span class='kw'>use</span> <span class='ident'>fn_decl</span>::<span class='ident'>FnDeclBuilder</span>;
@@ -218,7 +218,7 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_fn_decl</span>(<span class='self'>self</span>, <span class='ident'>fn_decl</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>FnDecl</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='self'>self</span>.<span class='ident'>callback</span>.<span class='ident'>invoke</span>(<span class='ident'>ast</span>::<span class='ident'>MethodSig</span> {
             <span class='ident'>unsafety</span>: <span class='self'>self</span>.<span class='ident'>unsafety</span>,
-            <span class='ident'>constness</span>: <span class='self'>self</span>.<span class='ident'>constness</span>,
+            <span class='ident'>constness</span>: <span class='ident'>respan</span>(<span class='self'>self</span>.<span class='ident'>span</span>, <span class='self'>self</span>.<span class='ident'>constness</span>),
             <span class='ident'>abi</span>: <span class='self'>self</span>.<span class='ident'>abi</span>,
             <span class='ident'>decl</span>: <span class='ident'>fn_decl</span>,
             <span class='ident'>generics</span>: <span class='self'>self</span>.<span class='ident'>generics</span>,

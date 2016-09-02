@@ -559,6 +559,116 @@
 <span id="515">515</span>
 <span id="516">516</span>
 <span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
+<span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>macro_use</span>]</span>
 
@@ -577,6 +687,7 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 
+<span class='doccomment'>/// Simple boolean check on whether the Parser&#39;s current token is a token::Ident.</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>is_ident</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>val</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> {
         <span class='kw'>match</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>val</span> {
@@ -586,6 +697,7 @@
     }
 }
 
+<span class='doccomment'>/// Get the current ident as a string, otherwise set a parser error.</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>extract_ident_name</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>parser</span>:<span class='ident'>ident</span>) <span class='op'>=&gt;</span> {
         <span class='kw'>match</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>parser</span>.<span class='ident'>curr_token</span>() {
@@ -596,6 +708,10 @@
 }
 
 
+<span class='doccomment'>/// Trait used in register/value sizing and conversion.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// This is used typically the &quot;select&quot; unsigned numerics in generic functions.</span>
+<span class='doccomment'>/// Each type must implement ::max_value() and ::min_value() for that type.</span>
 <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>HasMinMax</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>max_value</span>() <span class='op'>-&gt;</span> <span class='ident'>T</span>;
     <span class='kw'>fn</span> <span class='ident'>min_value</span>() <span class='op'>-&gt;</span> <span class='ident'>T</span>;
@@ -620,9 +736,7 @@
 
 
 
-<span class='comment'>//</span>
-<span class='comment'>// narrow from u32 to u8 and u16</span>
-<span class='comment'>//</span>
+<span class='doccomment'>/// Simple trait to support &quot;safe&quot; narrowing (via truncation) of a u32 to a u16 or u8.</span>
 <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>Narrow</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>narrow</span>(<span class='ident'>u</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span>;
 }
@@ -637,7 +751,9 @@
 }
 
 
-
+<span class='doccomment'>/// Trait for types that can convert themselves into ast types.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// The required ast types are ast::Ty and ast::Lit + ast::Arg (with the latter two represented as ast::Expr)</span>
 <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>to_type</span>() <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>;
     <span class='kw'>fn</span> <span class='ident'>to_lit</span>(<span class='ident'>val</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Expr</span><span class='op'>&gt;</span>;
@@ -665,12 +781,12 @@
 
 
 
-<span class='comment'>//</span>
-<span class='comment'>// static value type</span>
-<span class='comment'>//</span>
-
 <span class='comment'>// TODO: 32bit limitation imposed here</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>)]</span>
+<span class='doccomment'>/// Tuple type representing a static value parsed from the input.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Certain value types can only be used in certain places/actions.</span>
+<span class='doccomment'>/// Each type carries the Span for which it was defined to properly place errors.</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>StaticValue</span> {
     <span class='ident'>Int</span>(<span class='ident'>i32</span>, <span class='ident'>String</span>, <span class='ident'>Span</span>),
     <span class='ident'>Uint</span>(<span class='ident'>u32</span>, <span class='ident'>String</span>, <span class='ident'>Span</span>),
@@ -683,6 +799,31 @@
 <span class='kw'>impl</span> <span class='ident'>StaticValue</span> {
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>default_uint</span>() <span class='op'>-&gt;</span> <span class='ident'>StaticValue</span> {
         <span class='ident'>StaticValue</span>::<span class='ident'>Uint</span>(<span class='number'>0</span>, <span class='string'>&quot;default_static_uint&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>DUMMY_SP</span>)
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>to_string</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
+        <span class='kw'>match</span> <span class='self'>self</span> {
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Int</span>(<span class='ident'>i</span>, _, _) <span class='op'>=&gt;</span> { <span class='ident'>i</span>.<span class='ident'>to_string</span>() }
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Uint</span>(<span class='ident'>u</span>, _, _) <span class='op'>=&gt;</span> { <span class='ident'>u</span>.<span class='ident'>to_string</span>() }
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Float</span>(<span class='ident'>f</span>, _, _, _) <span class='op'>=&gt;</span> { <span class='ident'>f</span>.<span class='ident'>to_string</span>() }
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Str</span>(<span class='kw-2'>ref</span> <span class='ident'>s</span>, _, _) <span class='op'>=&gt;</span> { <span class='ident'>s</span>.<span class='ident'>clone</span>() }
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Ident</span>(<span class='kw-2'>ref</span> <span class='ident'>s</span>, _, _) <span class='op'>=&gt;</span> { <span class='ident'>s</span>.<span class='ident'>clone</span>() }
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Path</span>(<span class='kw-2'>ref</span> <span class='ident'>p</span>, _) <span class='op'>=&gt;</span> { <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>p</span>) }
+            <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Error</span>(<span class='kw-2'>ref</span> <span class='ident'>e</span>, _) <span class='op'>=&gt;</span> { <span class='ident'>e</span>.<span class='ident'>clone</span>() }
+        }
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_span</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Span</span> {
+        <span class='kw'>match</span> <span class='self'>self</span> {
+              <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Int</span>(_, _, <span class='ident'>sp</span>)
+            <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Uint</span>(_, _, <span class='ident'>sp</span>)
+            <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Float</span>(_, _, _, <span class='ident'>sp</span>)
+            <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Str</span>(_, _, <span class='ident'>sp</span>)
+            <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Ident</span>(_, _, <span class='ident'>sp</span>)
+            <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Path</span>(_, <span class='ident'>sp</span>)
+            <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>::<span class='ident'>Error</span>(_, <span class='ident'>sp</span>) <span class='op'>=&gt;</span>
+              { <span class='ident'>sp</span> }
+        }
     }
 }
 
@@ -701,8 +842,9 @@
 }
 
 
-
-
+<span class='doccomment'>/// The common parser functions used across this crate.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Essentially a thin wrapper around syntax::parse::parser::Parser, with helpers added for our shared syntax.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CommonParser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>pub</span> <span class='ident'>parser</span>:     <span class='ident'>rsparse</span>::<span class='ident'>Parser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>,
         <span class='ident'>builder</span>:    <span class='ident'>aster</span>::<span class='ident'>AstBuilder</span>,
@@ -712,6 +854,7 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>CommonParser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Create a parser from the parsing context and token tree we wish to parse.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>cx</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ExtCtxt</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>, <span class='ident'>tree</span>: <span class='kw-2'>&amp;</span>[<span class='ident'>tokenstream</span>::<span class='ident'>TokenTree</span>]) <span class='op'>-&gt;</span> <span class='ident'>CommonParser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>cx</span>.<span class='ident'>new_parser_from_tts</span>(<span class='ident'>tree</span>);
         <span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='ident'>p</span>.<span class='ident'>span</span>;
@@ -722,31 +865,41 @@
         }
     }
 
+    <span class='doccomment'>/// Sets a syntax error on the span the parser&#39;s cursor is currently on.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_err</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>err</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
         <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span_err</span>(<span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>, <span class='ident'>err</span>);
     }
+
+    <span class='doccomment'>/// Sets a syntax error on the span **before** the parser&#39;s current token cursor.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_err_last</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>err</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
         <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span_err</span>(<span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>last_span</span>, <span class='ident'>err</span>);
     }
 
+    <span class='doccomment'>/// Sets a fatal error on the parser&#39;s current token, and emits the diagnostic.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_fatal_err</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>err</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
         <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span_fatal</span>(<span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>, <span class='ident'>err</span>).<span class='ident'>emit</span>();
     }
+
+    <span class='doccomment'>/// Sets a fatal error on the parser&#39;s previous token, and emits the diagnostic.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_fatal_err_last</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>err</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
         <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span_fatal</span>(<span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>last_span</span>, <span class='ident'>err</span>).<span class='ident'>emit</span>();
     }
 
+    <span class='doccomment'>/// Sets a syntax error on the span representing the current segment.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// **Note:** this will be moving to the ioreg parser shortly as this is generic, but missed in the split.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_segment_err</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>err</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
         <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span_err</span>(<span class='self'>self</span>.<span class='ident'>begin_segment</span>, <span class='ident'>err</span>);
     }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>raw_parser</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='ident'>rsparse</span>::<span class='ident'>Parser</span> { <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>parser</span> }
 
 
     <span class='comment'>//</span>
     <span class='comment'>// assert and consume</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Expects the current token to be an ast::Ident, and that the ident&#39;s name is equal to the given value.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the values are not equal, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_ident_value</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>expect</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
         <span class='kw'>let</span> <span class='ident'>got</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>parse_ident_string</span>();
         <span class='kw'>if</span> <span class='ident'>expect</span> <span class='op'>!=</span> <span class='ident'>got</span> {
@@ -754,6 +907,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a semicolon</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_semi</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>expect</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>Token</span>::<span class='ident'>Semi</span>) {
             <span class='prelude-val'>Ok</span>(_) <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -761,6 +917,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be an equal sign (&#39;=&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_equal</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>expect</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>Token</span>::<span class='ident'>Eq</span>) {
             <span class='prelude-val'>Ok</span>(_) <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -768,6 +927,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a fat arrow (&#39;=&gt;&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_fat_arrow</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>FatArrow</span>) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> {<span class='bool-val'>true</span> }
@@ -775,6 +937,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a colon</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_colon</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>Colon</span>) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -782,6 +947,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a comma</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_comma</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>Comma</span>) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -789,6 +957,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be an opening paren (&#39;(&#39;))</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_open_paren</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>OpenDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Paren</span>)) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -796,6 +967,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a closing paren (&#39;)&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_close_paren</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>CloseDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Paren</span>)) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>false</span> }
@@ -803,6 +977,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be an opening curly brace (&#39;{&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_open_curly</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>OpenDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Brace</span>)) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -810,6 +987,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a closing curly brace (&#39;}&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_close_curly</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>CloseDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Brace</span>)) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>false</span> }
@@ -817,6 +997,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be an opening bracket (&#39;[&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_open_bracket</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>OpenDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Bracket</span>)) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -824,6 +1007,9 @@
         }
     }
 
+    <span class='doccomment'>/// Expect the current token to be a closing bracket (&#39;]&#39;)</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not the expect token, a fatal error is set.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expect_close_bracket</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>eat</span>(<span class='kw-2'>&amp;</span><span class='ident'>token</span>::<span class='ident'>CloseDelim</span>(<span class='ident'>token</span>::<span class='ident'>DelimToken</span>::<span class='ident'>Bracket</span>)) {
             <span class='bool-val'>true</span> <span class='op'>=&gt;</span> { <span class='bool-val'>true</span> }
@@ -836,6 +1022,9 @@
     <span class='comment'>// simple read</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Get the parser&#39;s current token as an ast::Ident.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not an identifier, a non-fatal syntax error is set and a dummy is returned.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_ident</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ast</span>::<span class='ident'>Ident</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>parse_ident</span>() {
             <span class='prelude-val'>Ok</span>(<span class='ident'>i</span>) <span class='op'>=&gt;</span> { <span class='ident'>i</span> }
@@ -846,6 +1035,9 @@
         }
     }
 
+    <span class='doccomment'>/// Get the parser&#39;s current token(s) as an ast::Path.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not a path, a non-fatal syntax error is set and a dummy is returned.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_type_path</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ast</span>::<span class='ident'>Path</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>parse_path</span>(<span class='ident'>rsparse</span>::<span class='ident'>PathStyle</span>::<span class='ident'>Type</span>) {
             <span class='prelude-val'>Ok</span>(<span class='ident'>i</span>) <span class='op'>=&gt;</span> { <span class='ident'>i</span> }
@@ -856,6 +1048,9 @@
         }
     }
 
+    <span class='doccomment'>/// Get the parser&#39;s current token as an ast::Lit.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not a literal, a non-fatal syntax error is set and an error is returned.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_literal</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Lit</span>, <span class='ident'>String</span><span class='op'>&gt;</span> {
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>parse_lit</span>() {
             <span class='prelude-val'>Ok</span>(<span class='ident'>i</span>) <span class='op'>=&gt;</span> {
@@ -873,6 +1068,12 @@
     <span class='comment'>// numeric reads</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Parse the current token (i.e. literal) as a unsigned integer.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// This function is essentially a sanity wrapper around `checked_parse_uint()`.</span>
+    <span class='doccomment'>/// We cannot genericize the return value, so it is returned as a u64 which should then be cast appropriately.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// **Note:** there should be changes to the return value coming shortly, if Rust supports it.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_uint</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>HasMinMax</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='op'>+</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>u64</span>
         <span class='kw'>where</span> <span class='ident'>u64</span>: <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
 
@@ -887,6 +1088,10 @@
 
     <span class='comment'>// TODO: why can I not cast u64 to T where T is uint &lt; u64</span>
     <span class='comment'>// TODO: use the new Narrow trait</span>
+    <span class='doccomment'>/// Reads the parser&#39;s current token as an unsigned numeric literal, asserting it fits into T::max_value().</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the current token is not a numeric literal or the parsed value does not fit within T::max_value() then an</span>
+    <span class='doccomment'>/// error is returned describing as such.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>checked_parse_uint</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>HasMinMax</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='op'>+</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>u64</span>, <span class='ident'>String</span><span class='op'>&gt;</span>
         <span class='kw'>where</span> <span class='ident'>u64</span>: <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
 
@@ -916,7 +1121,12 @@
         }
     }
 
-
+    <span class='doccomment'>/// Parses the parser&#39;s current token as a literal, and converts it to our StaticValue type.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// **Note:** Numeric literals are parsed as u32, and as such, must fit within u32::max_value().</span>
+    <span class='doccomment'>/// **Note:** Signed integers are not yet supported.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// There are multiple error cases here, depending on the type of literal.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_constant_literal</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>String</span>) <span class='op'>-&gt;</span> <span class='ident'>StaticValue</span> {
         <span class='kw'>let</span> <span class='ident'>curr_span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>;
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>curr_token</span>() {
@@ -991,6 +1201,9 @@
     <span class='comment'>// string literal reads</span>
     <span class='comment'>//</span>
 
+    <span class='doccomment'>/// Parses the current token as an ident, and returns the string value of the identifier.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If the token is not an ident, a syntax error is placed and a dummy value returned.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_ident_string</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
         <span class='self'>self</span>.<span class='ident'>get_ident</span>().<span class='ident'>name</span>.<span class='ident'>as_str</span>().<span class='ident'>to_string</span>()
     }
@@ -1000,7 +1213,9 @@
     <span class='comment'>// block reading</span>
     <span class='comment'>//</span>
 
-    <span class='comment'>// parse an entire `doc_srcs =&gt; [ ... ]` block into the given vector</span>
+    <span class='doccomment'>/// Parses an entire `doc_srcs =&gt; [ ... ]` block into the given vector</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// **Note:** trailing commas are not allowed.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_doc_sources</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>prefix</span>: <span class='kw-2'>&amp;</span><span class='ident'>String</span>, <span class='ident'>into</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>) {
         <span class='comment'>// expect the opening syntax</span>
         <span class='self'>self</span>.<span class='ident'>expect_ident_value</span>(<span class='string'>&quot;doc_srcs&quot;</span>);
@@ -1028,7 +1243,12 @@
     }
 
 
-    <span class='comment'>// parse an entire `constants =&gt; { ... }` block into the given hash map</span>
+    <span class='doccomment'>/// Parse an entire `constants =&gt; { ... };` block into the given hash map.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If any constant fails to parse, a syntax error is placed and parsing is aborted.</span>
+    <span class='doccomment'>/// This can lead to further, somewhat confusing, syntax errors but it follows the Rust style.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// **NOTE:** this function takes a validator function as an argument in case any validation needs to happen. This can be a nop.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>parse_constants_block</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(
         <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>prefix</span>: <span class='kw-2'>&amp;</span><span class='ident'>String</span>, <span class='ident'>into</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>StaticValue</span><span class='op'>&gt;</span>,
         <span class='ident'>validate</span>: <span class='kw'>fn</span>(<span class='kw-2'>&amp;</span><span class='ident'>T</span>,<span class='kw-2'>&amp;</span><span class='ident'>StaticValue</span>,<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>StaticValue</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>String</span><span class='op'>&gt;</span>,

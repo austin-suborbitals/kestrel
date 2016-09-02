@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["kinetis",""]]});
+initSidebarItems({"mod":[["cortexm4",""]]});

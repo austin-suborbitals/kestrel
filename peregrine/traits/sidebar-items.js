@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["MCU","Enables generic handling and initialization of an MCU."],["NVIC","Standard interface to the Nested Vector Interrupt Controller."],["SysTick","Enables generic handling and initialization of a SysTick core module."]]});

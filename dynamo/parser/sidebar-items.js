@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["StaticValue",""]],"struct":[["CommonParser",""]],"trait":[["HasMinMax",""],["Narrow",""],["ToAstType",""]]});
+initSidebarItems({"enum":[["StaticValue","Tuple type representing a static value parsed from the input."]],"struct":[["CommonParser","The common parser functions used across this crate."]],"trait":[["HasMinMax","Trait used in register/value sizing and conversion."],["Narrow","Simple trait to support \"safe\" narrowing (via truncation) of a u32 to a u16 or u8."],["ToAstType","Trait for types that can convert themselves into ast types."]]});

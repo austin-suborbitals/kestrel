@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.21.1/src/ty.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.26.1/src/ty.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>ty.rs.html -- source</title>
@@ -574,6 +574,95 @@
 <span id="530">530</span>
 <span id="531">531</span>
 <span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
+<span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>IntoIterator</span>;
 
@@ -720,7 +809,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>slice</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TySliceBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TySliceBuilder</span>(<span class='self'>self</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TySliceBuilder</span>(<span class='self'>self</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ref_</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyRefBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
@@ -731,34 +821,48 @@
         }
     }
 
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>never</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
+        <span class='self'>self</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Never</span>)
+    }
+
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>infer</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='self'>self</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Infer</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>option</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyOptionBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyOptionBuilder</span>(<span class='self'>self</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyOptionBuilder</span>(<span class='self'>self</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>result</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyResultOkBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyResultOkBuilder</span>(<span class='self'>self</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyResultOkBuilder</span>(<span class='self'>self</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>phantom_data</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyPhantomDataBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyPhantomDataBuilder</span>(<span class='self'>self</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyPhantomDataBuilder</span>(<span class='self'>self</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>box_</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyBoxBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyBoxBuilder</span>(<span class='self'>self</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyBoxBuilder</span>(<span class='self'>self</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>iterator</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyIteratorBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyIteratorBuilder</span>(<span class='self'>self</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyIteratorBuilder</span>(<span class='self'>self</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>object_sum</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyObjectSumBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
         <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyObjectSumBuilder</span> {
             <span class='ident'>builder</span>: <span class='self'>self</span>,
-        })
+        }).<span class='ident'>span</span>(<span class='ident'>span</span>)
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>impl_trait</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyImplTraitTyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
+        <span class='ident'>TyImplTraitTyBuilder</span> { <span class='ident'>builder</span>: <span class='self'>self</span>, <span class='ident'>bounds</span>: <span class='ident'>Vec</span>::<span class='ident'>new</span>() }
     }
 }
 
@@ -840,7 +944,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ty</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 }
 
@@ -865,6 +970,7 @@
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>PathBuilder</span>::<span class='ident'>new</span>()
+            .<span class='ident'>span</span>(<span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>span</span>)
             .<span class='ident'>global</span>()
             .<span class='ident'>id</span>(<span class='string'>&quot;std&quot;</span>)
             .<span class='ident'>id</span>(<span class='string'>&quot;option&quot;</span>)
@@ -887,7 +993,8 @@
     <span class='kw'>type</span> <span class='prelude-ty'>Result</span> <span class='op'>=</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyResultErrBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span>;
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TyResultErrBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyResultErrBuilder</span>(<span class='self'>self</span>.<span class='number'>0</span>, <span class='ident'>ty</span>))
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>TyResultErrBuilder</span>(<span class='self'>self</span>.<span class='number'>0</span>, <span class='ident'>ty</span>)).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 }
 
@@ -900,6 +1007,7 @@
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>PathBuilder</span>::<span class='ident'>new</span>()
+            .<span class='ident'>span</span>(<span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>span</span>)
             .<span class='ident'>global</span>()
             .<span class='ident'>id</span>(<span class='string'>&quot;std&quot;</span>)
             .<span class='ident'>id</span>(<span class='string'>&quot;result&quot;</span>)
@@ -924,6 +1032,7 @@
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>PathBuilder</span>::<span class='ident'>new</span>()
+            .<span class='ident'>span</span>(<span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>span</span>)
             .<span class='ident'>global</span>()
             .<span class='ident'>id</span>(<span class='string'>&quot;std&quot;</span>)
             .<span class='ident'>id</span>(<span class='string'>&quot;marker&quot;</span>)
@@ -947,6 +1056,7 @@
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>PathBuilder</span>::<span class='ident'>new</span>()
+            .<span class='ident'>span</span>(<span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>span</span>)
             .<span class='ident'>global</span>()
             .<span class='ident'>id</span>(<span class='string'>&quot;std&quot;</span>)
             .<span class='ident'>id</span>(<span class='string'>&quot;boxed&quot;</span>)
@@ -970,6 +1080,7 @@
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>PathBuilder</span>::<span class='ident'>new</span>()
+            .<span class='ident'>span</span>(<span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>span</span>)
             .<span class='ident'>global</span>()
             .<span class='ident'>id</span>(<span class='string'>&quot;std&quot;</span>)
             .<span class='ident'>id</span>(<span class='string'>&quot;iter&quot;</span>)
@@ -1069,6 +1180,72 @@
 
 <span class='comment'>//////////////////////////////////////////////////////////////////////////////</span>
 
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TyImplTraitTyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
+    <span class='ident'>builder</span>: <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>,
+    <span class='ident'>bounds</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>TyParamBound</span><span class='op'>&gt;</span>,
+}
+
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> <span class='ident'>TyImplTraitTyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
+    <span class='kw'>where</span> <span class='ident'>F</span>: <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;&gt;</span>,
+{
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_bounds</span><span class='op'>&lt;</span><span class='ident'>I</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>iter</span>: <span class='ident'>I</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span>
+        <span class='kw'>where</span> <span class='ident'>I</span>: <span class='ident'>Iterator</span><span class='op'>&lt;</span><span class='ident'>Item</span><span class='op'>=</span><span class='ident'>ast</span>::<span class='ident'>TyParamBound</span><span class='op'>&gt;</span>,
+    {
+        <span class='self'>self</span>.<span class='ident'>bounds</span>.<span class='ident'>extend</span>(<span class='ident'>iter</span>);
+        <span class='self'>self</span>
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_bound</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>bound</span>: <span class='ident'>ast</span>::<span class='ident'>TyParamBound</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
+        <span class='self'>self</span>.<span class='ident'>bounds</span>.<span class='ident'>push</span>(<span class='ident'>bound</span>);
+        <span class='self'>self</span>
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>bound</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyParamBoundBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
+        <span class='ident'>TyParamBoundBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_generics</span>(<span class='self'>self</span>, <span class='ident'>generics</span>: <span class='ident'>ast</span>::<span class='ident'>Generics</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
+        <span class='self'>self</span>.<span class='ident'>with_lifetimes</span>(
+            <span class='ident'>generics</span>.<span class='ident'>lifetimes</span>.<span class='ident'>into_iter</span>()
+                .<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>def</span><span class='op'>|</span> <span class='ident'>def</span>.<span class='ident'>lifetime</span>)
+        )
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_lifetimes</span><span class='op'>&lt;</span><span class='ident'>I</span>, <span class='ident'>L</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>lifetimes</span>: <span class='ident'>I</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span>
+        <span class='kw'>where</span> <span class='ident'>I</span>: <span class='ident'>Iterator</span><span class='op'>&lt;</span><span class='ident'>Item</span><span class='op'>=</span><span class='ident'>L</span><span class='op'>&gt;</span>,
+              <span class='ident'>L</span>: <span class='ident'>IntoLifetime</span>,
+    {
+        <span class='kw'>for</span> <span class='ident'>lifetime</span> <span class='kw'>in</span> <span class='ident'>lifetimes</span> {
+            <span class='self'>self</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>lifetime</span>(<span class='ident'>lifetime</span>);
+        }
+
+        <span class='self'>self</span>
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>lifetime</span><span class='op'>&lt;</span><span class='ident'>L</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>lifetime</span>: <span class='ident'>L</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span>
+        <span class='kw'>where</span> <span class='ident'>L</span>: <span class='ident'>IntoLifetime</span>,
+    {
+        <span class='self'>self</span>.<span class='ident'>bound</span>().<span class='ident'>lifetime</span>(<span class='ident'>lifetime</span>)
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
+        <span class='kw'>let</span> <span class='ident'>bounds</span> <span class='op'>=</span> <span class='ident'>P</span>::<span class='ident'>from_vec</span>(<span class='self'>self</span>.<span class='ident'>bounds</span>);
+        <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>ImplTrait</span>(<span class='ident'>bounds</span>))
+    }
+}
+
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>TyParamBound</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>TyImplTraitTyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
+    <span class='kw'>where</span> <span class='ident'>F</span>: <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;&gt;</span>,
+{
+    <span class='kw'>type</span> <span class='prelude-ty'>Result</span> <span class='op'>=</span> <span class='self'>Self</span>;
+
+    <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>bound</span>: <span class='ident'>ast</span>::<span class='ident'>TyParamBound</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
+        <span class='self'>self</span>.<span class='ident'>with_bound</span>(<span class='ident'>bound</span>)
+    }
+}
+
+<span class='comment'>//////////////////////////////////////////////////////////////////////////////</span>
+
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TyTupleBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
     <span class='ident'>builder</span>: <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>,
     <span class='ident'>tys</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;&gt;</span>,
@@ -1090,7 +1267,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ty</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {

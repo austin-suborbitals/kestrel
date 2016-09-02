@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.21.1/src/item.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.26.1/src/item.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>item.rs.html -- source</title>
@@ -1511,6 +1511,20 @@
 <span id="1467">1467</span>
 <span id="1468">1468</span>
 <span id="1469">1469</span>
+<span id="1470">1470</span>
+<span id="1471">1471</span>
+<span id="1472">1472</span>
+<span id="1473">1473</span>
+<span id="1474">1474</span>
+<span id="1475">1475</span>
+<span id="1476">1476</span>
+<span id="1477">1477</span>
+<span id="1478">1478</span>
+<span id="1479">1479</span>
+<span id="1480">1480</span>
+<span id="1481">1481</span>
+<span id="1482">1482</span>
+<span id="1483">1483</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>cfg_attr</span>(<span class='ident'>feature</span> <span class='op'>=</span> <span class='string'>&quot;unstable&quot;</span>, <span class='ident'>allow</span>(<span class='ident'>wrong_self_convention</span>))]</span>
 
@@ -1617,8 +1631,10 @@
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>ToIdent</span>,
     {
         <span class='kw'>let</span> <span class='ident'>id</span> <span class='op'>=</span> <span class='ident'>id</span>.<span class='ident'>to_ident</span>();
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
         <span class='ident'>FnDeclBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>ItemFnDeclBuilder</span> {
             <span class='ident'>builder</span>: <span class='self'>self</span>,
+            <span class='ident'>span</span>: <span class='ident'>span</span>,
             <span class='ident'>id</span>: <span class='ident'>id</span>,
         })
     }
@@ -1676,7 +1692,8 @@
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>ToIdent</span>,
     {
         <span class='kw'>let</span> <span class='ident'>id</span> <span class='op'>=</span> <span class='ident'>id</span>.<span class='ident'>to_ident</span>();
-        <span class='kw'>let</span> <span class='ident'>generics</span> <span class='op'>=</span> <span class='ident'>GenericsBuilder</span>::<span class='ident'>new</span>().<span class='ident'>build</span>();
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='kw'>let</span> <span class='ident'>generics</span> <span class='op'>=</span> <span class='ident'>GenericsBuilder</span>::<span class='ident'>new</span>().<span class='ident'>span</span>(<span class='ident'>span</span>).<span class='ident'>build</span>();
 
         <span class='ident'>ItemEnumBuilder</span> {
             <span class='ident'>builder</span>: <span class='self'>self</span>,
@@ -1766,6 +1783,7 @@
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ItemFnDeclBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
     <span class='ident'>builder</span>: <span class='ident'>ItemBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>,
+    <span class='ident'>span</span>: <span class='ident'>Span</span>,
     <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>Ident</span>,
 }
 
@@ -1779,6 +1797,7 @@
 
         <span class='ident'>ItemFnBuilder</span> {
             <span class='ident'>builder</span>: <span class='self'>self</span>.<span class='ident'>builder</span>,
+            <span class='ident'>span</span>: <span class='self'>self</span>.<span class='ident'>span</span>,
             <span class='ident'>id</span>: <span class='self'>self</span>.<span class='ident'>id</span>,
             <span class='ident'>fn_decl</span>: <span class='ident'>fn_decl</span>,
             <span class='ident'>unsafety</span>: <span class='ident'>ast</span>::<span class='ident'>Unsafety</span>::<span class='ident'>Normal</span>,
@@ -1793,6 +1812,7 @@
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ItemFnBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
     <span class='ident'>builder</span>: <span class='ident'>ItemBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>,
+    <span class='ident'>span</span>: <span class='ident'>Span</span>,
     <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>Ident</span>,
     <span class='ident'>fn_decl</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>FnDecl</span><span class='op'>&gt;</span>,
     <span class='ident'>unsafety</span>: <span class='ident'>ast</span>::<span class='ident'>Unsafety</span>,
@@ -1827,7 +1847,7 @@
         <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>build_item_kind</span>(<span class='self'>self</span>.<span class='ident'>id</span>, <span class='ident'>ast</span>::<span class='ident'>ItemKind</span>::<span class='ident'>Fn</span>(
             <span class='self'>self</span>.<span class='ident'>fn_decl</span>,
             <span class='self'>self</span>.<span class='ident'>unsafety</span>,
-            <span class='self'>self</span>.<span class='ident'>constness</span>,
+            <span class='ident'>respan</span>(<span class='self'>self</span>.<span class='ident'>span</span>, <span class='self'>self</span>.<span class='ident'>constness</span>),
             <span class='self'>self</span>.<span class='ident'>abi</span>,
             <span class='self'>self</span>.<span class='ident'>generics</span>,
             <span class='ident'>block</span>,
@@ -1936,9 +1956,10 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>self_</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> {
-        <span class='self'>self</span>.<span class='ident'>idents</span>.<span class='ident'>push</span>(<span class='ident'>respan</span>(<span class='self'>self</span>.<span class='ident'>span</span>, <span class='ident'>ast</span>::<span class='ident'>PathListItemKind</span>::<span class='ident'>Mod</span> {
-            <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>DUMMY_NODE_ID</span>,
+        <span class='self'>self</span>.<span class='ident'>idents</span>.<span class='ident'>push</span>(<span class='ident'>respan</span>(<span class='self'>self</span>.<span class='ident'>span</span>, <span class='ident'>ast</span>::<span class='ident'>PathListItem_</span> {
+            <span class='ident'>name</span>: <span class='ident'>keywords</span>::<span class='ident'>SelfValue</span>.<span class='ident'>ident</span>(),
             <span class='ident'>rename</span>: <span class='prelude-val'>None</span>,
+            <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>DUMMY_NODE_ID</span>,
         }));
         <span class='self'>self</span>
     }
@@ -1946,7 +1967,7 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>id</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>id</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>ToIdent</span>,
     {
-        <span class='self'>self</span>.<span class='ident'>idents</span>.<span class='ident'>push</span>(<span class='ident'>respan</span>(<span class='self'>self</span>.<span class='ident'>span</span>, <span class='ident'>ast</span>::<span class='ident'>PathListItemKind</span>::<span class='ident'>Ident</span> {
+        <span class='self'>self</span>.<span class='ident'>idents</span>.<span class='ident'>push</span>(<span class='ident'>respan</span>(<span class='self'>self</span>.<span class='ident'>span</span>, <span class='ident'>ast</span>::<span class='ident'>PathListItem_</span> {
             <span class='ident'>name</span>: <span class='ident'>id</span>.<span class='ident'>to_ident</span>(),
             <span class='ident'>rename</span>: <span class='prelude-val'>None</span>,
             <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>DUMMY_NODE_ID</span>,
@@ -2050,7 +2071,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ty</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>field</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>StructFieldBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
@@ -2110,7 +2132,8 @@
     <span class='kw'>where</span> <span class='ident'>F</span>: <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Item</span><span class='op'>&gt;&gt;</span>,
 {
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>generics</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>GenericsBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>GenericsBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>GenericsBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>with_variants</span><span class='op'>&lt;</span><span class='ident'>I</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>iter</span>: <span class='ident'>I</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span>
@@ -2161,7 +2184,8 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>variant</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>id</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>VariantBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>ToIdent</span>,
     {
-        <span class='ident'>VariantBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>id</span>, <span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>VariantBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>id</span>, <span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
@@ -2275,7 +2299,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ty</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_ty</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
@@ -2612,7 +2637,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ty</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
@@ -2683,7 +2709,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>ty</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_ty</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
@@ -2860,7 +2887,8 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>type_</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>TyBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mac</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>MacBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {

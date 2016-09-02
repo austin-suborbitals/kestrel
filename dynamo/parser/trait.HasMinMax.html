@@ -47,14 +47,18 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-21' class='srclink' href='../../src/dynamo/parser/mod.rs.html#37-40' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-21' class='srclink' href='../../src/dynamo/parser/mod.rs.html#43-46' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait HasMinMax&lt;T&gt; {
     fn <a href='#tymethod.max_value' class='fnname'>max_value</a>() -&gt; T;
     fn <a href='#tymethod.min_value' class='fnname'>min_value</a>() -&gt; T;
-}</pre>
+}</pre><div class='docblock'><p>Trait used in register/value sizing and conversion.</p>
+
+<p>This is used typically the &quot;select&quot; unsigned numerics in generic functions.
+Each type must implement ::max_value() and ::min_value() for that type.</p>
+</div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.max_value' class='method stab '><code>fn <a href='#tymethod.max_value' class='fnname'>max_value</a>() -&gt; T</code></h3><h3 id='tymethod.min_value' class='method stab '><code>fn <a href='#tymethod.min_value' class='fnname'>min_value</a>() -&gt; T</code></h3></div>
+        <h3 id='tymethod.max_value' class='method stab '><span id='max_value.v' class='invisible'><code>fn <a href='#tymethod.max_value' class='fnname'>max_value</a>() -&gt; T</code></span></h3><h3 id='tymethod.min_value' class='method stab '><span id='min_value.v' class='invisible'><code>fn <a href='#tymethod.min_value' class='fnname'>min_value</a>() -&gt; T</code></span></h3></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
     <li><code>impl HasMinMax&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt; for <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a></code></li>

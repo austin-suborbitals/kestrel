@@ -599,6 +599,86 @@
 <span id="555">555</span>
 <span id="556">556</span>
 <span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
+<span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>aster</span>;
 
@@ -628,6 +708,7 @@
 <span class='kw'>type</span> <span class='ident'>FnArgsBuilder</span> <span class='op'>=</span> <span class='ident'>aster</span>::<span class='ident'>expr</span>::<span class='ident'>ExprCallArgsBuilder</span><span class='op'>&lt;</span><span class='ident'>aster</span>::<span class='ident'>stmt</span>::<span class='ident'>StmtExprBuilder</span><span class='op'>&lt;</span><span class='ident'>aster</span>::<span class='ident'>invoke</span>::<span class='ident'>Identity</span><span class='op'>&gt;&gt;</span>;
 
 
+<span class='doccomment'>/// Creates a ptr type to the ast::Ty given as $ty with a bool for mutability.</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>ptr_type</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>:<span class='ident'>expr</span>, <span class='bool-val'>true</span>) <span class='op'>=&gt;</span> { <span class='macro'>ptr_type</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>, <span class='ident'>ast</span>::<span class='ident'>Mutability</span>::<span class='ident'>Mutable</span>) };
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>:<span class='ident'>expr</span>, <span class='bool-val'>false</span>) <span class='op'>=&gt;</span> { <span class='macro'>ptr_type</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>ty</span>, <span class='ident'>ast</span>::<span class='ident'>Mutability</span>::<span class='ident'>Immutable</span>) };
@@ -642,6 +723,7 @@
     };
 }
 
+<span class='doccomment'>/// Casts the $lhs argument as a pointer of type $rhs and takes a bool for mutability.</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>ptr_cast</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>lhs</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rhs</span>:<span class='ident'>expr</span>, <span class='bool-val'>true</span>) <span class='op'>=&gt;</span> { <span class='macro'>ptr_cast</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>lhs</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rhs</span>, <span class='ident'>ast</span>::<span class='ident'>Mutability</span>::<span class='ident'>Mutable</span>) };
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>lhs</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rhs</span>:<span class='ident'>expr</span>, <span class='bool-val'>false</span>) <span class='op'>=&gt;</span> { <span class='macro'>ptr_cast</span><span class='macro'>!</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>lhs</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>rhs</span>, <span class='ident'>ast</span>::<span class='ident'>Mutability</span>::<span class='ident'>Immutable</span>) };
@@ -653,6 +735,7 @@
     };
 }
 
+<span class='doccomment'>/// Takes a StaticValue and expects a uint. If not, a syntax error is generated and dummy value of 0 returned.</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>expect_uint</span> {
     (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>self_</span>:<span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>expect</span>:<span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>t</span>:<span class='ident'>ident</span>) <span class='op'>=&gt;</span> {
         <span class='kw'>match</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>expect</span> {
@@ -673,6 +756,7 @@
     }
 }
 
+<span class='doccomment'>/// Used to have non-quoted strings in the Debug printer.</span>
 <span class='kw'>struct</span> <span class='ident'>NonQuoteString</span>(<span class='ident'>String</span>);
 <span class='kw'>impl</span> <span class='ident'>fmt</span>::<span class='ident'>Display</span> <span class='kw'>for</span> <span class='ident'>NonQuoteString</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>f</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>fmt</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> { <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}&quot;</span>, <span class='self'>self</span>.<span class='number'>0</span>) }
@@ -681,6 +765,7 @@
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>f</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>fmt</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> { <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}&quot;</span>, <span class='self'>self</span>.<span class='number'>0</span>) }
 }
 
+<span class='doccomment'>/// Generate documentation attributes for the given setter function.</span>
 <span class='kw'>fn</span> <span class='ident'>make_setter_doc</span>(<span class='ident'>func</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetInfo</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mask_qual</span> <span class='op'>=</span> <span class='string'>&quot;&quot;</span>;
     <span class='kw'>let</span> <span class='ident'>mask_str</span> <span class='op'>=</span> <span class='string'>&quot;\n\n**NOTE**: all values in unaligned writes are subject to masking which is not displayed here.&quot;</span>;
@@ -730,6 +815,7 @@
     }
 }
 
+<span class='doccomment'>/// Builds the AST from the parsed ioreg!() macro.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Builder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='ident'>verbose</span>: <span class='ident'>bool</span>,
     <span class='ident'>reg</span>: <span class='ident'>common</span>::<span class='ident'>IoRegInfo</span>,
@@ -738,6 +824,7 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>Builder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Consumes the parsed IoRegInfo as well as the parser (for later syntax error placement).</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>ioreg</span>: <span class='ident'>common</span>::<span class='ident'>IoRegInfo</span>, <span class='ident'>parser</span>: ::<span class='ident'>ioreg</span>::<span class='ident'>parser</span>::<span class='ident'>Parser</span>, <span class='ident'>verbose</span>: <span class='ident'>bool</span>) <span class='op'>-&gt;</span> <span class='ident'>Builder</span> {
         <span class='ident'>Builder</span> {
             <span class='ident'>verbose</span>: <span class='ident'>verbose</span>,
@@ -749,6 +836,7 @@
 
     <span class='comment'>// TODO: better name?</span>
     <span class='comment'>// TODO: better return?</span>
+    <span class='doccomment'>/// Outputs Rust AST items representing the generated ioreg.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Item</span><span class='op'>&gt;&gt;</span> {
         <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>verbose</span> { <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;\n\n=====   Generating: {}   =====\n&quot;</span>, <span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>name</span>); }
 
@@ -756,6 +844,7 @@
 
         <span class='comment'>// generate the base &quot;struct&quot; pointer.</span>
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>docced_item</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>item</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>span</span>)
+            .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;repr&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;C&quot;</span>).<span class='ident'>build</span>()
             .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;derive&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;Debug&quot;</span>).<span class='ident'>build</span>()
             .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;derive&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;Clone&quot;</span>).<span class='ident'>build</span>()
             .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;derive&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;PartialEq&quot;</span>).<span class='ident'>build</span>()
@@ -796,6 +885,9 @@
             }
         }
 
+        <span class='comment'>// build and push the peripheral trait functions</span>
+        <span class='ident'>impl_build</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>build_peripheral_init_fns</span>(<span class='ident'>impl_build</span>);
+
         <span class='comment'>// push the impl definition</span>
         <span class='kw'>let</span> <span class='ident'>impl_item</span> <span class='op'>=</span> <span class='ident'>impl_build</span>.<span class='ident'>ty</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>name</span>.<span class='ident'>clone</span>());
         <span class='ident'>items</span>.<span class='ident'>push</span>(<span class='ident'>impl_item</span>);
@@ -807,6 +899,7 @@
         <span class='ident'>items</span>
     }
 
+    <span class='doccomment'>/// Builds associated constants for the given ioreg as defined in the `constants =&gt; { ... }` block.</span>
     <span class='kw'>fn</span> <span class='ident'>build_const_vals</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>vals</span>: <span class='kw-2'>&amp;</span><span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>parser</span>::<span class='ident'>StaticValue</span><span class='op'>&gt;</span>, <span class='ident'>prev_build</span>: <span class='ident'>ImplBuilder</span>) <span class='op'>-&gt;</span> <span class='ident'>ImplBuilder</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>prev_build</span>;
         <span class='comment'>// generate associated constants in the impl block</span>
@@ -814,17 +907,24 @@
             <span class='kw'>let</span> <span class='ident'>name</span> <span class='op'>=</span> <span class='ident'>v</span>.<span class='number'>0</span>.<span class='ident'>to_uppercase</span>();
             <span class='kw'>match</span> <span class='ident'>v</span>.<span class='number'>1</span> {
                 <span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>::<span class='ident'>Int</span>(<span class='ident'>i</span>, _, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
-                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>i32</span>(<span class='ident'>i</span>).<span class='ident'>ty</span>().<span class='ident'>i32</span>();
+                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>)
+                        .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;allow&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;dead_code&quot;</span>).<span class='ident'>build</span>()
+                        .<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>i32</span>(<span class='ident'>i</span>).<span class='ident'>ty</span>().<span class='ident'>i32</span>();
                 }
                 <span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>::<span class='ident'>Uint</span>(<span class='ident'>u</span>, _, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
-                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>u32</span>(<span class='ident'>u</span>).<span class='ident'>ty</span>().<span class='ident'>u32</span>();
+                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>)
+                        .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;allow&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;dead_code&quot;</span>).<span class='ident'>build</span>()
+                        .<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>u32</span>(<span class='ident'>u</span>).<span class='ident'>ty</span>().<span class='ident'>u32</span>();
                 }
                 <span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>::<span class='ident'>Float</span>(_, <span class='kw-2'>ref</span> <span class='ident'>s</span>, _, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
-                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>f32</span>(<span class='ident'>s</span>).<span class='ident'>ty</span>().<span class='ident'>f32</span>();
+                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>)
+                        .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;allow&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;dead_code&quot;</span>).<span class='ident'>build</span>()
+                        .<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>f32</span>(<span class='ident'>s</span>).<span class='ident'>ty</span>().<span class='ident'>f32</span>();
                 }
                 <span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>::<span class='ident'>Str</span>(<span class='kw-2'>ref</span> <span class='ident'>s</span>, _, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
-                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>const_</span>().<span class='ident'>expr</span>()
-                        .<span class='ident'>str</span>(<span class='ident'>s</span>.<span class='ident'>clone</span>().<span class='ident'>as_str</span>())
+                    <span class='ident'>builder</span> <span class='op'>=</span> <span class='ident'>builder</span>.<span class='ident'>item</span>(<span class='ident'>name</span>).<span class='ident'>span</span>(<span class='ident'>sp</span>)
+                        .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;allow&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;dead_code&quot;</span>).<span class='ident'>build</span>()
+                        .<span class='ident'>const_</span>().<span class='ident'>expr</span>().<span class='ident'>str</span>(<span class='ident'>s</span>.<span class='ident'>clone</span>().<span class='ident'>as_str</span>())
                         .<span class='ident'>ty</span>().<span class='ident'>ref_</span>().<span class='ident'>lifetime</span>(<span class='string'>&quot;&#39;static&quot;</span>).<span class='ident'>ty</span>().<span class='ident'>path</span>().<span class='ident'>id</span>(<span class='string'>&quot;str&quot;</span>).<span class='ident'>build</span>();
                 }
                 <span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>::<span class='ident'>Ident</span>(<span class='kw-2'>ref</span> <span class='ident'>s</span>, _, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
@@ -842,6 +942,11 @@
         <span class='ident'>builder</span>
     }
 
+    <span class='doccomment'>/// Builds a getter function for a given Segment.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// The generated function has the signature `pub fn read_{seg_name}() -&gt; {u8, u16, u32}` depending on the Segment info.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Getters are only generated for segments that can be read.</span>
     <span class='kw'>fn</span> <span class='ident'>build_getter</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>prev_builder</span>: <span class='ident'>ImplBuilder</span>) <span class='op'>-&gt;</span> <span class='ident'>ImplBuilder</span> {
         <span class='kw'>let</span> <span class='ident'>fn_bldr</span> <span class='op'>=</span> <span class='ident'>prev_builder</span>
             .<span class='ident'>item</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;read_{}&quot;</span>, <span class='ident'>seg</span>.<span class='ident'>name</span>)).<span class='ident'>attr</span>().<span class='ident'>doc</span>(
@@ -873,7 +978,11 @@
     }
 
     <span class='comment'>// TODO: assumes u32 address space</span>
-    <span class='kw'>fn</span> <span class='ident'>build_read_register</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>sp</span>: <span class='ident'>Span</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Expr</span><span class='op'>&gt;</span>
+    <span class='doccomment'>/// Builds a `volatile_read()` call that reads the entire mcu-proper-register (internally called an Segment).</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// For setters that are not fully-byte-aligned, a read is done before the write and the current value is masked</span>
+    <span class='doccomment'>/// and the re-written with the new bits properly set.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_read_register</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>sp</span>: <span class='ident'>Span</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Expr</span><span class='op'>&gt;</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>parser</span>::<span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>
     {
         <span class='kw'>let</span> <span class='ident'>self_offset</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>)
@@ -887,7 +996,8 @@
             .<span class='ident'>build</span>()
     }
 
-    <span class='kw'>fn</span> <span class='ident'>build_volatile_store_base</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>sp</span>: <span class='ident'>Span</span>) <span class='op'>-&gt;</span> <span class='ident'>FnArgsBuilder</span>
+    <span class='doccomment'>/// Builds the skeleton of a `volatile_store()` call, with only the destination location set.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_volatile_store_base</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>sp</span>: <span class='ident'>Span</span>) <span class='op'>-&gt;</span> <span class='ident'>FnArgsBuilder</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>parser</span>::<span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>
     {
         <span class='kw'>let</span> <span class='ident'>self_offset</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>)
@@ -900,7 +1010,8 @@
             .<span class='ident'>with_arg</span>(<span class='macro'>ptr_cast</span><span class='macro'>!</span>(<span class='ident'>self_offset</span>, <span class='ident'>T</span>::<span class='ident'>to_type</span>(), <span class='bool-val'>true</span>)) <span class='comment'>// mutable</span>
     }
 
-    <span class='kw'>fn</span> <span class='ident'>build_volatile_store</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(
+    <span class='doccomment'>/// Builds the `volatile_store(dst, src, len)` statement for a setter.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_volatile_store</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(
         <span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>fn_def</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>v</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>
     )
         <span class='op'>-&gt;</span> <span class='ident'>ast</span>::<span class='ident'>Stmt</span>
@@ -929,7 +1040,10 @@
         }
     }
 
-    <span class='kw'>fn</span> <span class='ident'>get_uint_const_val</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>v</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>) <span class='op'>-&gt;</span> <span class='ident'>T</span>
+    <span class='doccomment'>/// Reads into the defined constants for this ioreg and returns the numeric literal behind the constant.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If not found as a defined internal-constant, a syntax error is placed an 0u32 is returned.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_uint_const_val</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>v</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>) <span class='op'>-&gt;</span> <span class='ident'>T</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>parser</span>::<span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='op'>+</span> <span class='ident'>parser</span>::<span class='ident'>Narrow</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span>
     {
         <span class='kw'>match</span> <span class='ident'>v</span> {
@@ -950,12 +1064,14 @@
     }
 
 
-    <span class='comment'>// if writing to a partial register, add a statement that says `let fetched = volatile_load(addr as *const T)`</span>
-    <span class='comment'>// we will mask this value and then do a `volatile_store(addr as *mut T, masked | val)`</span>
-    <span class='comment'>//</span>
-    <span class='comment'>// TODO: this function is a little heavy duty to be done in a loop -- same responsibilities, but</span>
-    <span class='comment'>//       perhaps pass in the mask and address so their &quot;expensive&quot; calculations can be reduced</span>
-    <span class='kw'>fn</span> <span class='ident'>optimize_write</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>,
+    <span class='doccomment'>/// Considers the register, offset, and idex to be written to. Then optimizes and reads/writes needed to achieve the action.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// If writing to a partial register, add a statement that says `let fetched = volatile_load(addr as *const T)`.</span>
+    <span class='doccomment'>/// Then, we will mask this value and then do a `volatile_store(addr as *mut T, masked | val)`</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// TODO: This function is a little heavy duty to be done in a loop -- same responsibilities, but</span>
+    <span class='doccomment'>///       perhaps pass in the mask and address so their &quot;expensive&quot; calculations can be reduced</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>optimize_write</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>,
         <span class='ident'>fn_def</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>fn_prev</span>: <span class='ident'>FnInternalBlockBuilder</span>,
         <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetIndexInfo</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>
     )
@@ -1050,8 +1166,11 @@
     }
 
 
-
-    <span class='kw'>fn</span> <span class='ident'>build_setter</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fn_def</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetIndexInfo</span>,  <span class='ident'>fn_sig</span>: <span class='ident'>FnInternalBlockBuilder</span>)
+    <span class='doccomment'>/// Generates a setter for a given offset+index.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Given the offset+index type, it will optimize read-before-write unless fully byte aligned.</span>
+    <span class='doccomment'>/// Also generates documentation for the setter.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_setter</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fn_def</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetIndexInfo</span>,  <span class='ident'>fn_sig</span>: <span class='ident'>FnInternalBlockBuilder</span>)
         <span class='op'>-&gt;</span> <span class='ident'>ImplBuilder</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>parser</span>::<span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='op'>+</span> <span class='ident'>parser</span>::<span class='ident'>Narrow</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span>
     {
@@ -1104,7 +1223,8 @@
         <span class='ident'>fn_block</span>.<span class='ident'>build</span>()
     }
 
-    <span class='kw'>fn</span> <span class='ident'>build_setters</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetInfo</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>prev</span>: <span class='ident'>ImplBuilder</span>)
+    <span class='doccomment'>/// Loops the offset+info blocks for this segment and generates all setters.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_setters</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetInfo</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>prev</span>: <span class='ident'>ImplBuilder</span>)
         <span class='op'>-&gt;</span> <span class='ident'>ImplBuilder</span> {
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>bldr</span> <span class='op'>=</span> <span class='ident'>prev</span>;
@@ -1140,7 +1260,11 @@
         <span class='ident'>bldr</span>
     }
 
-    <span class='kw'>fn</span> <span class='ident'>lookup_const_val</span><span class='op'>&lt;</span><span class='lifetime'>&#39;b</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>, <span class='ident'>String</span><span class='op'>&gt;</span> {
+
+    <span class='doccomment'>/// Gets the StaticValue from the constants defined from this ioreg, with an error if it does not exist.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// **NOTE:** this looks up the constants using the scoped name, but scope prefix is done for you by the function.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>lookup_const_val</span><span class='op'>&lt;</span><span class='lifetime'>&#39;b</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='self'>self</span>, <span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;b</span> <span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>parser</span>::<span class='ident'>StaticValue</span>, <span class='ident'>String</span><span class='op'>&gt;</span> {
         <span class='comment'>// first, check for global def</span>
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>val</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>const_vals</span>.<span class='ident'>get</span>(<span class='ident'>name</span>);
         <span class='kw'>if</span> <span class='ident'>val</span>.<span class='ident'>is_some</span>() {
@@ -1155,6 +1279,42 @@
         };
 
         <span class='prelude-val'>Err</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;could not find definition for &#39;{}&#39; or &#39;{}&#39;&quot;</span>, <span class='ident'>name</span>.<span class='ident'>to_string</span>(), <span class='ident'>scoped_name</span>))
+    }
+
+
+    <span class='doccomment'>/// entry for generating the impl block for the mcu.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_peripheral_init_fns</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>impl_block</span>: <span class='ident'>ImplBuilder</span>) <span class='op'>-&gt;</span> <span class='ident'>ImplBuilder</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>blk</span> <span class='op'>=</span> <span class='ident'>impl_block</span>;
+
+        <span class='comment'>// build needs_init and init</span>
+        <span class='kw'>match</span> <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>init</span>.<span class='ident'>item</span> {
+            <span class='kw-2'>&amp;</span><span class='prelude-val'>Some</span>(<span class='kw-2'>ref</span> <span class='ident'>i</span>) <span class='op'>=&gt;</span> {
+                <span class='ident'>blk</span> <span class='op'>=</span> <span class='ident'>blk</span>.<span class='ident'>item</span>(<span class='string'>&quot;needs_init&quot;</span>).<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>init</span>.<span class='ident'>span</span>)
+                    .<span class='ident'>attr</span>().<span class='ident'>doc</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;/// states the `{}` needs to be initialized&quot;</span>, <span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>name</span>).<span class='ident'>as_str</span>())
+                    .<span class='ident'>pub_</span>().<span class='ident'>method</span>().<span class='ident'>fn_decl</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>init</span>.<span class='ident'>span</span>)
+                        .<span class='ident'>self_</span>().<span class='ident'>ref_</span>()
+                        .<span class='ident'>return_</span>().<span class='ident'>bool</span>()
+                        .<span class='ident'>block</span>()
+                            .<span class='ident'>expr</span>().<span class='ident'>bool</span>(<span class='bool-val'>true</span>);
+
+                <span class='ident'>blk</span> <span class='op'>=</span> <span class='ident'>blk</span>.<span class='ident'>with_item</span>(<span class='ident'>i</span>.<span class='ident'>clone</span>());
+            }
+            <span class='kw-2'>&amp;</span><span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
+                <span class='ident'>blk</span> <span class='op'>=</span> <span class='ident'>blk</span>.<span class='ident'>item</span>(<span class='string'>&quot;needs_init&quot;</span>).<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>init</span>.<span class='ident'>span</span>)
+                    .<span class='ident'>attr</span>().<span class='ident'>doc</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;/// states the `{}` will not be initialized&quot;</span>, <span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>name</span>).<span class='ident'>as_str</span>())
+                    .<span class='ident'>pub_</span>().<span class='ident'>method</span>().<span class='ident'>fn_decl</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>init</span>.<span class='ident'>span</span>)
+                        .<span class='ident'>self_</span>().<span class='ident'>ref_</span>()
+                        .<span class='ident'>return_</span>().<span class='ident'>bool</span>()
+                        .<span class='ident'>block</span>()
+                            .<span class='ident'>expr</span>().<span class='ident'>bool</span>(<span class='bool-val'>false</span>);
+
+                <span class='ident'>blk</span> <span class='op'>=</span> <span class='ident'>blk</span>.<span class='ident'>item</span>(<span class='string'>&quot;init&quot;</span>).<span class='ident'>attr</span>().<span class='ident'>doc</span>(<span class='string'>&quot;/// Should not be called as it does nothing. Here to support the init interface&quot;</span>)
+                    .<span class='ident'>pub_</span>().<span class='ident'>method</span>().<span class='ident'>fn_decl</span>().<span class='ident'>self_</span>().<span class='ident'>ref_</span>().<span class='ident'>default_return</span>()
+                    .<span class='ident'>block</span>().<span class='ident'>build</span>()
+            }
+        };
+
+        <span class='ident'>blk</span>
     }
 }
 </pre>

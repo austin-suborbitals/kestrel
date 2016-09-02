@@ -321,197 +321,16 @@
 <span id="277">277</span>
 <span id="278">278</span>
 <span id="279">279</span>
-<span id="280">280</span>
-<span id="281">281</span>
-<span id="282">282</span>
-<span id="283">283</span>
-<span id="284">284</span>
-<span id="285">285</span>
-<span id="286">286</span>
-<span id="287">287</span>
-<span id="288">288</span>
-<span id="289">289</span>
-<span id="290">290</span>
-<span id="291">291</span>
-<span id="292">292</span>
-<span id="293">293</span>
-<span id="294">294</span>
-<span id="295">295</span>
-<span id="296">296</span>
-<span id="297">297</span>
-<span id="298">298</span>
-<span id="299">299</span>
-<span id="300">300</span>
-<span id="301">301</span>
-<span id="302">302</span>
-<span id="303">303</span>
-<span id="304">304</span>
-<span id="305">305</span>
-<span id="306">306</span>
-<span id="307">307</span>
-<span id="308">308</span>
-<span id="309">309</span>
-<span id="310">310</span>
-<span id="311">311</span>
-<span id="312">312</span>
-<span id="313">313</span>
-<span id="314">314</span>
-<span id="315">315</span>
-<span id="316">316</span>
-<span id="317">317</span>
-<span id="318">318</span>
-<span id="319">319</span>
-<span id="320">320</span>
-<span id="321">321</span>
-<span id="322">322</span>
-<span id="323">323</span>
-<span id="324">324</span>
-<span id="325">325</span>
-<span id="326">326</span>
-<span id="327">327</span>
-<span id="328">328</span>
-<span id="329">329</span>
-<span id="330">330</span>
-<span id="331">331</span>
-<span id="332">332</span>
-<span id="333">333</span>
-<span id="334">334</span>
-<span id="335">335</span>
-<span id="336">336</span>
-<span id="337">337</span>
-<span id="338">338</span>
-<span id="339">339</span>
-<span id="340">340</span>
-<span id="341">341</span>
-<span id="342">342</span>
-<span id="343">343</span>
-<span id="344">344</span>
-<span id="345">345</span>
-<span id="346">346</span>
-<span id="347">347</span>
-<span id="348">348</span>
-<span id="349">349</span>
-<span id="350">350</span>
-<span id="351">351</span>
-<span id="352">352</span>
-<span id="353">353</span>
-<span id="354">354</span>
-<span id="355">355</span>
 </pre><pre class='rust '>
-<span class='comment'>/*
-    Example of an IO Register definition:
-
-    ioreg!(
-        NOTE: in the Parser&#39;s context, this is the beginning of the &quot;ioreg block&quot;
-
-        // name this register WDOG
-        name =&gt; WDOG;
-
-        // here we define the const values needed by this register (particularly in functions).
-        // these variables (static) will be added as: WDOG::status_{var_name}.
-        // the prefix is because these values belong to the `status` segment.
-        // NOTE: definitions of values do not use &#39;=&gt;&#39; but rather a simple equality.
-        constants =&gt; {
-            // standard defines
-            enabled = 1;
-            disabled = 0;
-        };
-
-        // this address is a 16 bit (r16) register located at 0x40052000.
-        // it is named &quot;status&quot; and the name will be used in field/function names on WDOG.
-        // it is readable, so we will have a WDOG::read_status() function to read the entire register.
-        0x40052000 =&gt; status r16 rw {
-            // we can also create constants on the segment-level.
-            // NOTE: these constants will be prefixed with the segment name (&quot;status_{FOO}&quot; in this case).
-            //       using these values in the segment definition requires adding the prefix.
-            // NOTE: these constants must also fit inside the register they are for. in this case an 8/16bit value.
-            constants =&gt; {
-                // wdog clock source
-                LPO_clock = 0;
-                alternate_clock = 1;
-
-                // watchdog reset style
-                reset_only = 0;
-                irq_before_reset = 1;
-
-                // test mode
-                quick_test = 0;
-                byte_test = 1;
-                test_byte_zero  = 0;
-                test_byte_one   = 1;
-                test_byte_two   = 2;
-                test_byte_three = 3;
-            };
-
-            // this is a one-bit register location.
-            // we can still define functions and getters as normal, but the operation in code
-            // will be similar to `*(address) |= val` (not literally, but operating byte-wise as shown).
-            0 =&gt; {
-                // we also define functions to enable and disable the watchdog by writing
-                // the values defined above to the register.
-                //       this example would give us:  WDOG.enable() and WDOG.disable()
-                enable =&gt; [enabled];
-                disable =&gt; [disabled];
-            }
-
-            1 =&gt; {
-                use_lpo_clock =&gt; [status_LPO_clock];
-                use_alternate_clock =&gt; [status_alternate_clock];
-            }
-
-            2 =&gt; {
-                default_reset_mode =&gt; [status_reset_only];
-                interrupt_before_reset =&gt; [status_irq_before_reset];
-            }
-
-            // NOTE: perhaps 3 through 10 are reserved.... omit them :)
-
-            11 =&gt; {
-                enable_quick_test =&gt; [status_quick_test];
-                enable_byte_test =&gt; [status_byte_test];
-            }
-
-            12..13 =&gt; {
-                use_test_byte_zero =&gt; [status_test_byte_zero];
-                use_test_byte_one =&gt; [status_test_byte_one];
-                use_test_byte_two =&gt; [status_test_byte_two];
-                use_test_byte_three =&gt; [status_test_byte_three];
-            }
-
-            14 =&gt; {
-                disable_test_mode =&gt; [enabled];
-                ensable_test_mode =&gt; [disabled];
-            }
-        }
-
-
-        // this address is a 16bit (r16) register located at 0x4005200E.
-        // it is named &quot;unlock&quot; and will be used in field/function names on WDOG.
-        // it is write only, and will get no ::read_unlock() function.
-        0x4005200E =&gt; unlock r16 wo {
-            NOTE: in the Parser&#39;s context, this is the beginning of a &quot;segment block&quot;
-
-            0..15 =&gt; {
-                NOTE: in the Parser&#39;s context, this is the beginning of an &quot;offset block&quot;
-
-                // define the `unlock()` function that writes the given sequence of
-                // values serially to this given register+offset
-                // NOTE: function names must be unique across the register, not just addresses
-                unlock =&gt; [0xC520, 0xD928];
-            }
-        }
-    )
-*/</span>
-
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>syntax</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc_plugin</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>aster</span>;
 
-
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>tokenstream</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>parse</span>::<span class='ident'>token</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>codemap</span>::<span class='ident'>Span</span>;
+<span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ext</span>::<span class='ident'>quote</span>::<span class='ident'>rt</span>::<span class='ident'>DUMMY_SP</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>util</span>::<span class='ident'>small_vector</span>::<span class='ident'>SmallVector</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ext</span>::<span class='ident'>base</span>::{<span class='ident'>ExtCtxt</span>, <span class='ident'>MacResult</span>};
 
@@ -546,6 +365,11 @@
 <span class='comment'>// ioreg parsing</span>
 <span class='comment'>//</span>
 
+<span class='doccomment'>/// Parses offsets into the given ioreg offset and all associated functions.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// The block being parsed are those of the form `1..5 =&gt; { some_func =&gt; [...]; other_func =&gt; [...]; };`.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// **NOTE:** this will move into the parser proper soon.</span>
 <span class='kw'>fn</span> <span class='ident'>parse_offset</span>(<span class='ident'>parser</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>parser</span>::<span class='ident'>Parser</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetInfo</span>, <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span><span class='op'>&gt;</span> {
     <span class='kw'>let</span> <span class='ident'>start_span</span> <span class='op'>=</span> <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>;
 
@@ -588,7 +412,7 @@
 
 
 
-<span class='comment'>// determine if a given parser::StaticValue can fit in the needed register</span>
+<span class='doccomment'>/// Determine if a given parser::StaticValue can fit in the needed register</span>
 <span class='kw'>fn</span> <span class='ident'>fits_into</span>(<span class='ident'>val</span>: <span class='kw-2'>&amp;</span>::<span class='ident'>parser</span>::<span class='ident'>StaticValue</span>, <span class='ident'>width</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>RegisterWidth</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
     <span class='kw'>match</span> <span class='ident'>val</span> {
         <span class='kw-2'>&amp;</span>::<span class='ident'>parser</span>::<span class='ident'>StaticValue</span>::<span class='ident'>Error</span>(_, _) <span class='op'>=&gt;</span> { <span class='bool-val'>false</span> }
@@ -620,9 +444,7 @@
     }
 }
 
-
-
-
+<span class='doccomment'>/// Validate parsed constants using `fits_into()`.</span>
 <span class='kw'>fn</span> <span class='ident'>validate_constant</span>(
     <span class='ident'>width</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>RegisterWidth</span>, <span class='ident'>val</span>: <span class='kw-2'>&amp;</span>::<span class='ident'>parser</span>::<span class='ident'>StaticValue</span>, _: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>StaticValue</span><span class='op'>&gt;</span>
 )
@@ -636,9 +458,12 @@
 }
 
 
-<span class='comment'>// parse a segment of the register block.</span>
-<span class='comment'>// these are typically _actual_ registers.... but for code sanity</span>
-<span class='comment'>// we group them together in logical structs.</span>
+<span class='doccomment'>/// Parses an entire segment block i.e. `0x1234 =&gt; some_segment r16 ro { ... };`.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// While &quot;segments&quot; are typically registers in and of themselves, they are more often than not accessed as a logical group.</span>
+<span class='doccomment'>/// This grouping allows multiple related registers to be accessed as if they were one large (contiguous) register.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// **NOTE:** this will move into the parser proper soon.</span>
 <span class='kw'>fn</span> <span class='ident'>parse_segment</span>(<span class='ident'>parser</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>parser</span>::<span class='ident'>Parser</span>) <span class='op'>-&gt;</span> <span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span> {
     <span class='kw'>let</span> <span class='ident'>start_span</span> <span class='op'>=</span> <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>;
 
@@ -692,7 +517,9 @@
     <span class='ident'>result</span>
 }
 
-<span class='comment'>// entry to the ioreg macro parsing</span>
+<span class='doccomment'>/// Entry to parsing the entire ioreg!() expansion.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// **NOTE:** this will move into the parser proper soon.</span>
 <span class='kw'>fn</span> <span class='ident'>parse_ioreg</span>(<span class='ident'>parser</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>parser</span>::<span class='ident'>Parser</span>) <span class='op'>-&gt;</span> <span class='ident'>common</span>::<span class='ident'>IoRegInfo</span> {
     <span class='kw'>let</span> <span class='ident'>start_span</span> <span class='op'>=</span> <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>;
 
@@ -701,6 +528,26 @@
     <span class='ident'>parser</span>.<span class='ident'>expect_fat_arrow</span>();                      <span class='comment'>// skip the =&gt;</span>
     <span class='kw'>let</span> <span class='ident'>name_str</span> <span class='op'>=</span> <span class='ident'>parser</span>.<span class='ident'>parse_ident_string</span>();       <span class='comment'>// get the name for the ioreg</span>
     <span class='ident'>parser</span>.<span class='ident'>expect_semi</span>();
+
+    <span class='kw'>let</span> <span class='ident'>init</span> <span class='op'>=</span> {
+        <span class='kw'>if</span> <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>this_token_to_string</span>() <span class='op'>==</span> <span class='string'>&quot;init&quot;</span>.<span class='ident'>to_string</span>() {
+            <span class='kw'>let</span> <span class='ident'>sp</span> <span class='op'>=</span> <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>span</span>.<span class='ident'>clone</span>();
+            <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>bump</span>();
+            <span class='ident'>parser</span>.<span class='ident'>expect_fat_arrow</span>();
+            <span class='kw'>let</span> <span class='ident'>init_item</span> <span class='op'>=</span> <span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>parse_impl_item</span>();
+            <span class='ident'>parser</span>.<span class='ident'>expect_semi</span>();
+            <span class='ident'>common</span>::<span class='ident'>InitInfo</span>{
+                <span class='ident'>defined</span>: <span class='bool-val'>true</span>,
+                <span class='ident'>item</span>: <span class='kw'>match</span> <span class='ident'>init_item</span> {
+                    <span class='prelude-val'>Ok</span>(<span class='ident'>i</span>) <span class='op'>=&gt;</span> { <span class='prelude-val'>Some</span>(<span class='ident'>i</span>) }
+                    <span class='prelude-val'>Err</span>(<span class='kw-2'>mut</span> <span class='ident'>e</span>) <span class='op'>=&gt;</span> { <span class='ident'>e</span>.<span class='ident'>emit</span>(); <span class='prelude-val'>None</span> }
+                },
+                <span class='ident'>span</span>: <span class='ident'>sp</span>
+            }
+        } <span class='kw'>else</span> {
+            <span class='ident'>common</span>::<span class='ident'>InitInfo</span>{<span class='ident'>defined</span>:<span class='bool-val'>false</span>, <span class='ident'>item</span>:<span class='prelude-val'>None</span>, <span class='ident'>span</span>: <span class='ident'>DUMMY_SP</span>}
+        }
+    };
 
     <span class='comment'>// check if we have a constants or doc_srcs definition block</span>
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>const_vals</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>StaticValue</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>();
@@ -725,6 +572,7 @@
         <span class='ident'>doc_srcs</span>: <span class='ident'>doc_srcs</span>,
         <span class='ident'>segments</span>: <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>(),
         <span class='ident'>const_vals</span>: <span class='ident'>const_vals</span>,
+        <span class='ident'>init</span>: <span class='ident'>init</span>,
         <span class='ident'>span</span>: <span class='ident'>start_span</span>,
     };
 
