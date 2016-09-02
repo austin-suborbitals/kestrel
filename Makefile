@@ -21,5 +21,5 @@ symtab: release
 	arm-none-eabi-objdump -x $(RELEASE_FNAME)
 
 info: binary
-	@echo "ELF Size: "$(shell echo "scale=3; $(shell stat --printf "%s" $(RELEASE_FNAME)) / 1024" | bc -l)" KiB"
-	@echo "BIN Size: "$(shell echo "scale=3; $(shell stat --printf "%s" $(RELEASE_FNAME).bin) / 1024" | bc -l)" KiB"
+	@echo "ELF Size: "$(shell ls -lh $(RELEASE_FNAME)     | awk '{print $$5}')" KiB"
+	@echo "ELF Size: "$(shell ls -lh $(RELEASE_FNAME).bin | awk '{print $$5}')" KiB"

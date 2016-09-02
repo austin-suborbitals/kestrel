@@ -7,7 +7,6 @@ addons:
             - debian-sid
         packages:
             - gcc-arm-none-eabi
-            - bc
 
 # TODO: use rustup to pin version?
 rust:
