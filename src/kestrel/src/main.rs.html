@@ -83,8 +83,6 @@
 <span id="39">39</span>
 <span id="40">40</span>
 <span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>no_std</span>]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>no_main</span>]</span>
@@ -126,8 +124,6 @@
     <span class='kw'>loop</span> {
         <span class='ident'>mcu</span>.<span class='ident'>wdog</span>.<span class='ident'>refresh</span>();                     <span class='comment'>// always refresh at the end of the loop</span>
     }
-
-    <span class='kw'>loop</span> {} <span class='comment'>// TODO: we can do better</span>
 }
 </pre>
 </section>
