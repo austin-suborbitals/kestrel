@@ -38,6 +38,4 @@ pub fn entry(mcu: k64::K64) -> ! {
     loop {
         mcu.wdog.refresh();                     // always refresh at the end of the loop
     }
-
-    loop {} // TODO: we can do better
 }
