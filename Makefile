@@ -11,6 +11,9 @@ clean:
 build:
 	cargo build --target $(TARGET)
 
+verbose:
+	cargo build --target $(TARGET) --verbose
+
 release:
 	cargo build --target $(TARGET) --release
 
