@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.26.1/src/item.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.29.0/src/item.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>item.rs.html -- source</title>
@@ -1525,6 +1525,13 @@
 <span id="1481">1481</span>
 <span id="1482">1482</span>
 <span id="1483">1483</span>
+<span id="1484">1484</span>
+<span id="1485">1485</span>
+<span id="1486">1486</span>
+<span id="1487">1487</span>
+<span id="1488">1488</span>
+<span id="1489">1489</span>
+<span id="1490">1490</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>cfg_attr</span>(<span class='ident'>feature</span> <span class='op'>=</span> <span class='string'>&quot;unstable&quot;</span>, <span class='ident'>allow</span>(<span class='ident'>wrong_self_convention</span>))]</span>
 
@@ -1657,6 +1664,21 @@
         <span class='kw'>let</span> <span class='ident'>generics</span> <span class='op'>=</span> <span class='ident'>GenericsBuilder</span>::<span class='ident'>new</span>().<span class='ident'>build</span>();
 
         <span class='ident'>ItemStructBuilder</span> {
+            <span class='ident'>is_union</span>: <span class='bool-val'>false</span>,
+            <span class='ident'>builder</span>: <span class='self'>self</span>,
+            <span class='ident'>id</span>: <span class='ident'>id</span>,
+            <span class='ident'>generics</span>: <span class='ident'>generics</span>,
+        }
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>union_</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>id</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ItemStructBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
+        <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>ToIdent</span>,
+    {
+        <span class='kw'>let</span> <span class='ident'>id</span> <span class='op'>=</span> <span class='ident'>id</span>.<span class='ident'>to_ident</span>();
+        <span class='kw'>let</span> <span class='ident'>generics</span> <span class='op'>=</span> <span class='ident'>GenericsBuilder</span>::<span class='ident'>new</span>().<span class='ident'>build</span>();
+
+        <span class='ident'>ItemStructBuilder</span> {
+            <span class='ident'>is_union</span>: <span class='bool-val'>true</span>,
             <span class='ident'>builder</span>: <span class='self'>self</span>,
             <span class='ident'>id</span>: <span class='ident'>id</span>,
             <span class='ident'>generics</span>: <span class='ident'>generics</span>,
@@ -1714,10 +1736,18 @@
         }
     }
 
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mac</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
-        <span class='ident'>ItemMacBuilder</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mac</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>MacBuilder</span><span class='op'>&lt;</span><span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
+        <span class='self'>self</span>.<span class='ident'>mac_id</span>(<span class='ident'>keywords</span>::<span class='ident'>Invalid</span>.<span class='ident'>ident</span>())
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mac_id</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>id</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>MacBuilder</span><span class='op'>&lt;</span><span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span>
+        <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>ToIdent</span>,
+    {
+        <span class='kw'>let</span> <span class='ident'>span</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>span</span>;
+        <span class='ident'>MacBuilder</span>::<span class='ident'>with_callback</span>(<span class='ident'>ItemMacBuilder</span> {
             <span class='ident'>builder</span>: <span class='self'>self</span>,
-        }
+            <span class='ident'>id</span>: <span class='ident'>id</span>.<span class='ident'>to_ident</span>(),
+        }).<span class='ident'>span</span>(<span class='ident'>span</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>type_</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='self'>self</span>, <span class='ident'>id</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>ItemTyBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
@@ -1983,6 +2013,7 @@
 <span class='comment'>//////////////////////////////////////////////////////////////////////////////</span>
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ItemStructBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
+    <span class='ident'>is_union</span>: <span class='ident'>bool</span>,
     <span class='ident'>builder</span>: <span class='ident'>ItemBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>,
     <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>Ident</span>,
     <span class='ident'>generics</span>: <span class='ident'>ast</span>::<span class='ident'>Generics</span>,
@@ -2040,8 +2071,13 @@
     <span class='kw'>type</span> <span class='prelude-ty'>Result</span> <span class='op'>=</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span>;
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>data</span>: <span class='ident'>ast</span>::<span class='ident'>VariantData</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
-        <span class='kw'>let</span> <span class='ident'>struct_</span> <span class='op'>=</span> <span class='ident'>ast</span>::<span class='ident'>ItemKind</span>::<span class='ident'>Struct</span>(<span class='ident'>data</span>, <span class='self'>self</span>.<span class='ident'>generics</span>);
-        <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>build_item_kind</span>(<span class='self'>self</span>.<span class='ident'>id</span>, <span class='ident'>struct_</span>)
+        <span class='kw'>let</span> <span class='ident'>kind</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>is_union</span> {
+            <span class='ident'>ast</span>::<span class='ident'>ItemKind</span>::<span class='ident'>Union</span>(<span class='ident'>data</span>, <span class='self'>self</span>.<span class='ident'>generics</span>)
+        } <span class='kw'>else</span> {
+            <span class='ident'>ast</span>::<span class='ident'>ItemKind</span>::<span class='ident'>Struct</span>(<span class='ident'>data</span>, <span class='self'>self</span>.<span class='ident'>generics</span>)
+        };
+
+        <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>build_item_kind</span>(<span class='self'>self</span>.<span class='ident'>id</span>, <span class='ident'>kind</span>)
     }
 }
 
@@ -2248,29 +2284,7 @@
 <span class='doccomment'>/// add expressions to the macro invocation.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> {
     <span class='ident'>builder</span>: <span class='ident'>ItemBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>,
-}
-
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> <span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
-    <span class='kw'>where</span> <span class='ident'>F</span>: <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Item</span><span class='op'>&gt;&gt;</span>,
-{
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>path</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>PathBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>PathBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>)
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>, <span class='ident'>mac</span>: <span class='ident'>ast</span>::<span class='ident'>Mac</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
-        <span class='kw'>let</span> <span class='ident'>item_mac</span> <span class='op'>=</span> <span class='ident'>ast</span>::<span class='ident'>ItemKind</span>::<span class='ident'>Mac</span>(<span class='ident'>mac</span>);
-        <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>build_item_kind</span>(<span class='ident'>ast</span>::<span class='ident'>Name</span>(<span class='number'>0</span>).<span class='ident'>to_ident</span>(), <span class='ident'>item_mac</span>)
-    }
-}
-
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Path</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
-    <span class='kw'>where</span> <span class='ident'>F</span>: <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Item</span><span class='op'>&gt;&gt;</span>,
-{
-    <span class='kw'>type</span> <span class='prelude-ty'>Result</span> <span class='op'>=</span> <span class='ident'>MacBuilder</span><span class='op'>&lt;</span><span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span>;
-
-    <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>path</span>: <span class='ident'>ast</span>::<span class='ident'>Path</span>) <span class='op'>-&gt;</span> <span class='ident'>MacBuilder</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span> {
-        <span class='ident'>MacBuilder</span>::<span class='ident'>with_callback</span>(<span class='self'>self</span>).<span class='ident'>path</span>(<span class='ident'>path</span>)
-    }
+    <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>Ident</span>,
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span> <span class='ident'>Invoke</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Mac</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>ItemMacBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;</span>
@@ -2279,7 +2293,7 @@
     <span class='kw'>type</span> <span class='prelude-ty'>Result</span> <span class='op'>=</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span>;
 
     <span class='kw'>fn</span> <span class='ident'>invoke</span>(<span class='self'>self</span>, <span class='ident'>mac</span>: <span class='ident'>ast</span>::<span class='ident'>Mac</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
-        <span class='self'>self</span>.<span class='ident'>build</span>(<span class='ident'>mac</span>)
+        <span class='self'>self</span>.<span class='ident'>builder</span>.<span class='ident'>build_item_kind</span>(<span class='self'>self</span>.<span class='ident'>id</span>, <span class='ident'>ast</span>::<span class='ident'>ItemKind</span>::<span class='ident'>Mac</span>(<span class='ident'>mac</span>))
     }
 }
 

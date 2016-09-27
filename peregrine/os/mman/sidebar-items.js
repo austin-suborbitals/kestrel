@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["find_first_set",""],["find_last_set",""]]});
+initSidebarItems({"struct":[["SlabAllocator",""]]});

@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SIM` struct in crate `peregrine`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SIM">
+
+    <title>peregrine::mcus::cortexm4::kinetis::k64::sim::SIM - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../../../../index.html'>peregrine</a>::<wbr><a href='../../../../index.html'>mcus</a>::<wbr><a href='../../../index.html'>cortexm4</a>::<wbr><a href='../../index.html'>kinetis</a>::<wbr><a href='../index.html'>k64</a>::<wbr><a href='index.html'>sim</a></p><script>window.sidebarCurrent = {name: 'SIM', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../../../../index.html'>peregrine</a>::<wbr><a href='../../../../index.html'>mcus</a>::<wbr><a href='../../../index.html'>cortexm4</a>::<wbr><a href='../../index.html'>kinetis</a>::<wbr><a href='../index.html'>k64</a>::<wbr><a href='index.html'>sim</a>::<wbr><a class='struct' href=''>SIM</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-592' class='srclink' href='../../../../../../src/peregrine/mcus/cortexm4/kinetis/k64/sim.rs.html#6' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SIM(pub *const u8);</pre><div class='docblock'><p>Pointer wrapper that implements the SIM operations</p>
+
+<p>source: <a href="http://www.nxp.com/files/microcontrollers/doc/ref_manual/K64P144M120SF5RM.pdf">http://www.nxp.com/files/microcontrollers/doc/ref_manual/K64P144M120SF5RM.pdf</a></p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-616' class='srclink' href='../../../../../../src/peregrine/mcus/cortexm4/kinetis/k64/sim.rs.html#6' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedconstant.DISABLED' class='associatedconstant'><span id='DISABLED.v' class='invisible'><code>const <a href='#associatedconstant.DISABLED' class='constant'>DISABLED</a>: u32 = 0u32</code></span></h4>
+<h4 id='associatedconstant.ENABLED' class='associatedconstant'><span id='ENABLED.v' class='invisible'><code>const <a href='#associatedconstant.ENABLED' class='constant'>ENABLED</a>: u32 = 1u32</code></span></h4>
+<h4 id='method.read_clock_divider_1' class='method'><span id='read_clock_divider_1.v' class='invisible'><code>fn <a href='#method.read_clock_divider_1' class='fnname'>read_clock_divider_1</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_divider_1</code> register at relative address 0x1040</p>
+</div><h4 id='method.set_flash_clock_divide_1' class='method'><span id='set_flash_clock_divide_1.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_1' class='fnname'>set_flash_clock_divide_1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_10' class='method'><span id='set_flash_clock_divide_10.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_10' class='fnname'>set_flash_clock_divide_10</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x9</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_11' class='method'><span id='set_flash_clock_divide_11.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_11' class='fnname'>set_flash_clock_divide_11</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xA</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_12' class='method'><span id='set_flash_clock_divide_12.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_12' class='fnname'>set_flash_clock_divide_12</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xB</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_13' class='method'><span id='set_flash_clock_divide_13.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_13' class='fnname'>set_flash_clock_divide_13</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xC</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_14' class='method'><span id='set_flash_clock_divide_14.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_14' class='fnname'>set_flash_clock_divide_14</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xD</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_15' class='method'><span id='set_flash_clock_divide_15.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_15' class='fnname'>set_flash_clock_divide_15</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xE</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_16' class='method'><span id='set_flash_clock_divide_16.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_16' class='fnname'>set_flash_clock_divide_16</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xF</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_2' class='method'><span id='set_flash_clock_divide_2.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_2' class='fnname'>set_flash_clock_divide_2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_3' class='method'><span id='set_flash_clock_divide_3.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_3' class='fnname'>set_flash_clock_divide_3</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_4' class='method'><span id='set_flash_clock_divide_4.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_4' class='fnname'>set_flash_clock_divide_4</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_5' class='method'><span id='set_flash_clock_divide_5.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_5' class='fnname'>set_flash_clock_divide_5</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_6' class='method'><span id='set_flash_clock_divide_6.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_6' class='fnname'>set_flash_clock_divide_6</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_7' class='method'><span id='set_flash_clock_divide_7.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_7' class='fnname'>set_flash_clock_divide_7</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_8' class='method'><span id='set_flash_clock_divide_8.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_8' class='fnname'>set_flash_clock_divide_8</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flash_clock_divide_9' class='method'><span id='set_flash_clock_divide_9.v' class='invisible'><code>fn <a href='#method.set_flash_clock_divide_9' class='fnname'>set_flash_clock_divide_9</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x8</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_1' class='method'><span id='set_flexbus_clock_divide_1.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_1' class='fnname'>set_flexbus_clock_divide_1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_10' class='method'><span id='set_flexbus_clock_divide_10.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_10' class='fnname'>set_flexbus_clock_divide_10</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x9</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_11' class='method'><span id='set_flexbus_clock_divide_11.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_11' class='fnname'>set_flexbus_clock_divide_11</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xA</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_12' class='method'><span id='set_flexbus_clock_divide_12.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_12' class='fnname'>set_flexbus_clock_divide_12</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xB</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_13' class='method'><span id='set_flexbus_clock_divide_13.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_13' class='fnname'>set_flexbus_clock_divide_13</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xC</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_14' class='method'><span id='set_flexbus_clock_divide_14.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_14' class='fnname'>set_flexbus_clock_divide_14</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xD</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_15' class='method'><span id='set_flexbus_clock_divide_15.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_15' class='fnname'>set_flexbus_clock_divide_15</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xE</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_16' class='method'><span id='set_flexbus_clock_divide_16.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_16' class='fnname'>set_flexbus_clock_divide_16</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xF</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_2' class='method'><span id='set_flexbus_clock_divide_2.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_2' class='fnname'>set_flexbus_clock_divide_2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_3' class='method'><span id='set_flexbus_clock_divide_3.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_3' class='fnname'>set_flexbus_clock_divide_3</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_4' class='method'><span id='set_flexbus_clock_divide_4.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_4' class='fnname'>set_flexbus_clock_divide_4</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_5' class='method'><span id='set_flexbus_clock_divide_5.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_5' class='fnname'>set_flexbus_clock_divide_5</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_6' class='method'><span id='set_flexbus_clock_divide_6.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_6' class='fnname'>set_flexbus_clock_divide_6</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_7' class='method'><span id='set_flexbus_clock_divide_7.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_7' class='fnname'>set_flexbus_clock_divide_7</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_8' class='method'><span id='set_flexbus_clock_divide_8.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_8' class='fnname'>set_flexbus_clock_divide_8</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_flexbus_clock_divide_9' class='method'><span id='set_flexbus_clock_divide_9.v' class='invisible'><code>fn <a href='#method.set_flexbus_clock_divide_9' class='fnname'>set_flexbus_clock_divide_9</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x8</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_1' class='method'><span id='set_bus_clock_divide_1.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_1' class='fnname'>set_bus_clock_divide_1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_10' class='method'><span id='set_bus_clock_divide_10.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_10' class='fnname'>set_bus_clock_divide_10</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x9</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_11' class='method'><span id='set_bus_clock_divide_11.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_11' class='fnname'>set_bus_clock_divide_11</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xA</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_12' class='method'><span id='set_bus_clock_divide_12.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_12' class='fnname'>set_bus_clock_divide_12</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xB</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_13' class='method'><span id='set_bus_clock_divide_13.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_13' class='fnname'>set_bus_clock_divide_13</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xC</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_14' class='method'><span id='set_bus_clock_divide_14.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_14' class='fnname'>set_bus_clock_divide_14</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xD</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_15' class='method'><span id='set_bus_clock_divide_15.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_15' class='fnname'>set_bus_clock_divide_15</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xE</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_16' class='method'><span id='set_bus_clock_divide_16.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_16' class='fnname'>set_bus_clock_divide_16</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xF</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_2' class='method'><span id='set_bus_clock_divide_2.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_2' class='fnname'>set_bus_clock_divide_2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_3' class='method'><span id='set_bus_clock_divide_3.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_3' class='fnname'>set_bus_clock_divide_3</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_4' class='method'><span id='set_bus_clock_divide_4.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_4' class='fnname'>set_bus_clock_divide_4</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_5' class='method'><span id='set_bus_clock_divide_5.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_5' class='fnname'>set_bus_clock_divide_5</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_6' class='method'><span id='set_bus_clock_divide_6.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_6' class='fnname'>set_bus_clock_divide_6</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_7' class='method'><span id='set_bus_clock_divide_7.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_7' class='fnname'>set_bus_clock_divide_7</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_8' class='method'><span id='set_bus_clock_divide_8.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_8' class='fnname'>set_bus_clock_divide_8</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_bus_clock_divide_9' class='method'><span id='set_bus_clock_divide_9.v' class='invisible'><code>fn <a href='#method.set_bus_clock_divide_9' class='fnname'>set_bus_clock_divide_9</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x8</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_1' class='method'><span id='set_system_clock_divide_1.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_1' class='fnname'>set_system_clock_divide_1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_10' class='method'><span id='set_system_clock_divide_10.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_10' class='fnname'>set_system_clock_divide_10</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x9</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_11' class='method'><span id='set_system_clock_divide_11.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_11' class='fnname'>set_system_clock_divide_11</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xA</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_12' class='method'><span id='set_system_clock_divide_12.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_12' class='fnname'>set_system_clock_divide_12</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xB</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_13' class='method'><span id='set_system_clock_divide_13.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_13' class='fnname'>set_system_clock_divide_13</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xC</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_14' class='method'><span id='set_system_clock_divide_14.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_14' class='fnname'>set_system_clock_divide_14</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xD</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_15' class='method'><span id='set_system_clock_divide_15.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_15' class='fnname'>set_system_clock_divide_15</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xE</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_16' class='method'><span id='set_system_clock_divide_16.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_16' class='fnname'>set_system_clock_divide_16</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xF</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_2' class='method'><span id='set_system_clock_divide_2.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_2' class='fnname'>set_system_clock_divide_2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_3' class='method'><span id='set_system_clock_divide_3.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_3' class='fnname'>set_system_clock_divide_3</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_4' class='method'><span id='set_system_clock_divide_4.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_4' class='fnname'>set_system_clock_divide_4</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_5' class='method'><span id='set_system_clock_divide_5.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_5' class='fnname'>set_system_clock_divide_5</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_6' class='method'><span id='set_system_clock_divide_6.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_6' class='fnname'>set_system_clock_divide_6</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_7' class='method'><span id='set_system_clock_divide_7.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_7' class='fnname'>set_system_clock_divide_7</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_8' class='method'><span id='set_system_clock_divide_8.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_8' class='fnname'>set_system_clock_divide_8</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_system_clock_divide_9' class='method'><span id='set_system_clock_divide_9.v' class='invisible'><code>fn <a href='#method.set_system_clock_divide_9' class='fnname'>set_system_clock_divide_9</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x8</code> to the <code>clock_divider_1</code> register at relative address 0x1040 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_divider_2' class='method'><span id='read_clock_divider_2.v' class='invisible'><code>fn <a href='#method.read_clock_divider_2' class='fnname'>read_clock_divider_2</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_divider_2</code> register at relative address 0x1048</p>
+</div><h4 id='method.set_usb_clock_fraction' class='method'><span id='set_usb_clock_fraction.v' class='invisible'><code>fn <a href='#method.set_usb_clock_fraction' class='fnname'>set_usb_clock_fraction</a>(&amp;self, val: u8)</code></span></h4>
+<div class='docblock'><p>Writes the value of the given argument to the <code>clock_divider_2</code> register at relative address 0x1048 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_usb_clock_divisor' class='method'><span id='set_usb_clock_divisor.v' class='invisible'><code>fn <a href='#method.set_usb_clock_divisor' class='fnname'>set_usb_clock_divisor</a>(&amp;self, val: u8)</code></span></h4>
+<div class='docblock'><p>Writes the value of the given argument to the <code>clock_divider_2</code> register at relative address 0x1048 and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_1' class='method'><span id='read_clock_gating_1.v' class='invisible'><code>fn <a href='#method.read_clock_gating_1' class='fnname'>read_clock_gating_1</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_1</code> register at relative address 0x1028</p>
+</div><h4 id='method.i2c_2_disable_clock' class='method'><span id='i2c_2_disable_clock.v' class='invisible'><code>fn <a href='#method.i2c_2_disable_clock' class='fnname'>i2c_2_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_1</code> register at relative address 0x1028 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2c_2_enable_clock' class='method'><span id='i2c_2_enable_clock.v' class='invisible'><code>fn <a href='#method.i2c_2_enable_clock' class='fnname'>i2c_2_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_1</code> register at relative address 0x1028 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_4_disable_clock' class='method'><span id='uart_4_disable_clock.v' class='invisible'><code>fn <a href='#method.uart_4_disable_clock' class='fnname'>uart_4_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_1</code> register at relative address 0x1028 and offset 10 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_4_enable_clock' class='method'><span id='uart_4_enable_clock.v' class='invisible'><code>fn <a href='#method.uart_4_enable_clock' class='fnname'>uart_4_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_1</code> register at relative address 0x1028 and offset 10 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_5_disable_clock' class='method'><span id='uart_5_disable_clock.v' class='invisible'><code>fn <a href='#method.uart_5_disable_clock' class='fnname'>uart_5_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_1</code> register at relative address 0x1028 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_5_enable_clock' class='method'><span id='uart_5_enable_clock.v' class='invisible'><code>fn <a href='#method.uart_5_enable_clock' class='fnname'>uart_5_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_1</code> register at relative address 0x1028 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_2' class='method'><span id='read_clock_gating_2.v' class='invisible'><code>fn <a href='#method.read_clock_gating_2' class='fnname'>read_clock_gating_2</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_2</code> register at relative address 0x102C</p>
+</div><h4 id='method.ethernet_disable_clock' class='method'><span id='ethernet_disable_clock.v' class='invisible'><code>fn <a href='#method.ethernet_disable_clock' class='fnname'>ethernet_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_2</code> register at relative address 0x102C and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ethernet_enable_clock' class='method'><span id='ethernet_enable_clock.v' class='invisible'><code>fn <a href='#method.ethernet_enable_clock' class='fnname'>ethernet_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_2</code> register at relative address 0x102C and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dac_0_disable_clock' class='method'><span id='dac_0_disable_clock.v' class='invisible'><code>fn <a href='#method.dac_0_disable_clock' class='fnname'>dac_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_2</code> register at relative address 0x102C and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dac_0_enable_clock' class='method'><span id='dac_0_enable_clock.v' class='invisible'><code>fn <a href='#method.dac_0_enable_clock' class='fnname'>dac_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_2</code> register at relative address 0x102C and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dac_1_disable_clock' class='method'><span id='dac_1_disable_clock.v' class='invisible'><code>fn <a href='#method.dac_1_disable_clock' class='fnname'>dac_1_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_2</code> register at relative address 0x102C and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dac_1_enable_clock' class='method'><span id='dac_1_enable_clock.v' class='invisible'><code>fn <a href='#method.dac_1_enable_clock' class='fnname'>dac_1_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_2</code> register at relative address 0x102C and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_3' class='method'><span id='read_clock_gating_3.v' class='invisible'><code>fn <a href='#method.read_clock_gating_3' class='fnname'>read_clock_gating_3</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_3</code> register at relative address 0x1030</p>
+</div><h4 id='method.rnga_disable_clock' class='method'><span id='rnga_disable_clock.v' class='invisible'><code>fn <a href='#method.rnga_disable_clock' class='fnname'>rnga_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.rnga_enable_clock' class='method'><span id='rnga_enable_clock.v' class='invisible'><code>fn <a href='#method.rnga_enable_clock' class='fnname'>rnga_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.spi_2_disable_clock' class='method'><span id='spi_2_disable_clock.v' class='invisible'><code>fn <a href='#method.spi_2_disable_clock' class='fnname'>spi_2_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.spi_2_enable_clock' class='method'><span id='spi_2_enable_clock.v' class='invisible'><code>fn <a href='#method.spi_2_enable_clock' class='fnname'>spi_2_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.sdhc_disable_clock' class='method'><span id='sdhc_disable_clock.v' class='invisible'><code>fn <a href='#method.sdhc_disable_clock' class='fnname'>sdhc_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 17 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.sdhc_enable_clock' class='method'><span id='sdhc_enable_clock.v' class='invisible'><code>fn <a href='#method.sdhc_enable_clock' class='fnname'>sdhc_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 17 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_2_disable_clock' class='method'><span id='ftm_2_disable_clock.v' class='invisible'><code>fn <a href='#method.ftm_2_disable_clock' class='fnname'>ftm_2_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_2_enable_clock' class='method'><span id='ftm_2_enable_clock.v' class='invisible'><code>fn <a href='#method.ftm_2_enable_clock' class='fnname'>ftm_2_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_3_disable_clock' class='method'><span id='ftm_3_disable_clock.v' class='invisible'><code>fn <a href='#method.ftm_3_disable_clock' class='fnname'>ftm_3_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_3_enable_clock' class='method'><span id='ftm_3_enable_clock.v' class='invisible'><code>fn <a href='#method.ftm_3_enable_clock' class='fnname'>ftm_3_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_disable_clock' class='method'><span id='adc_1_disable_clock.v' class='invisible'><code>fn <a href='#method.adc_1_disable_clock' class='fnname'>adc_1_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 27 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_enable_clock' class='method'><span id='adc_1_enable_clock.v' class='invisible'><code>fn <a href='#method.adc_1_enable_clock' class='fnname'>adc_1_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_3</code> register at relative address 0x1030 and offset 27 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_4' class='method'><span id='read_clock_gating_4.v' class='invisible'><code>fn <a href='#method.read_clock_gating_4' class='fnname'>read_clock_gating_4</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_4</code> register at relative address 0x1034</p>
+</div><h4 id='method.ewm_disable_clock' class='method'><span id='ewm_disable_clock.v' class='invisible'><code>fn <a href='#method.ewm_disable_clock' class='fnname'>ewm_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ewm_enable_clock' class='method'><span id='ewm_enable_clock.v' class='invisible'><code>fn <a href='#method.ewm_enable_clock' class='fnname'>ewm_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.cmt_disable_clock' class='method'><span id='cmt_disable_clock.v' class='invisible'><code>fn <a href='#method.cmt_disable_clock' class='fnname'>cmt_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.cmt_enable_clock' class='method'><span id='cmt_enable_clock.v' class='invisible'><code>fn <a href='#method.cmt_enable_clock' class='fnname'>cmt_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2c_0_disable_clock' class='method'><span id='i2c_0_disable_clock.v' class='invisible'><code>fn <a href='#method.i2c_0_disable_clock' class='fnname'>i2c_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2c_0_enable_clock' class='method'><span id='i2c_0_enable_clock.v' class='invisible'><code>fn <a href='#method.i2c_0_enable_clock' class='fnname'>i2c_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2c_1_disable_clock' class='method'><span id='i2c_1_disable_clock.v' class='invisible'><code>fn <a href='#method.i2c_1_disable_clock' class='fnname'>i2c_1_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 7 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2c_1_enable_clock' class='method'><span id='i2c_1_enable_clock.v' class='invisible'><code>fn <a href='#method.i2c_1_enable_clock' class='fnname'>i2c_1_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 7 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_disable_clock' class='method'><span id='uart_0_disable_clock.v' class='invisible'><code>fn <a href='#method.uart_0_disable_clock' class='fnname'>uart_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 10 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_enable_clock' class='method'><span id='uart_0_enable_clock.v' class='invisible'><code>fn <a href='#method.uart_0_enable_clock' class='fnname'>uart_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 10 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_disable_clock' class='method'><span id='uart_1_disable_clock.v' class='invisible'><code>fn <a href='#method.uart_1_disable_clock' class='fnname'>uart_1_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_enable_clock' class='method'><span id='uart_1_enable_clock.v' class='invisible'><code>fn <a href='#method.uart_1_enable_clock' class='fnname'>uart_1_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_2_disable_clock' class='method'><span id='uart_2_disable_clock.v' class='invisible'><code>fn <a href='#method.uart_2_disable_clock' class='fnname'>uart_2_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_2_enable_clock' class='method'><span id='uart_2_enable_clock.v' class='invisible'><code>fn <a href='#method.uart_2_enable_clock' class='fnname'>uart_2_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_3_disable_clock' class='method'><span id='uart_3_disable_clock.v' class='invisible'><code>fn <a href='#method.uart_3_disable_clock' class='fnname'>uart_3_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_3_enable_clock' class='method'><span id='uart_3_enable_clock.v' class='invisible'><code>fn <a href='#method.uart_3_enable_clock' class='fnname'>uart_3_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.usb_disable_clock' class='method'><span id='usb_disable_clock.v' class='invisible'><code>fn <a href='#method.usb_disable_clock' class='fnname'>usb_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.usb_enable_clock' class='method'><span id='usb_enable_clock.v' class='invisible'><code>fn <a href='#method.usb_enable_clock' class='fnname'>usb_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.cmp_disable_clock' class='method'><span id='cmp_disable_clock.v' class='invisible'><code>fn <a href='#method.cmp_disable_clock' class='fnname'>cmp_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 19 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.cmp_enable_clock' class='method'><span id='cmp_enable_clock.v' class='invisible'><code>fn <a href='#method.cmp_enable_clock' class='fnname'>cmp_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 19 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.vref_disable_clock' class='method'><span id='vref_disable_clock.v' class='invisible'><code>fn <a href='#method.vref_disable_clock' class='fnname'>vref_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.vref_enable_clock' class='method'><span id='vref_enable_clock.v' class='invisible'><code>fn <a href='#method.vref_enable_clock' class='fnname'>vref_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_4</code> register at relative address 0x1034 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_5' class='method'><span id='read_clock_gating_5.v' class='invisible'><code>fn <a href='#method.read_clock_gating_5' class='fnname'>read_clock_gating_5</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_5</code> register at relative address 0x1038</p>
+</div><h4 id='method.disable_low_power_timer_access' class='method'><span id='disable_low_power_timer_access.v' class='invisible'><code>fn <a href='#method.disable_low_power_timer_access' class='fnname'>disable_low_power_timer_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_low_power_timer_access' class='method'><span id='enable_low_power_timer_access.v' class='invisible'><code>fn <a href='#method.enable_low_power_timer_access' class='fnname'>enable_low_power_timer_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_a_disable_clock' class='method'><span id='port_a_disable_clock.v' class='invisible'><code>fn <a href='#method.port_a_disable_clock' class='fnname'>port_a_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 9 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_a_enable_clock' class='method'><span id='port_a_enable_clock.v' class='invisible'><code>fn <a href='#method.port_a_enable_clock' class='fnname'>port_a_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 9 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_b_disable_clock' class='method'><span id='port_b_disable_clock.v' class='invisible'><code>fn <a href='#method.port_b_disable_clock' class='fnname'>port_b_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 10 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_b_enable_clock' class='method'><span id='port_b_enable_clock.v' class='invisible'><code>fn <a href='#method.port_b_enable_clock' class='fnname'>port_b_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 10 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_c_disable_clock' class='method'><span id='port_c_disable_clock.v' class='invisible'><code>fn <a href='#method.port_c_disable_clock' class='fnname'>port_c_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_c_enable_clock' class='method'><span id='port_c_enable_clock.v' class='invisible'><code>fn <a href='#method.port_c_enable_clock' class='fnname'>port_c_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_d_disable_clock' class='method'><span id='port_d_disable_clock.v' class='invisible'><code>fn <a href='#method.port_d_disable_clock' class='fnname'>port_d_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_d_enable_clock' class='method'><span id='port_d_enable_clock.v' class='invisible'><code>fn <a href='#method.port_d_enable_clock' class='fnname'>port_d_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_e_disable_clock' class='method'><span id='port_e_disable_clock.v' class='invisible'><code>fn <a href='#method.port_e_disable_clock' class='fnname'>port_e_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.port_e_enable_clock' class='method'><span id='port_e_enable_clock.v' class='invisible'><code>fn <a href='#method.port_e_enable_clock' class='fnname'>port_e_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_5</code> register at relative address 0x1038 and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_6' class='method'><span id='read_clock_gating_6.v' class='invisible'><code>fn <a href='#method.read_clock_gating_6' class='fnname'>read_clock_gating_6</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_6</code> register at relative address 0x103C</p>
+</div><h4 id='method.flash_disable_clock' class='method'><span id='flash_disable_clock.v' class='invisible'><code>fn <a href='#method.flash_disable_clock' class='fnname'>flash_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flash_enable_clock' class='method'><span id='flash_enable_clock.v' class='invisible'><code>fn <a href='#method.flash_enable_clock' class='fnname'>flash_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dma_mux_disable_clock' class='method'><span id='dma_mux_disable_clock.v' class='invisible'><code>fn <a href='#method.dma_mux_disable_clock' class='fnname'>dma_mux_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dma_mux_enable_clock' class='method'><span id='dma_mux_enable_clock.v' class='invisible'><code>fn <a href='#method.dma_mux_enable_clock' class='fnname'>dma_mux_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.can_0_disable_clock' class='method'><span id='can_0_disable_clock.v' class='invisible'><code>fn <a href='#method.can_0_disable_clock' class='fnname'>can_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.can_0_enable_clock' class='method'><span id='can_0_enable_clock.v' class='invisible'><code>fn <a href='#method.can_0_enable_clock' class='fnname'>can_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.spi_0_disable_clock' class='method'><span id='spi_0_disable_clock.v' class='invisible'><code>fn <a href='#method.spi_0_disable_clock' class='fnname'>spi_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.spi_0_enable_clock' class='method'><span id='spi_0_enable_clock.v' class='invisible'><code>fn <a href='#method.spi_0_enable_clock' class='fnname'>spi_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.spi_1_disable_clock' class='method'><span id='spi_1_disable_clock.v' class='invisible'><code>fn <a href='#method.spi_1_disable_clock' class='fnname'>spi_1_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.spi_1_enable_clock' class='method'><span id='spi_1_enable_clock.v' class='invisible'><code>fn <a href='#method.spi_1_enable_clock' class='fnname'>spi_1_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 13 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2s_disable_clock' class='method'><span id='i2s_disable_clock.v' class='invisible'><code>fn <a href='#method.i2s_disable_clock' class='fnname'>i2s_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 15 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.i2s_enable_clock' class='method'><span id='i2s_enable_clock.v' class='invisible'><code>fn <a href='#method.i2s_enable_clock' class='fnname'>i2s_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 15 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.crc_disable_clock' class='method'><span id='crc_disable_clock.v' class='invisible'><code>fn <a href='#method.crc_disable_clock' class='fnname'>crc_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.crc_enable_clock' class='method'><span id='crc_enable_clock.v' class='invisible'><code>fn <a href='#method.crc_enable_clock' class='fnname'>crc_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.usb_dcd_disable_clock' class='method'><span id='usb_dcd_disable_clock.v' class='invisible'><code>fn <a href='#method.usb_dcd_disable_clock' class='fnname'>usb_dcd_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 21 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.usb_dcd_enable_clock' class='method'><span id='usb_dcd_enable_clock.v' class='invisible'><code>fn <a href='#method.usb_dcd_enable_clock' class='fnname'>usb_dcd_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 21 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.pdb_disable_clock' class='method'><span id='pdb_disable_clock.v' class='invisible'><code>fn <a href='#method.pdb_disable_clock' class='fnname'>pdb_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 22 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.pdb_enable_clock' class='method'><span id='pdb_enable_clock.v' class='invisible'><code>fn <a href='#method.pdb_enable_clock' class='fnname'>pdb_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 22 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.pit_disable_clock' class='method'><span id='pit_disable_clock.v' class='invisible'><code>fn <a href='#method.pit_disable_clock' class='fnname'>pit_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 23 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.pit_enable_clock' class='method'><span id='pit_enable_clock.v' class='invisible'><code>fn <a href='#method.pit_enable_clock' class='fnname'>pit_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 23 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_0_disable_clock' class='method'><span id='ftm_0_disable_clock.v' class='invisible'><code>fn <a href='#method.ftm_0_disable_clock' class='fnname'>ftm_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_0_enable_clock' class='method'><span id='ftm_0_enable_clock.v' class='invisible'><code>fn <a href='#method.ftm_0_enable_clock' class='fnname'>ftm_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_1_disable_clock' class='method'><span id='ftm_1_disable_clock.v' class='invisible'><code>fn <a href='#method.ftm_1_disable_clock' class='fnname'>ftm_1_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ftm_1_enable_clock' class='method'><span id='ftm_1_enable_clock.v' class='invisible'><code>fn <a href='#method.ftm_1_enable_clock' class='fnname'>ftm_1_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_disable_clock' class='method'><span id='adc_0_disable_clock.v' class='invisible'><code>fn <a href='#method.adc_0_disable_clock' class='fnname'>adc_0_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 27 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_enable_clock' class='method'><span id='adc_0_enable_clock.v' class='invisible'><code>fn <a href='#method.adc_0_enable_clock' class='fnname'>adc_0_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 27 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.rtc_disable_access' class='method'><span id='rtc_disable_access.v' class='invisible'><code>fn <a href='#method.rtc_disable_access' class='fnname'>rtc_disable_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 29 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.rtc_enable_access' class='method'><span id='rtc_enable_access.v' class='invisible'><code>fn <a href='#method.rtc_enable_access' class='fnname'>rtc_enable_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>clock_gating_6</code> register at relative address 0x103C and offset 29 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_clock_gating_7' class='method'><span id='read_clock_gating_7.v' class='invisible'><code>fn <a href='#method.read_clock_gating_7' class='fnname'>read_clock_gating_7</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>clock_gating_7</code> register at relative address 0x1040</p>
+</div><h4 id='method.flexbus_disable_clock' class='method'><span id='flexbus_disable_clock.v' class='invisible'><code>fn <a href='#method.flexbus_disable_clock' class='fnname'>flexbus_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_7</code> register at relative address 0x1040 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flexbus_enable_clock' class='method'><span id='flexbus_enable_clock.v' class='invisible'><code>fn <a href='#method.flexbus_enable_clock' class='fnname'>flexbus_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_7</code> register at relative address 0x1040 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dma_disable_clock' class='method'><span id='dma_disable_clock.v' class='invisible'><code>fn <a href='#method.dma_disable_clock' class='fnname'>dma_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_7</code> register at relative address 0x1040 and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.dma_enable_clock' class='method'><span id='dma_enable_clock.v' class='invisible'><code>fn <a href='#method.dma_enable_clock' class='fnname'>dma_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_7</code> register at relative address 0x1040 and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.mpu_disable_clock' class='method'><span id='mpu_disable_clock.v' class='invisible'><code>fn <a href='#method.mpu_disable_clock' class='fnname'>mpu_disable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_7</code> register at relative address 0x1040 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.mpu_enable_clock' class='method'><span id='mpu_enable_clock.v' class='invisible'><code>fn <a href='#method.mpu_enable_clock' class='fnname'>mpu_enable_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>clock_gating_7</code> register at relative address 0x1040 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_flash_configuration_1' class='method'><span id='read_flash_configuration_1.v' class='invisible'><code>fn <a href='#method.read_flash_configuration_1' class='fnname'>read_flash_configuration_1</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>flash_configuration_1</code> register at relative address 0x104C</p>
+</div><h4 id='method.read_flash_configuration_2' class='method'><span id='read_flash_configuration_2.v' class='invisible'><code>fn <a href='#method.read_flash_configuration_2' class='fnname'>read_flash_configuration_2</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>flash_configuration_2</code> register at relative address 0x1050</p>
+</div><h4 id='method.read_options_1' class='method'><span id='read_options_1.v' class='invisible'><code>fn <a href='#method.read_options_1' class='fnname'>read_options_1</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>options_1</code> register at relative address 0x0</p>
+</div><h4 id='method.use_lpo_oscillator' class='method'><span id='use_lpo_oscillator.v' class='invisible'><code>fn <a href='#method.use_lpo_oscillator' class='fnname'>use_lpo_oscillator</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_1</code> register at relative address 0x0 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_rtc_oscillator' class='method'><span id='use_rtc_oscillator.v' class='invisible'><code>fn <a href='#method.use_rtc_oscillator' class='fnname'>use_rtc_oscillator</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_1</code> register at relative address 0x0 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_system_oscillator' class='method'><span id='use_system_oscillator.v' class='invisible'><code>fn <a href='#method.use_system_oscillator' class='fnname'>use_system_oscillator</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_1</code> register at relative address 0x0 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_usb_voltage_regulator_low_power_mode' class='method'><span id='set_usb_voltage_regulator_low_power_mode.v' class='invisible'><code>fn <a href='#method.set_usb_voltage_regulator_low_power_mode' class='fnname'>set_usb_voltage_regulator_low_power_mode</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>options_1</code> register at relative address 0x0 and offset 29 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.unset_usb_voltage_regulator_low_power_mode' class='method'><span id='unset_usb_voltage_regulator_low_power_mode.v' class='invisible'><code>fn <a href='#method.unset_usb_voltage_regulator_low_power_mode' class='fnname'>unset_usb_voltage_regulator_low_power_mode</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>options_1</code> register at relative address 0x0 and offset 29 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_usb_voltage_regulator_standby_mode' class='method'><span id='set_usb_voltage_regulator_standby_mode.v' class='invisible'><code>fn <a href='#method.set_usb_voltage_regulator_standby_mode' class='fnname'>set_usb_voltage_regulator_standby_mode</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>options_1</code> register at relative address 0x0 and offset 30 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.unset_usb_voltage_regulator_standby_mode' class='method'><span id='unset_usb_voltage_regulator_standby_mode.v' class='invisible'><code>fn <a href='#method.unset_usb_voltage_regulator_standby_mode' class='fnname'>unset_usb_voltage_regulator_standby_mode</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>options_1</code> register at relative address 0x0 and offset 30 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.set_usb_voltage_regulator_enable' class='method'><span id='set_usb_voltage_regulator_enable.v' class='invisible'><code>fn <a href='#method.set_usb_voltage_regulator_enable' class='fnname'>set_usb_voltage_regulator_enable</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>options_1</code> register at relative address 0x0 and offset 31 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.unset_usb_voltage_regulator_enable' class='method'><span id='unset_usb_voltage_regulator_enable.v' class='invisible'><code>fn <a href='#method.unset_usb_voltage_regulator_enable' class='fnname'>unset_usb_voltage_regulator_enable</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>options_1</code> register at relative address 0x0 and offset 31 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_options_1_config' class='method'><span id='read_options_1_config.v' class='invisible'><code>fn <a href='#method.read_options_1_config' class='fnname'>read_options_1_config</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>options_1_config</code> register at relative address 0x4</p>
+</div><h4 id='method.disable_usb_voltage_regulator_write' class='method'><span id='disable_usb_voltage_regulator_write.v' class='invisible'><code>fn <a href='#method.disable_usb_voltage_regulator_write' class='fnname'>disable_usb_voltage_regulator_write</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>options_1_config</code> register at relative address 0x4 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_usb_voltage_regulator_write' class='method'><span id='enable_usb_voltage_regulator_write.v' class='invisible'><code>fn <a href='#method.enable_usb_voltage_regulator_write' class='fnname'>enable_usb_voltage_regulator_write</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>options_1_config</code> register at relative address 0x4 and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_usb_voltage_regulator_low_power_mode_write' class='method'><span id='disable_usb_voltage_regulator_low_power_mode_write.v' class='invisible'><code>fn <a href='#method.disable_usb_voltage_regulator_low_power_mode_write' class='fnname'>disable_usb_voltage_regulator_low_power_mode_write</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>options_1_config</code> register at relative address 0x4 and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_usb_voltage_regulator_low_power_mode_write' class='method'><span id='enable_usb_voltage_regulator_low_power_mode_write.v' class='invisible'><code>fn <a href='#method.enable_usb_voltage_regulator_low_power_mode_write' class='fnname'>enable_usb_voltage_regulator_low_power_mode_write</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>options_1_config</code> register at relative address 0x4 and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disable_usb_voltage_regulator_standby_mode_write' class='method'><span id='disable_usb_voltage_regulator_standby_mode_write.v' class='invisible'><code>fn <a href='#method.disable_usb_voltage_regulator_standby_mode_write' class='fnname'>disable_usb_voltage_regulator_standby_mode_write</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>DISABLED</code> to the <code>options_1_config</code> register at relative address 0x4 and offset 26 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.enable_usb_voltage_regulator_standby_mode_write' class='method'><span id='enable_usb_voltage_regulator_standby_mode_write.v' class='invisible'><code>fn <a href='#method.enable_usb_voltage_regulator_standby_mode_write' class='fnname'>enable_usb_voltage_regulator_standby_mode_write</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>ENABLED</code> to the <code>options_1_config</code> register at relative address 0x4 and offset 26 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_options_2' class='method'><span id='read_options_2.v' class='invisible'><code>fn <a href='#method.read_options_2' class='fnname'>read_options_2</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>options_2</code> register at relative address 0x1004</p>
+</div><h4 id='method.rtc_clkout_use_1hz' class='method'><span id='rtc_clkout_use_1hz.v' class='invisible'><code>fn <a href='#method.rtc_clkout_use_1hz' class='fnname'>rtc_clkout_use_1hz</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.rtc_clkout_use_32hz' class='method'><span id='rtc_clkout_use_32hz.v' class='invisible'><code>fn <a href='#method.rtc_clkout_use_32hz' class='fnname'>rtc_clkout_use_32hz</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_flash_clock' class='method'><span id='clkout_use_flash_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_flash_clock' class='fnname'>clkout_use_flash_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_flexbus_clock' class='method'><span id='clkout_use_flexbus_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_flexbus_clock' class='fnname'>clkout_use_flexbus_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_irc_clock' class='method'><span id='clkout_use_irc_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_irc_clock' class='fnname'>clkout_use_irc_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_lpo_clock' class='method'><span id='clkout_use_lpo_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_lpo_clock' class='fnname'>clkout_use_lpo_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_mcgir_clock' class='method'><span id='clkout_use_mcgir_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_mcgir_clock' class='fnname'>clkout_use_mcgir_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_oscer_clock' class='method'><span id='clkout_use_oscer_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_oscer_clock' class='fnname'>clkout_use_oscer_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.clkout_use_rtc_clock' class='method'><span id='clkout_use_rtc_clock.v' class='invisible'><code>fn <a href='#method.clkout_use_rtc_clock' class='fnname'>clkout_use_rtc_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>options_2</code> register at relative address 0x1004 and offset 5 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.allow_flexbus_all_access' class='method'><span id='allow_flexbus_all_access.v' class='invisible'><code>fn <a href='#method.allow_flexbus_all_access' class='fnname'>allow_flexbus_all_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_2</code> register at relative address 0x1004 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.allow_flexbus_data_access' class='method'><span id='allow_flexbus_data_access.v' class='invisible'><code>fn <a href='#method.allow_flexbus_data_access' class='fnname'>allow_flexbus_data_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_2</code> register at relative address 0x1004 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.disallow_flexbus_access' class='method'><span id='disallow_flexbus_access.v' class='invisible'><code>fn <a href='#method.disallow_flexbus_access' class='fnname'>disallow_flexbus_access</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_double_pad_ptd7_drive_strength' class='method'><span id='use_double_pad_ptd7_drive_strength.v' class='invisible'><code>fn <a href='#method.use_double_pad_ptd7_drive_strength' class='fnname'>use_double_pad_ptd7_drive_strength</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_single_pad_ptd7_drive_strength' class='method'><span id='use_single_pad_ptd7_drive_strength.v' class='invisible'><code>fn <a href='#method.use_single_pad_ptd7_drive_strength' class='fnname'>use_single_pad_ptd7_drive_strength</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 11 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_mcg_clock_for_debug' class='method'><span id='use_mcg_clock_for_debug.v' class='invisible'><code>fn <a href='#method.use_mcg_clock_for_debug' class='fnname'>use_mcg_clock_for_debug</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_system_clock_for_debug' class='method'><span id='use_system_clock_for_debug.v' class='invisible'><code>fn <a href='#method.use_system_clock_for_debug' class='fnname'>use_system_clock_for_debug</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_irc_peripheral_clock' class='method'><span id='use_irc_peripheral_clock.v' class='invisible'><code>fn <a href='#method.use_irc_peripheral_clock' class='fnname'>use_irc_peripheral_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_2</code> register at relative address 0x1004 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_mcgfll_peripheral_clock' class='method'><span id='use_mcgfll_peripheral_clock.v' class='invisible'><code>fn <a href='#method.use_mcgfll_peripheral_clock' class='fnname'>use_mcgfll_peripheral_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.use_mcgpll_peripheral_clock' class='method'><span id='use_mcgpll_peripheral_clock.v' class='invisible'><code>fn <a href='#method.use_mcgpll_peripheral_clock' class='fnname'>use_mcgpll_peripheral_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 16 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.usb_use_external_clock' class='method'><span id='usb_use_external_clock.v' class='invisible'><code>fn <a href='#method.usb_use_external_clock' class='fnname'>usb_use_external_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.usb_use_internal_clock' class='method'><span id='usb_use_internal_clock.v' class='invisible'><code>fn <a href='#method.usb_use_internal_clock' class='fnname'>usb_use_internal_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.rmii_use_extal_clock' class='method'><span id='rmii_use_extal_clock.v' class='invisible'><code>fn <a href='#method.rmii_use_extal_clock' class='fnname'>rmii_use_extal_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 19 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.rmii_use_external_clock' class='method'><span id='rmii_use_external_clock.v' class='invisible'><code>fn <a href='#method.rmii_use_external_clock' class='fnname'>rmii_use_external_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 19 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ehternet_use_pllfll_clock' class='method'><span id='ehternet_use_pllfll_clock.v' class='invisible'><code>fn <a href='#method.ehternet_use_pllfll_clock' class='fnname'>ehternet_use_pllfll_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ethernet_use_external_clock' class='method'><span id='ethernet_use_external_clock.v' class='invisible'><code>fn <a href='#method.ethernet_use_external_clock' class='fnname'>ethernet_use_external_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_2</code> register at relative address 0x1004 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ethernet_use_oscer_clock' class='method'><span id='ethernet_use_oscer_clock.v' class='invisible'><code>fn <a href='#method.ethernet_use_oscer_clock' class='fnname'>ethernet_use_oscer_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_2</code> register at relative address 0x1004 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.ethernet_use_system_clock' class='method'><span id='ethernet_use_system_clock.v' class='invisible'><code>fn <a href='#method.ethernet_use_system_clock' class='fnname'>ethernet_use_system_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.sdhc_use_external_clock' class='method'><span id='sdhc_use_external_clock.v' class='invisible'><code>fn <a href='#method.sdhc_use_external_clock' class='fnname'>sdhc_use_external_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_2</code> register at relative address 0x1004 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.sdhc_use_oscer_clock' class='method'><span id='sdhc_use_oscer_clock.v' class='invisible'><code>fn <a href='#method.sdhc_use_oscer_clock' class='fnname'>sdhc_use_oscer_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_2</code> register at relative address 0x1004 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.sdhc_use_pllfll_clock' class='method'><span id='sdhc_use_pllfll_clock.v' class='invisible'><code>fn <a href='#method.sdhc_use_pllfll_clock' class='fnname'>sdhc_use_pllfll_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_2</code> register at relative address 0x1004 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.sdhc_use_system_clock' class='method'><span id='sdhc_use_system_clock.v' class='invisible'><code>fn <a href='#method.sdhc_use_system_clock' class='fnname'>sdhc_use_system_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_2</code> register at relative address 0x1004 and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_options_4' class='method'><span id='read_options_4.v' class='invisible'><code>fn <a href='#method.read_options_4' class='fnname'>read_options_4</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>options_4</code> register at relative address 0x100C</p>
+</div><h4 id='method.flextimer_0_fault_0_use_cmp_source' class='method'><span id='flextimer_0_fault_0_use_cmp_source.v' class='invisible'><code>fn <a href='#method.flextimer_0_fault_0_use_cmp_source' class='fnname'>flextimer_0_fault_0_use_cmp_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_fault_0_use_pin_source' class='method'><span id='flextimer_0_fault_0_use_pin_source.v' class='invisible'><code>fn <a href='#method.flextimer_0_fault_0_use_pin_source' class='fnname'>flextimer_0_fault_0_use_pin_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_fault_1_use_cmp_source' class='method'><span id='flextimer_0_fault_1_use_cmp_source.v' class='invisible'><code>fn <a href='#method.flextimer_0_fault_1_use_cmp_source' class='fnname'>flextimer_0_fault_1_use_cmp_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_fault_1_use_pin_source' class='method'><span id='flextimer_0_fault_1_use_pin_source.v' class='invisible'><code>fn <a href='#method.flextimer_0_fault_1_use_pin_source' class='fnname'>flextimer_0_fault_1_use_pin_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 1 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_fault_2_use_cmp_source' class='method'><span id='flextimer_0_fault_2_use_cmp_source.v' class='invisible'><code>fn <a href='#method.flextimer_0_fault_2_use_cmp_source' class='fnname'>flextimer_0_fault_2_use_cmp_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_fault_2_use_pin_source' class='method'><span id='flextimer_0_fault_2_use_pin_source.v' class='invisible'><code>fn <a href='#method.flextimer_0_fault_2_use_pin_source' class='fnname'>flextimer_0_fault_2_use_pin_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_fault_0_use_cmp_source' class='method'><span id='flextimer_1_fault_0_use_cmp_source.v' class='invisible'><code>fn <a href='#method.flextimer_1_fault_0_use_cmp_source' class='fnname'>flextimer_1_fault_0_use_cmp_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_fault_0_use_pin_source' class='method'><span id='flextimer_1_fault_0_use_pin_source.v' class='invisible'><code>fn <a href='#method.flextimer_1_fault_0_use_pin_source' class='fnname'>flextimer_1_fault_0_use_pin_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_fault_0_use_cmp_source' class='method'><span id='flextimer_2_fault_0_use_cmp_source.v' class='invisible'><code>fn <a href='#method.flextimer_2_fault_0_use_cmp_source' class='fnname'>flextimer_2_fault_0_use_cmp_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_fault_0_use_pin_source' class='method'><span id='flextimer_2_fault_0_use_pin_source.v' class='invisible'><code>fn <a href='#method.flextimer_2_fault_0_use_pin_source' class='fnname'>flextimer_2_fault_0_use_pin_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_3_fault_0_use_cmp_source' class='method'><span id='flextimer_3_fault_0_use_cmp_source.v' class='invisible'><code>fn <a href='#method.flextimer_3_fault_0_use_cmp_source' class='fnname'>flextimer_3_fault_0_use_cmp_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_3_fault_0_use_pin_source' class='method'><span id='flextimer_3_fault_0_use_pin_source.v' class='invisible'><code>fn <a href='#method.flextimer_3_fault_0_use_pin_source' class='fnname'>flextimer_3_fault_0_use_pin_source</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_use_cmp0_channel' class='method'><span id='flextimer_1_use_cmp0_channel.v' class='invisible'><code>fn <a href='#method.flextimer_1_use_cmp0_channel' class='fnname'>flextimer_1_use_cmp0_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_use_cmp1_channel' class='method'><span id='flextimer_1_use_cmp1_channel.v' class='invisible'><code>fn <a href='#method.flextimer_1_use_cmp1_channel' class='fnname'>flextimer_1_use_cmp1_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_4</code> register at relative address 0x100C and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_use_internal_channel' class='method'><span id='flextimer_1_use_internal_channel.v' class='invisible'><code>fn <a href='#method.flextimer_1_use_internal_channel' class='fnname'>flextimer_1_use_internal_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_use_usb_frame_start_channel' class='method'><span id='flextimer_1_use_usb_frame_start_channel.v' class='invisible'><code>fn <a href='#method.flextimer_1_use_usb_frame_start_channel' class='fnname'>flextimer_1_use_usb_frame_start_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_4</code> register at relative address 0x100C and offset 18 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_use_cmp0_channel' class='method'><span id='flextimer_2_use_cmp0_channel.v' class='invisible'><code>fn <a href='#method.flextimer_2_use_cmp0_channel' class='fnname'>flextimer_2_use_cmp0_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_use_cmp1_channel' class='method'><span id='flextimer_2_use_cmp1_channel.v' class='invisible'><code>fn <a href='#method.flextimer_2_use_cmp1_channel' class='fnname'>flextimer_2_use_cmp1_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_4</code> register at relative address 0x100C and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_use_internal_channel' class='method'><span id='flextimer_2_use_internal_channel.v' class='invisible'><code>fn <a href='#method.flextimer_2_use_internal_channel' class='fnname'>flextimer_2_use_internal_channel</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 20 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_use_clk0_pin_clock' class='method'><span id='flextimer_0_use_clk0_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_0_use_clk0_pin_clock' class='fnname'>flextimer_0_use_clk0_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_use_clk1_pin_clock' class='method'><span id='flextimer_0_use_clk1_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_0_use_clk1_pin_clock' class='fnname'>flextimer_0_use_clk1_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 24 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_use_clk0_pin_clock' class='method'><span id='flextimer_1_use_clk0_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_1_use_clk0_pin_clock' class='fnname'>flextimer_1_use_clk0_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_1_use_clk1_pin_clock' class='method'><span id='flextimer_1_use_clk1_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_1_use_clk1_pin_clock' class='fnname'>flextimer_1_use_clk1_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 25 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_use_clk0_pin_clock' class='method'><span id='flextimer_2_use_clk0_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_2_use_clk0_pin_clock' class='fnname'>flextimer_2_use_clk0_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 26 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_2_use_clk1_pin_clock' class='method'><span id='flextimer_2_use_clk1_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_2_use_clk1_pin_clock' class='fnname'>flextimer_2_use_clk1_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 26 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_3_use_clk0_pin_clock' class='method'><span id='flextimer_3_use_clk0_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_3_use_clk0_pin_clock' class='fnname'>flextimer_3_use_clk0_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 27 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_3_use_clk1_pin_clock' class='method'><span id='flextimer_3_use_clk1_pin_clock.v' class='invisible'><code>fn <a href='#method.flextimer_3_use_clk1_pin_clock' class='fnname'>flextimer_3_use_clk1_pin_clock</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 27 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_hw_trigger0_use_ftm1' class='method'><span id='flextimer_0_hw_trigger0_use_ftm1.v' class='invisible'><code>fn <a href='#method.flextimer_0_hw_trigger0_use_ftm1' class='fnname'>flextimer_0_hw_trigger0_use_ftm1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_hw_trigger0_use_hscmp' class='method'><span id='flextimer_0_hw_trigger0_use_hscmp.v' class='invisible'><code>fn <a href='#method.flextimer_0_hw_trigger0_use_hscmp' class='fnname'>flextimer_0_hw_trigger0_use_hscmp</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 28 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_hw_trigger1_use_ftm2' class='method'><span id='flextimer_0_hw_trigger1_use_ftm2.v' class='invisible'><code>fn <a href='#method.flextimer_0_hw_trigger1_use_ftm2' class='fnname'>flextimer_0_hw_trigger1_use_ftm2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 29 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_0_hw_trigger1_use_pdb' class='method'><span id='flextimer_0_hw_trigger1_use_pdb.v' class='invisible'><code>fn <a href='#method.flextimer_0_hw_trigger1_use_pdb' class='fnname'>flextimer_0_hw_trigger1_use_pdb</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_4</code> register at relative address 0x100C and offset 29 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_3_hw_trigger0_use_ftm1' class='method'><span id='flextimer_3_hw_trigger0_use_ftm1.v' class='invisible'><code>fn <a href='#method.flextimer_3_hw_trigger0_use_ftm1' class='fnname'>flextimer_3_hw_trigger0_use_ftm1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 30 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.flextimer_3_hw_trigger1_use_ftm2' class='method'><span id='flextimer_3_hw_trigger1_use_ftm2.v' class='invisible'><code>fn <a href='#method.flextimer_3_hw_trigger1_use_ftm2' class='fnname'>flextimer_3_hw_trigger1_use_ftm2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_4</code> register at relative address 0x100C and offset 31 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_options_5' class='method'><span id='read_options_5.v' class='invisible'><code>fn <a href='#method.read_options_5' class='fnname'>read_options_5</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>options_5</code> register at relative address 0x1010</p>
+</div><h4 id='method.uart_0_tx_use_modulated_ftm1' class='method'><span id='uart_0_tx_use_modulated_ftm1.v' class='invisible'><code>fn <a href='#method.uart_0_tx_use_modulated_ftm1' class='fnname'>uart_0_tx_use_modulated_ftm1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_5</code> register at relative address 0x1010 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_tx_use_modulated_ftm2' class='method'><span id='uart_0_tx_use_modulated_ftm2.v' class='invisible'><code>fn <a href='#method.uart_0_tx_use_modulated_ftm2' class='fnname'>uart_0_tx_use_modulated_ftm2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_5</code> register at relative address 0x1010 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_tx_use_raw_pin' class='method'><span id='uart_0_tx_use_raw_pin.v' class='invisible'><code>fn <a href='#method.uart_0_tx_use_raw_pin' class='fnname'>uart_0_tx_use_raw_pin</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_5</code> register at relative address 0x1010 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_rx_use_cmp0' class='method'><span id='uart_0_rx_use_cmp0.v' class='invisible'><code>fn <a href='#method.uart_0_rx_use_cmp0' class='fnname'>uart_0_rx_use_cmp0</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_5</code> register at relative address 0x1010 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_rx_use_cmp1' class='method'><span id='uart_0_rx_use_cmp1.v' class='invisible'><code>fn <a href='#method.uart_0_rx_use_cmp1' class='fnname'>uart_0_rx_use_cmp1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_5</code> register at relative address 0x1010 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_0_rx_use_rx_pin' class='method'><span id='uart_0_rx_use_rx_pin.v' class='invisible'><code>fn <a href='#method.uart_0_rx_use_rx_pin' class='fnname'>uart_0_rx_use_rx_pin</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_5</code> register at relative address 0x1010 and offset 2 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_tx_use_modulated_ftm1' class='method'><span id='uart_1_tx_use_modulated_ftm1.v' class='invisible'><code>fn <a href='#method.uart_1_tx_use_modulated_ftm1' class='fnname'>uart_1_tx_use_modulated_ftm1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_5</code> register at relative address 0x1010 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_tx_use_modulated_ftm2' class='method'><span id='uart_1_tx_use_modulated_ftm2.v' class='invisible'><code>fn <a href='#method.uart_1_tx_use_modulated_ftm2' class='fnname'>uart_1_tx_use_modulated_ftm2</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_5</code> register at relative address 0x1010 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_tx_use_raw_pin' class='method'><span id='uart_1_tx_use_raw_pin.v' class='invisible'><code>fn <a href='#method.uart_1_tx_use_raw_pin' class='fnname'>uart_1_tx_use_raw_pin</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_5</code> register at relative address 0x1010 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_rx_use_cmp0' class='method'><span id='uart_1_rx_use_cmp0.v' class='invisible'><code>fn <a href='#method.uart_1_rx_use_cmp0' class='fnname'>uart_1_rx_use_cmp0</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_5</code> register at relative address 0x1010 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_rx_use_cmp1' class='method'><span id='uart_1_rx_use_cmp1.v' class='invisible'><code>fn <a href='#method.uart_1_rx_use_cmp1' class='fnname'>uart_1_rx_use_cmp1</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_5</code> register at relative address 0x1010 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.uart_1_rx_use_rx_pin' class='method'><span id='uart_1_rx_use_rx_pin.v' class='invisible'><code>fn <a href='#method.uart_1_rx_use_rx_pin' class='fnname'>uart_1_rx_use_rx_pin</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_5</code> register at relative address 0x1010 and offset 6 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_options_7' class='method'><span id='read_options_7.v' class='invisible'><code>fn <a href='#method.read_options_7' class='fnname'>read_options_7</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>options_7</code> register at relative address 0x1018</p>
+</div><h4 id='method.adc_0_use_ftm_0_trigger' class='method'><span id='adc_0_use_ftm_0_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_ftm_0_trigger' class='fnname'>adc_0_use_ftm_0_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x8</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_ftm_1_trigger' class='method'><span id='adc_0_use_ftm_1_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_ftm_1_trigger' class='fnname'>adc_0_use_ftm_1_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x9</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_ftm_2_trigger' class='method'><span id='adc_0_use_ftm_2_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_ftm_2_trigger' class='fnname'>adc_0_use_ftm_2_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xA</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_ftm_3_trigger' class='method'><span id='adc_0_use_ftm_3_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_ftm_3_trigger' class='fnname'>adc_0_use_ftm_3_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xB</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_hscmp_0_trigger' class='method'><span id='adc_0_use_hscmp_0_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_hscmp_0_trigger' class='fnname'>adc_0_use_hscmp_0_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_hscmp_1_trigger' class='method'><span id='adc_0_use_hscmp_1_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_hscmp_1_trigger' class='fnname'>adc_0_use_hscmp_1_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_hscmp_2_trigger' class='method'><span id='adc_0_use_hscmp_2_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_hscmp_2_trigger' class='fnname'>adc_0_use_hscmp_2_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_low_power_trigger' class='method'><span id='adc_0_use_low_power_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_low_power_trigger' class='fnname'>adc_0_use_low_power_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xE</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pdb_external_trigger' class='method'><span id='adc_0_use_pdb_external_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_pdb_external_trigger' class='fnname'>adc_0_use_pdb_external_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pit_0_trigger' class='method'><span id='adc_0_use_pit_0_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_pit_0_trigger' class='fnname'>adc_0_use_pit_0_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pit_1_trigger' class='method'><span id='adc_0_use_pit_1_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_pit_1_trigger' class='fnname'>adc_0_use_pit_1_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pit_2_trigger' class='method'><span id='adc_0_use_pit_2_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_pit_2_trigger' class='fnname'>adc_0_use_pit_2_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pit_3_trigger' class='method'><span id='adc_0_use_pit_3_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_pit_3_trigger' class='fnname'>adc_0_use_pit_3_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_rtc_alarm_trigger' class='method'><span id='adc_0_use_rtc_alarm_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_rtc_alarm_trigger' class='fnname'>adc_0_use_rtc_alarm_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xC</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_rtc_seconds_trigger' class='method'><span id='adc_0_use_rtc_seconds_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_rtc_seconds_trigger' class='fnname'>adc_0_use_rtc_seconds_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xD</code> to the <code>options_7</code> register at relative address 0x1018 and offset 0 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pretrigger_a' class='method'><span id='adc_0_use_pretrigger_a.v' class='invisible'><code>fn <a href='#method.adc_0_use_pretrigger_a' class='fnname'>adc_0_use_pretrigger_a</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_7</code> register at relative address 0x1018 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_pretrigger_b' class='method'><span id='adc_0_use_pretrigger_b.v' class='invisible'><code>fn <a href='#method.adc_0_use_pretrigger_b' class='fnname'>adc_0_use_pretrigger_b</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_7</code> register at relative address 0x1018 and offset 4 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_alt_trigger' class='method'><span id='adc_0_use_alt_trigger.v' class='invisible'><code>fn <a href='#method.adc_0_use_alt_trigger' class='fnname'>adc_0_use_alt_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_7</code> register at relative address 0x1018 and offset 7 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_0_use_alt_trigger_pdb' class='method'><span id='adc_0_use_alt_trigger_pdb.v' class='invisible'><code>fn <a href='#method.adc_0_use_alt_trigger_pdb' class='fnname'>adc_0_use_alt_trigger_pdb</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_7</code> register at relative address 0x1018 and offset 7 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_ftm_0_trigger' class='method'><span id='adc_1_use_ftm_0_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_ftm_0_trigger' class='fnname'>adc_1_use_ftm_0_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x8</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_ftm_1_trigger' class='method'><span id='adc_1_use_ftm_1_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_ftm_1_trigger' class='fnname'>adc_1_use_ftm_1_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x9</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_ftm_2_trigger' class='method'><span id='adc_1_use_ftm_2_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_ftm_2_trigger' class='fnname'>adc_1_use_ftm_2_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xA</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_ftm_3_trigger' class='method'><span id='adc_1_use_ftm_3_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_ftm_3_trigger' class='fnname'>adc_1_use_ftm_3_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xB</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_hscmp_0_trigger' class='method'><span id='adc_1_use_hscmp_0_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_hscmp_0_trigger' class='fnname'>adc_1_use_hscmp_0_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_hscmp_1_trigger' class='method'><span id='adc_1_use_hscmp_1_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_hscmp_1_trigger' class='fnname'>adc_1_use_hscmp_1_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x2</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_hscmp_2_trigger' class='method'><span id='adc_1_use_hscmp_2_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_hscmp_2_trigger' class='fnname'>adc_1_use_hscmp_2_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x3</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_low_power_trigger' class='method'><span id='adc_1_use_low_power_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_low_power_trigger' class='fnname'>adc_1_use_low_power_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xE</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pdb_external_trigger' class='method'><span id='adc_1_use_pdb_external_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_pdb_external_trigger' class='fnname'>adc_1_use_pdb_external_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pit_0_trigger' class='method'><span id='adc_1_use_pit_0_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_pit_0_trigger' class='fnname'>adc_1_use_pit_0_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x4</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pit_1_trigger' class='method'><span id='adc_1_use_pit_1_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_pit_1_trigger' class='fnname'>adc_1_use_pit_1_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x5</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pit_2_trigger' class='method'><span id='adc_1_use_pit_2_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_pit_2_trigger' class='fnname'>adc_1_use_pit_2_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x6</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pit_3_trigger' class='method'><span id='adc_1_use_pit_3_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_pit_3_trigger' class='fnname'>adc_1_use_pit_3_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x7</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_rtc_alarm_trigger' class='method'><span id='adc_1_use_rtc_alarm_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_rtc_alarm_trigger' class='fnname'>adc_1_use_rtc_alarm_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xC</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_rtc_seconds_trigger' class='method'><span id='adc_1_use_rtc_seconds_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_rtc_seconds_trigger' class='fnname'>adc_1_use_rtc_seconds_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0xD</code> to the <code>options_7</code> register at relative address 0x1018 and offset 8 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pretrigger_a' class='method'><span id='adc_1_use_pretrigger_a.v' class='invisible'><code>fn <a href='#method.adc_1_use_pretrigger_a' class='fnname'>adc_1_use_pretrigger_a</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_7</code> register at relative address 0x1018 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_pretrigger_b' class='method'><span id='adc_1_use_pretrigger_b.v' class='invisible'><code>fn <a href='#method.adc_1_use_pretrigger_b' class='fnname'>adc_1_use_pretrigger_b</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_7</code> register at relative address 0x1018 and offset 12 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_alt_trigger' class='method'><span id='adc_1_use_alt_trigger.v' class='invisible'><code>fn <a href='#method.adc_1_use_alt_trigger' class='fnname'>adc_1_use_alt_trigger</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x1</code> to the <code>options_7</code> register at relative address 0x1018 and offset 15 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.adc_1_use_alt_trigger_pdb' class='method'><span id='adc_1_use_alt_trigger_pdb.v' class='invisible'><code>fn <a href='#method.adc_1_use_alt_trigger_pdb' class='fnname'>adc_1_use_alt_trigger_pdb</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Writes the value <code>0x0</code> to the <code>options_7</code> register at relative address 0x1018 and offset 15 bits.
+///
+/// <strong>NOTE</strong>: all values in unaligned writes are subject to masking which is not displayed here.</p>
+</div><h4 id='method.read_system_id' class='method'><span id='read_system_id.v' class='invisible'><code>fn <a href='#method.read_system_id' class='fnname'>read_system_id</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>system_id</code> register at relative address 0x1024</p>
+</div><h4 id='method.read_unique_id_high' class='method'><span id='read_unique_id_high.v' class='invisible'><code>fn <a href='#method.read_unique_id_high' class='fnname'>read_unique_id_high</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>unique_id_high</code> register at relative address 0x1054</p>
+</div><h4 id='method.read_unique_id_low' class='method'><span id='read_unique_id_low.v' class='invisible'><code>fn <a href='#method.read_unique_id_low' class='fnname'>read_unique_id_low</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>unique_id_low</code> register at relative address 0x1060</p>
+</div><h4 id='method.read_unique_id_mid_high' class='method'><span id='read_unique_id_mid_high.v' class='invisible'><code>fn <a href='#method.read_unique_id_mid_high' class='fnname'>read_unique_id_mid_high</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>unique_id_mid_high</code> register at relative address 0x1058</p>
+</div><h4 id='method.read_unique_id_mid_low' class='method'><span id='read_unique_id_mid_low.v' class='invisible'><code>fn <a href='#method.read_unique_id_mid_low' class='fnname'>read_unique_id_mid_low</a>(&amp;self) -&gt; u32</code></span></h4>
+<div class='docblock'><p>Reads the contents (as <code>u32</code>) of the <code>unique_id_mid_low</code> register at relative address 0x105C</p>
+</div><h4 id='method.needs_init' class='method'><span id='needs_init.v' class='invisible'><code>fn <a href='#method.needs_init' class='fnname'>needs_init</a>(&amp;self) -&gt; bool</code></span></h4>
+<div class='docblock'><p>states the <code>SIM</code> will not be initialized</p>
+</div><h4 id='method.init' class='method'><span id='init.v' class='invisible'><code>fn <a href='#method.init' class='fnname'>init</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Should not be called as it does nothing. Here to support the init interface</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-595' class='srclink' href='../../../../../../src/peregrine/lib.rs.html#1' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class='method'><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a>) -&gt; bool</code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class='method'><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a>) -&gt; bool</code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-606' class='srclink' href='../../../../../../src/peregrine/lib.rs.html#1' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class='method'><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class='method'><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../../../../peregrine/mcus/cortexm4/kinetis/k64/sim/struct.SIM.html' title='peregrine::mcus::cortexm4::kinetis::k64::sim::SIM'>SIM</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-610' class='srclink' href='../../../../../../src/peregrine/lib.rs.html#1' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../../../";
+        window.currentCrate = "peregrine";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../../../../jquery.js"></script>
+    <script src="../../../../../../main.js"></script>
+    
+    <script defer src="../../../../../../search-index.js"></script>
+</body>
+</html>

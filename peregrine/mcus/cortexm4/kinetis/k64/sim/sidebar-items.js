@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["SIM","Pointer wrapper that implements the SIM operations"]]});

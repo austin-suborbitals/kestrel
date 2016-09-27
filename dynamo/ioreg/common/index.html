@@ -47,48 +47,48 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-365' class='srclink' href='../../../src/dynamo/ioreg/common.rs.html#1-343' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-417' class='srclink' href='../../../src/dynamo/ioreg/common.rs.html#1-343' title='goto source code'>[src]</a></span></h1>
 <h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.InitInfo.html'
                                   title='dynamo::ioreg::common::InitInfo'>InitInfo</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.IoRegFuncDef.html'
                                   title='dynamo::ioreg::common::IoRegFuncDef'>IoRegFuncDef</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Internal descriptor for a function definition.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.IoRegInfo.html'
                                   title='dynamo::ioreg::common::IoRegInfo'>IoRegInfo</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Internal representation used to build the ioreg definition.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.IoRegOffsetIndexInfo.html'
                                   title='dynamo::ioreg::common::IoRegOffsetIndexInfo'>IoRegOffsetIndexInfo</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Represents the offset from the segment, and the index into the register of a register-portion.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.IoRegOffsetInfo.html'
                                   title='dynamo::ioreg::common::IoRegOffsetInfo'>IoRegOffsetInfo</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Internal descriptor for an offset into a Segment.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.IoRegSegmentInfo.html'
                                   title='dynamo::ioreg::common::IoRegSegmentInfo'>IoRegSegmentInfo</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Internal representation of a Segment.</p>
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
@@ -96,28 +96,28 @@
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.FunctionType.html'
                                   title='dynamo::ioreg::common::FunctionType'>FunctionType</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Internal representation of function-type classification.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.FunctionValueType.html'
                                   title='dynamo::ioreg::common::FunctionValueType'>FunctionValueType</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Representation of register function types.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.RegisterPermissions.html'
                                   title='dynamo::ioreg::common::RegisterPermissions'>RegisterPermissions</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Represents the acces permissions of a register. Guards against writes/reads to registers that do not support it.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.RegisterWidth.html'
                                   title='dynamo::ioreg::common::RegisterWidth'>RegisterWidth</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Represents the width of the register. Curretnly, only supports registers up to 32bits.</p>
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
@@ -125,14 +125,14 @@
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.offset_width_to_ty.html'
                                   title='dynamo::ioreg::common::offset_width_to_ty'>offset_width_to_ty</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Converts the offset+index information into the smallest primitive numeric type we can.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.reg_width_to_ty.html'
                                   title='dynamo::ioreg::common::reg_width_to_ty'>reg_width_to_ty</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Convert the width of the register to the representative ast::Ty (i.e. R8 -&gt; u8)</p>
                            </td>
                        </tr></table></section>

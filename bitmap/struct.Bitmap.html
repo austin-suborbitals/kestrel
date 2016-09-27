@@ -48,9 +48,7 @@
                        [<span class='inner'>&#x2212;</span>]
                    </a>
                </span><a id='src-227' class='srclink' href='../src/bitmap/lib.rs.html#121-126' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct Bitmap&lt;S:&nbsp;<a class='trait' href='../bitmap/trait.Storage.html' title='bitmap::Storage'>Storage</a>,&nbsp;E:&nbsp;<a class='trait' href='../bitmap/trait.Element.html' title='bitmap::Element'>Element</a>&gt; {
-    // some fields omitted
-}</pre><div class='docblock'><p>A dense bitmap, intended to store small bitslices (&lt;= width of u64).</p>
+<pre class='rust struct'>pub struct Bitmap&lt;S:&nbsp;<a class='trait' href='../bitmap/trait.Storage.html' title='bitmap::Storage'>Storage</a>,&nbsp;E:&nbsp;<a class='trait' href='../bitmap/trait.Element.html' title='bitmap::Element'>Element</a>&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A dense bitmap, intended to store small bitslices (&lt;= width of u64).</p>
 
 <p>That is, this type represents an array of values, where each value is <code>E::width(instance)</code> bits long,
 and the bits are stored contiguously. The first value is packed into the least significant bits

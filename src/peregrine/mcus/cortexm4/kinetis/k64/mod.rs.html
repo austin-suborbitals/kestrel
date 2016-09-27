@@ -144,6 +144,8 @@
 <span id="100">100</span>
 <span id="101">101</span>
 <span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
 </pre><pre class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>core</span>;
 <span class='kw'>use</span> <span class='ident'>core</span>::<span class='ident'>intrinsics</span>::{<span class='ident'>volatile_copy_nonoverlapping_memory</span>, <span class='ident'>volatile_set_memory</span>};
@@ -151,6 +153,7 @@
 <span class='kw'>use</span> ::<span class='ident'>mcus</span>::<span class='ident'>cortexm4</span>;
 
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>wdog</span>;
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>sim</span>;
 
 <span class='kw'>extern</span> {
     <span class='kw'>fn</span> <span class='ident'>entry</span>(<span class='ident'>mcu</span>: <span class='ident'>K64</span>) <span class='op'>-&gt;</span> <span class='op'>!</span>;
@@ -215,12 +218,13 @@
 
     <span class='ident'>peripherals</span> <span class='op'>=&gt;</span> {
         <span class='comment'>// we initialize the watchdog first</span>
-        <span class='ident'>wdog</span>        <span class='op'>=&gt;</span> <span class='ident'>wdog</span>::<span class='ident'>Watchdog</span>                         @ <span class='number'>0x4005_2000</span>;
+        <span class='ident'>wdog</span>        <span class='op'>=&gt;</span> <span class='ident'>wdog</span>::<span class='ident'>Watchdog</span>                       @ <span class='number'>0x4005_2000</span>;
 
         <span class='comment'>// core modules</span>
         <span class='ident'>systick</span>     <span class='op'>=&gt;</span> <span class='ident'>cortexm4</span>::<span class='ident'>core</span>::<span class='ident'>systick</span>::<span class='ident'>SysTick</span>     @ <span class='number'>0xE000_E010</span>;
         <span class='ident'>fpu_coproc</span>  <span class='op'>=&gt;</span> <span class='ident'>cortexm4</span>::<span class='ident'>core</span>::<span class='ident'>fpu</span>::<span class='ident'>Access</span>          @ <span class='number'>0xE000_ED88</span>;  <span class='comment'>// enables full access</span>
         <span class='ident'>fpu</span>         <span class='op'>=&gt;</span> <span class='ident'>cortexm4</span>::<span class='ident'>core</span>::<span class='ident'>fpu</span>::<span class='ident'>Unit</span>            @ <span class='number'>0xE000_EF34</span>;
+        <span class='ident'>sim</span>         <span class='op'>=&gt;</span> <span class='ident'>sim</span>::<span class='ident'>SIM</span>                             @ <span class='number'>0x4004_7000</span>;
     };
 );
 
@@ -239,12 +243,12 @@
 
     <span class='doccomment'>/// Get stack region information.</span>
     <span class='kw'>fn</span> <span class='ident'>stack_memory</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> ::<span class='ident'>libc</span>::<span class='ident'>memory</span>::<span class='ident'>IOVec</span> {
-        ::<span class='ident'>libc</span>::<span class='ident'>memory</span>::<span class='ident'>IOVec</span>{<span class='ident'>ptr</span>: <span class='ident'>__stack_begin</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>u8</span>, <span class='ident'>size</span>: (<span class='ident'>__stack_end</span><span class='op'>-</span><span class='ident'>__stack_begin</span>) <span class='kw'>as</span> <span class='ident'>usize</span>}
+        <span class='kw'>unsafe</span> { ::<span class='ident'>libc</span>::<span class='ident'>memory</span>::<span class='ident'>IOVec</span>{<span class='ident'>ptr</span>: <span class='ident'>__stack_begin</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>u8</span>, <span class='ident'>size</span>: (<span class='ident'>__stack_end</span><span class='op'>-</span><span class='ident'>__stack_begin</span>) <span class='kw'>as</span> <span class='ident'>usize</span>} }
     }
 
     <span class='doccomment'>/// Get heap region information.</span>
     <span class='kw'>fn</span> <span class='ident'>heap_memory</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> ::<span class='ident'>libc</span>::<span class='ident'>memory</span>::<span class='ident'>IOVec</span> {
-        ::<span class='ident'>libc</span>::<span class='ident'>memory</span>::<span class='ident'>IOVec</span>{<span class='ident'>ptr</span>: <span class='ident'>__heap_begin</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>u8</span>, <span class='ident'>size</span>: (<span class='ident'>__heap_end</span><span class='op'>-</span><span class='ident'>__heap_begin</span>) <span class='kw'>as</span> <span class='ident'>usize</span>}
+        <span class='kw'>unsafe</span> { ::<span class='ident'>libc</span>::<span class='ident'>memory</span>::<span class='ident'>IOVec</span>{<span class='ident'>ptr</span>: <span class='ident'>__heap_begin</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>u8</span>, <span class='ident'>size</span>: (<span class='ident'>__heap_end</span><span class='op'>-</span><span class='ident'>__heap_begin</span>) <span class='kw'>as</span> <span class='ident'>usize</span>} }
     }
 }
 </pre>

@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["entry",""]]});
+initSidebarItems({"constant":[["WDOG_TICKS",""]],"fn":[["entry","Main entry to the program."]]});

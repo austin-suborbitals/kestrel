@@ -768,7 +768,7 @@
 <span class='doccomment'>/// Generate documentation attributes for the given setter function.</span>
 <span class='kw'>fn</span> <span class='ident'>make_setter_doc</span>(<span class='ident'>func</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegFuncDef</span>, <span class='ident'>seg</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegSegmentInfo</span>, <span class='ident'>off</span>: <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>IoRegOffsetInfo</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mask_qual</span> <span class='op'>=</span> <span class='string'>&quot;&quot;</span>;
-    <span class='kw'>let</span> <span class='ident'>mask_str</span> <span class='op'>=</span> <span class='string'>&quot;\n\n**NOTE**: all values in unaligned writes are subject to masking which is not displayed here.&quot;</span>;
+    <span class='kw'>let</span> <span class='ident'>mask_str</span> <span class='op'>=</span> <span class='string'>&quot;\n///\n/// **NOTE**: all values in unaligned writes are subject to masking which is not displayed here.&quot;</span>;
     
     <span class='kw'>if</span> <span class='ident'>func</span>.<span class='ident'>ty</span> <span class='op'>==</span> <span class='ident'>common</span>::<span class='ident'>FunctionType</span>::<span class='ident'>Setter</span> {
         <span class='kw'>return</span> <span class='macro'>format</span><span class='macro'>!</span>(
@@ -819,7 +819,7 @@
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Builder</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='ident'>verbose</span>: <span class='ident'>bool</span>,
     <span class='ident'>reg</span>: <span class='ident'>common</span>::<span class='ident'>IoRegInfo</span>,
-    <span class='ident'>base_builder</span>: <span class='ident'>aster</span>::<span class='ident'>AstBuilder</span>,
+    <span class='ident'>bldr</span>: <span class='ident'>aster</span>::<span class='ident'>AstBuilder</span>,
     <span class='ident'>parser</span>: ::<span class='ident'>ioreg</span>::<span class='ident'>parser</span>::<span class='ident'>Parser</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>,
 }
 
@@ -829,7 +829,7 @@
         <span class='ident'>Builder</span> {
             <span class='ident'>verbose</span>: <span class='ident'>verbose</span>,
             <span class='ident'>reg</span>: <span class='ident'>ioreg</span>,
-            <span class='ident'>base_builder</span>: <span class='ident'>aster</span>::<span class='ident'>AstBuilder</span>::<span class='ident'>new</span>(),
+            <span class='ident'>bldr</span>: <span class='ident'>aster</span>::<span class='ident'>AstBuilder</span>::<span class='ident'>new</span>(),
             <span class='ident'>parser</span>: <span class='ident'>parser</span>,
         }
     }
@@ -843,7 +843,7 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>items</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Item</span><span class='op'>&gt;&gt;</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>();
 
         <span class='comment'>// generate the base &quot;struct&quot; pointer.</span>
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>docced_item</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>item</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>span</span>)
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>docced_item</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>item</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>span</span>)
             .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;repr&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;C&quot;</span>).<span class='ident'>build</span>()
             .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;derive&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;Debug&quot;</span>).<span class='ident'>build</span>()
             .<span class='ident'>attr</span>().<span class='ident'>list</span>(<span class='string'>&quot;derive&quot;</span>).<span class='ident'>word</span>(<span class='string'>&quot;Clone&quot;</span>).<span class='ident'>build</span>()
@@ -860,12 +860,12 @@
 
         <span class='kw'>let</span> <span class='ident'>type_def</span> <span class='op'>=</span> <span class='ident'>docced_item</span>
             .<span class='ident'>pub_</span>().<span class='ident'>tuple_struct</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>name</span>.<span class='ident'>clone</span>())
-                .<span class='ident'>field</span>().<span class='ident'>pub_</span>().<span class='ident'>build_ty</span>( <span class='macro'>ptr_type</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>ty</span>().<span class='ident'>u8</span>(), <span class='bool-val'>false</span>) ) <span class='comment'>// false = immutable</span>
+                .<span class='ident'>field</span>().<span class='ident'>pub_</span>().<span class='ident'>build_ty</span>( <span class='macro'>ptr_type</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>u8</span>(), <span class='bool-val'>false</span>) ) <span class='comment'>// false = immutable</span>
             .<span class='ident'>build</span>();
         <span class='ident'>items</span>.<span class='ident'>push</span>(<span class='ident'>type_def</span>);
 
         <span class='comment'>// grab the root-level constants to start the impl block</span>
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>impl_build</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>item</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>span</span>).<span class='ident'>impl_</span>();
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>impl_build</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>item</span>().<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>span</span>).<span class='ident'>impl_</span>();
         <span class='ident'>impl_build</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>build_const_vals</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>reg</span>.<span class='ident'>const_vals</span>, <span class='ident'>impl_build</span>);
 
         <span class='comment'>// now build the segments</span>
@@ -985,13 +985,13 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_read_register</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>sp</span>: <span class='ident'>Span</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Expr</span><span class='op'>&gt;</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>parser</span>::<span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>
     {
-        <span class='kw'>let</span> <span class='ident'>self_offset</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>)
+        <span class='kw'>let</span> <span class='ident'>self_offset</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>)
             .<span class='ident'>method_call</span>(<span class='string'>&quot;offset&quot;</span>).<span class='ident'>tup_field</span>(<span class='number'>0</span>).<span class='ident'>self_</span>()
             .<span class='ident'>arg</span>().<span class='ident'>lit</span>().<span class='ident'>isize</span>(<span class='ident'>addr</span> <span class='kw'>as</span> <span class='ident'>isize</span>)
             .<span class='ident'>build</span>();
 
         <span class='comment'>// volatile_load(self.0.offset(0x1234) as *T)</span>
-        <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>call</span>().<span class='ident'>id</span>(<span class='string'>&quot;volatile_load&quot;</span>)
+        <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>call</span>().<span class='ident'>id</span>(<span class='string'>&quot;volatile_load&quot;</span>)
             .<span class='ident'>with_arg</span>(  <span class='macro'>ptr_cast</span><span class='macro'>!</span>(<span class='ident'>self_offset</span>, <span class='ident'>T</span>::<span class='ident'>to_type</span>(), <span class='bool-val'>false</span>)  ) <span class='comment'>// immutable</span>
             .<span class='ident'>build</span>()
     }
@@ -1000,13 +1000,13 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_volatile_store_base</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>addr</span>: <span class='ident'>u32</span>, <span class='ident'>sp</span>: <span class='ident'>Span</span>) <span class='op'>-&gt;</span> <span class='ident'>FnArgsBuilder</span>
         <span class='kw'>where</span> <span class='ident'>T</span>: <span class='ident'>parser</span>::<span class='ident'>ToAstType</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>
     {
-        <span class='kw'>let</span> <span class='ident'>self_offset</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>)
+        <span class='kw'>let</span> <span class='ident'>self_offset</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>)
             .<span class='ident'>method_call</span>(<span class='string'>&quot;offset&quot;</span>).<span class='ident'>tup_field</span>(<span class='number'>0</span>).<span class='ident'>self_</span>()
             .<span class='ident'>arg</span>().<span class='ident'>lit</span>().<span class='ident'>isize</span>(<span class='ident'>addr</span> <span class='kw'>as</span> <span class='ident'>isize</span>)
             .<span class='ident'>build</span>();
 
         <span class='comment'>// volatile_store(self.0.offset(0x1234) as *T, 0x1234)</span>
-        <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>stmt</span>().<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>call</span>().<span class='ident'>id</span>(<span class='string'>&quot;volatile_store&quot;</span>)
+        <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>stmt</span>().<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>call</span>().<span class='ident'>id</span>(<span class='string'>&quot;volatile_store&quot;</span>)
             .<span class='ident'>with_arg</span>(<span class='macro'>ptr_cast</span><span class='macro'>!</span>(<span class='ident'>self_offset</span>, <span class='ident'>T</span>::<span class='ident'>to_type</span>(), <span class='bool-val'>true</span>)) <span class='comment'>// mutable</span>
     }
 
@@ -1025,17 +1025,17 @@
             <span class='ident'>common</span>::<span class='ident'>FunctionType</span>::<span class='ident'>Setter</span> <span class='op'>=&gt;</span> {
                 <span class='kw'>match</span> <span class='ident'>v</span> {
                     <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Argument</span>(<span class='kw-2'>ref</span> <span class='ident'>arg_name</span>, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
-                        <span class='ident'>base</span>.<span class='ident'>with_arg</span>( <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>id</span>(<span class='ident'>arg_name</span>) ).<span class='ident'>build</span>()
+                        <span class='ident'>base</span>.<span class='ident'>with_arg</span>( <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>id</span>(<span class='ident'>arg_name</span>) ).<span class='ident'>build</span>()
                     }
                     <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Static</span>(_, <span class='ident'>sp</span>) <span class='op'>|</span> <span class='kw-2'>&amp;</span><span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Reference</span>(_, <span class='ident'>sp</span>) <span class='op'>=&gt;</span> {
                         <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>span_fatal</span>(<span class='ident'>sp</span>, <span class='string'>&quot;did not expect non-argument type for FunctionType::Setter&quot;</span>).<span class='ident'>emit</span>();
-                        <span class='ident'>base</span>.<span class='ident'>with_arg</span>( <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>id</span>(<span class='string'>&quot;non_argument_err&quot;</span>) ).<span class='ident'>build</span>()
+                        <span class='ident'>base</span>.<span class='ident'>with_arg</span>( <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>sp</span>).<span class='ident'>id</span>(<span class='string'>&quot;non_argument_err&quot;</span>) ).<span class='ident'>build</span>()
                     }
                 }
             }
             <span class='ident'>common</span>::<span class='ident'>FunctionType</span>::<span class='ident'>Getter</span> <span class='op'>=&gt;</span> {
                 <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>parser</span>.<span class='ident'>span_fatal</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>, <span class='string'>&quot;did not expect getter function for generating volatile_store&quot;</span>).<span class='ident'>emit</span>();
-                <span class='ident'>base</span>.<span class='ident'>with_arg</span>( <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='string'>&quot;wrong_func_type&quot;</span>) ).<span class='ident'>build</span>()
+                <span class='ident'>base</span>.<span class='ident'>with_arg</span>( <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='string'>&quot;wrong_func_type&quot;</span>) ).<span class='ident'>build</span>()
             }
         }
     }
@@ -1104,15 +1104,15 @@
 
         <span class='kw'>match</span> <span class='ident'>fn_def</span>.<span class='ident'>ty</span> {
             <span class='ident'>common</span>::<span class='ident'>FunctionType</span>::<span class='ident'>Setter</span> <span class='op'>=&gt;</span> {
-                <span class='kw'>let</span> <span class='ident'>arg_id</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='string'>&quot;val&quot;</span>);
+                <span class='kw'>let</span> <span class='ident'>arg_id</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='string'>&quot;val&quot;</span>);
                 <span class='kw'>let</span> <span class='ident'>write_val</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>off</span>.<span class='ident'>offset</span> {
                     <span class='number'>0</span> <span class='op'>=&gt;</span> { <span class='ident'>arg_id</span> }
                     _ <span class='op'>=&gt;</span> {
-                        <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>paren</span>().<span class='ident'>build_shl</span>(
-                            <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>paren</span>().<span class='ident'>build_bit_and</span>(
+                        <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>paren</span>().<span class='ident'>build_shl</span>(
+                            <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>paren</span>().<span class='ident'>build_bit_and</span>(
                                 <span class='ident'>arg_id</span>, <span class='ident'>T</span>::<span class='ident'>to_lit</span>(<span class='ident'>T</span>::<span class='ident'>narrow</span>(<span class='ident'>val_mask</span>))
                             ),
-                            <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>lit</span>().<span class='ident'>u8</span>(<span class='ident'>shift_offset</span>)
+                            <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>lit</span>().<span class='ident'>u8</span>(<span class='ident'>shift_offset</span>)
                         )
                     }
                 };
@@ -1120,8 +1120,8 @@
                 <span class='ident'>fn_block</span> <span class='op'>=</span> <span class='ident'>fn_block</span>.<span class='ident'>with_stmt</span>(
                     <span class='self'>self</span>.<span class='ident'>build_volatile_store_base</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='ident'>write_address</span>, <span class='ident'>fn_def</span>.<span class='ident'>span</span>)
                         .<span class='ident'>with_arg</span>(
-                            <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>build_bit_or</span>(
-                                <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='ident'>mask_id</span>),
+                            <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>build_bit_or</span>(
+                                <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='ident'>mask_id</span>),
                                 <span class='ident'>write_val</span>
                             )
                         )
@@ -1138,9 +1138,9 @@
                             <span class='ident'>T</span>::<span class='ident'>to_lit</span>(<span class='ident'>T</span>::<span class='ident'>narrow</span>( <span class='self'>self</span>.<span class='ident'>get_uint_const_val</span>::<span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span>(<span class='ident'>v</span>, <span class='ident'>seg</span>) <span class='kw-2'>&amp;</span> <span class='ident'>val_mask</span> ))
                         }
                         _ <span class='op'>=&gt;</span> {
-                            <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>paren</span>().<span class='ident'>build_shl</span>(
+                            <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>paren</span>().<span class='ident'>build_shl</span>(
                                 <span class='ident'>T</span>::<span class='ident'>to_lit</span>( <span class='ident'>T</span>::<span class='ident'>narrow</span>( <span class='self'>self</span>.<span class='ident'>get_uint_const_val</span>::<span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span>(<span class='ident'>v</span>, <span class='ident'>seg</span>) <span class='kw-2'>&amp;</span> <span class='ident'>val_mask</span> )),
-                                <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>lit</span>().<span class='ident'>u8</span>(<span class='ident'>shift_offset</span>)
+                                <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>lit</span>().<span class='ident'>u8</span>(<span class='ident'>shift_offset</span>)
                             )
                         }
                     };
@@ -1148,8 +1148,8 @@
                     <span class='ident'>fn_block</span> <span class='op'>=</span> <span class='ident'>fn_block</span>.<span class='ident'>with_stmt</span>(
                         <span class='self'>self</span>.<span class='ident'>build_volatile_store_base</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(<span class='ident'>write_address</span>, <span class='ident'>fn_def</span>.<span class='ident'>span</span>)
                             .<span class='ident'>with_arg</span>(
-                                <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>build_bit_or</span>(
-                                    <span class='self'>self</span>.<span class='ident'>base_builder</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='ident'>mask_id</span>),
+                                <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>build_bit_or</span>(
+                                    <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>span</span>(<span class='ident'>fn_def</span>.<span class='ident'>span</span>).<span class='ident'>id</span>(<span class='ident'>mask_id</span>),
                                     <span class='ident'>write_val</span>
                                 )
                             )

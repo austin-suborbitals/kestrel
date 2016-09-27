@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.26.1/src/str.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.29.0/src/str.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>str.rs.html -- source</title>
@@ -80,19 +80,9 @@
 <span id="36">36</span>
 <span id="37">37</span>
 <span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ast</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>parse</span>::<span class='ident'>token</span>;
-
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>expr</span>::<span class='ident'>ExprBuilder</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ident</span>::<span class='ident'>ToIdent</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>name</span>::<span class='ident'>ToName</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>path</span>::<span class='ident'>PathBuilder</span>;
 
 <span class='comment'>//////////////////////////////////////////////////////////////////////////////</span>
 

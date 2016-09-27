@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["StmtBuilder",""],["StmtExprBuilder",""],["StmtItemBuilder",""],["StmtLetBuilder",""],["StmtLetIdBuilder",""],["StmtLetTyBuilder",""],["StmtSemiBuilder",""]]});
+initSidebarItems({"struct":[["StmtBuilder",""],["StmtExprBuilder",""],["StmtItemBuilder",""],["StmtLetBuilder",""],["StmtLetTyBuilder",""],["StmtMacBuilder",""],["StmtMacStyleBuilder",""],["StmtSemiBuilder",""]]});

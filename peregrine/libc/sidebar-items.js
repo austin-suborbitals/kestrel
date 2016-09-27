@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["memory",""]]});
+initSidebarItems({"mod":[["math",""],["memory",""],["structures",""]]});

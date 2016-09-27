@@ -236,18 +236,18 @@
     <span class='doccomment'>/// execute the disabling.</span>
     <span class='kw'>fn</span> <span class='ident'>disable_interrupt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>);
 
-	<span class='doccomment'>/// This function should set the value from which the counter will tick.</span>
-	<span class='kw'>fn</span> <span class='ident'>set_tick_reload_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>val</span>: <span class='ident'>usize</span>);
+    <span class='doccomment'>/// This function should set the value from which the counter will tick.</span>
+    <span class='kw'>fn</span> <span class='ident'>set_tick_reload_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>val</span>: <span class='ident'>usize</span>);
 
-	<span class='doccomment'>/// This function should return the current value of the countdown. If this cannot be accessed,</span>
-	<span class='doccomment'>/// (-1) as usize should be returned.</span>
-	<span class='kw'>fn</span> <span class='ident'>current_tick</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>usize</span>;
+    <span class='doccomment'>/// This function should return the current value of the countdown. If this cannot be accessed,</span>
+    <span class='doccomment'>/// (-1) as usize should be returned.</span>
+    <span class='kw'>fn</span> <span class='ident'>current_tick</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>usize</span>;
 
-	<span class='doccomment'>/// This function should indicate if the provided calibration value is reliable, or given at all.</span>
-	<span class='kw'>fn</span> <span class='ident'>has_calibration_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span>;
-	<span class='doccomment'>/// This function should return the 10ms calibration value, regardless of whether it is valid</span>
-	<span class='doccomment'>/// or not. The caller is responsible for checking its validity.</span>
-	<span class='kw'>fn</span> <span class='ident'>calibration_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>usize</span>;
+    <span class='doccomment'>/// This function should indicate if the provided calibration value is reliable, or given at all.</span>
+    <span class='kw'>fn</span> <span class='ident'>has_calibration_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span>;
+    <span class='doccomment'>/// This function should return the 10ms calibration value, regardless of whether it is valid</span>
+    <span class='doccomment'>/// or not. The caller is responsible for checking its validity.</span>
+    <span class='kw'>fn</span> <span class='ident'>calibration_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>usize</span>;
 
     <span class='comment'>// TODO: clock sourcing</span>
 }

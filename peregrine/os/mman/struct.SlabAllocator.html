@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `SlabAllocator` struct in crate `peregrine`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, SlabAllocator">
+
+    <title>peregrine::os::mman::SlabAllocator - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>peregrine</a>::<wbr><a href='../index.html'>os</a>::<wbr><a href='index.html'>mman</a></p><script>window.sidebarCurrent = {name: 'SlabAllocator', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>peregrine</a>::<wbr><a href='../index.html'>os</a>::<wbr><a href='index.html'>mman</a>::<wbr><a class='struct' href=''>SlabAllocator</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-1747' class='srclink' href='../../../src/peregrine/os/mman/slab.rs.html#4-9' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SlabAllocator { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../peregrine/os/mman/struct.SlabAllocator.html' title='peregrine::os::mman::SlabAllocator'>SlabAllocator</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-1752' class='srclink' href='../../../src/peregrine/os/mman/slab.rs.html#10-121' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(iov: <a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>, block_size: usize) -&gt; <a class='struct' href='../../../peregrine/os/mman/struct.SlabAllocator.html' title='peregrine::os::mman::SlabAllocator'>SlabAllocator</a></code></span></h4>
+<div class='docblock'><p>Instantiates a new slab allocator managing the region defined by the <code>IOVec</code>.</p>
+
+<p>A bitmap is used to track used blocks, thus <code>buffer_length / block_size</code> will not always give you the proper
+block count. If the buffer has enough room for the bitmap, but not another block, this dead space will be
+used for the bitmap.</p>
+</div><h4 id='method.alloc' class='method'><span id='alloc.v' class='invisible'><code>fn <a href='#method.alloc' class='fnname'>alloc</a>(&amp;mut self, block_count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>,&nbsp;&amp;'static str&gt;</code></span></h4>
+<div class='docblock'><p>Allocate the given number of blocks. The returned IOVec should be &quot;given back&quot; to the allocator when freed.</p>
+
+<p>Errors occur from bounds checking, internal failures, or unavailability of memory.</p>
+</div><h4 id='method.free' class='method'><span id='free.v' class='invisible'><code>fn <a href='#method.free' class='fnname'>free</a>(&amp;mut self, iov: <a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+<div class='docblock'><p>Free the given region of allocated memory. The input ideally should come from a previous <code>::alloc()</code>.</p>
+
+<p>Errors occur from bounds checking, freeing unallocated/unmanaged memory, or unaligned <code>IOVec</code> pointer and/or size.</p>
+
+<p><strong>NOTE:</strong> if <code>Bitmap::checked_clear(...)</code> returns an error, the error is immediately returned. This is being worked on
+but can lead to things not being freed. The solution will likely be returning the index with the error -- but we cannot
+return a <code>Vec</code> of errors for instance.</p>
+</div><h4 id='method.blocks' class='method'><span id='blocks.v' class='invisible'><code>fn <a href='#method.blocks' class='fnname'>blocks</a>(&amp;self) -&gt; usize</code></span></h4>
+<div class='docblock'><p>Get the total number of managed blocks.</p>
+</div><h4 id='method.free_blocks' class='method'><span id='free_blocks.v' class='invisible'><code>fn <a href='#method.free_blocks' class='fnname'>free_blocks</a>(&amp;self) -&gt; usize</code></span></h4>
+<div class='docblock'><p>Get the number of blocks available to the manager.</p>
+</div><h4 id='method.used_blocks' class='method'><span id='used_blocks.v' class='invisible'><code>fn <a href='#method.used_blocks' class='fnname'>used_blocks</a>(&amp;self) -&gt; usize</code></span></h4>
+<div class='docblock'><p>Get the number of free blocks in the manager.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "peregrine";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>
