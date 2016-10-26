@@ -1,5 +1,5 @@
 PROG=kestrel
-TARGET=thumbv7m-none-eabi
+TARGET=thumbv7em-none-eabi
 
 RELEASE_FNAME=target/$(TARGET)/release/$(PROG)
 

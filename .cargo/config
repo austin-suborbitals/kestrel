@@ -1,3 +1,9 @@
-[target.thumbv7m-none-eabi]
-linker = "arm-none-eabi-gcc"
+[target.thumbv7em-none-eabi]
 ar = "arm-none-eabi-ar"
+linker = "arm-none-eabi-gcc"
+rustflags = [
+  "-C", "link-arg=-mcpu=cortex-m4",
+  "-C", "link-arg=-mthumb",
+  "-C", "link-arg=-TMK64FN1M0VLL12.ld",
+  "-C", "link-arg=-nostartfiles",
+]
