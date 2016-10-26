@@ -1303,7 +1303,7 @@
                 <span class='ident'>ident</span>: <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>id</span>(<span class='ident'>k</span>),
                 <span class='ident'>attrs</span>: <span class='macro'>vec</span><span class='macro'>!</span>(),
                 <span class='ident'>node</span>: <span class='ident'>ast</span>::<span class='ident'>ForeignItemKind</span>::<span class='ident'>Static</span>(<span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>span</span>(<span class='ident'>e</span>.<span class='number'>1</span>).<span class='ident'>build_ty_kind</span>(<span class='ident'>e</span>.<span class='number'>0</span>.<span class='ident'>clone</span>()), <span class='bool-val'>false</span>),
-                <span class='ident'>id</span>: <span class='number'>0xFFFFFFFF</span>,
+                <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>NodeId</span>::<span class='ident'>from_u32</span>(<span class='number'>0xFFFFFFFF</span>),
                 <span class='ident'>span</span>: <span class='ident'>e</span>.<span class='number'>1</span>,
                 <span class='ident'>vis</span>: <span class='ident'>ast</span>::<span class='ident'>Visibility</span>::<span class='ident'>Inherited</span>,
             });
@@ -1501,7 +1501,7 @@
             .<span class='ident'>pub_</span>().<span class='ident'>struct_</span>(<span class='string'>&quot;Interrupts&quot;</span>)
                 .<span class='ident'>field</span>(<span class='string'>&quot;stack&quot;</span>).<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>span</span>).<span class='ident'>build_ty</span>(<span class='ident'>stack_ty</span>)
                 .<span class='ident'>field</span>(<span class='string'>&quot;isrs&quot;</span>).<span class='ident'>span</span>(<span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>interrupts</span>.<span class='ident'>span</span>).<span class='ident'>ty</span>()
-                    .<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>FixedLengthVec</span>(
+                    .<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Array</span>(
                         <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>()
                             .<span class='ident'>path</span>().<span class='ident'>id</span>(<span class='string'>&quot;core&quot;</span>).<span class='ident'>id</span>(<span class='string'>&quot;option&quot;</span>).<span class='ident'>segment</span>(<span class='string'>&quot;Option&quot;</span>).<span class='ident'>with_ty</span>(<span class='macro'>bare_fn</span><span class='macro'>!</span>(<span class='self'>self</span>)).<span class='ident'>build</span>().<span class='ident'>build</span>(),
                         <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>lit</span>().<span class='ident'>usize</span>(<span class='ident'>num_ints</span>)
@@ -1596,11 +1596,11 @@
     <span class='doccomment'>/// It will look and function just like an ioreg peripheral, but generated here instead.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_nvic_ty</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Item</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>ty_name</span> <span class='op'>=</span> <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}NVIC&quot;</span>, <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>name</span>);
-        <span class='kw'>let</span> <span class='ident'>bitslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>FixedLengthVec</span>(
+        <span class='kw'>let</span> <span class='ident'>bitslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Array</span>(
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>u32</span>(),
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>usize</span>(<span class='number'>8</span>),
         ));
-        <span class='kw'>let</span> <span class='ident'>byteslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>FixedLengthVec</span>(
+        <span class='kw'>let</span> <span class='ident'>byteslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Array</span>(
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>u8</span>(),
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>usize</span>(<span class='number'>240</span>),    <span class='comment'>// TODO: verify not 256 like others</span>
         ));
@@ -1634,11 +1634,11 @@
     <span class='doccomment'>/// This is used for NVIC::new() as well as the MCU instantiation.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_nvic_instance</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ptr</span>::<span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Expr</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>ty_name</span> <span class='op'>=</span> <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}NVIC&quot;</span>, <span class='self'>self</span>.<span class='ident'>mcu</span>.<span class='ident'>name</span>);
-        <span class='kw'>let</span> <span class='ident'>bitslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>FixedLengthVec</span>(
+        <span class='kw'>let</span> <span class='ident'>bitslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Array</span>(
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>u32</span>(),
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>usize</span>(<span class='number'>8</span>),
         ));
-        <span class='kw'>let</span> <span class='ident'>byteslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>FixedLengthVec</span>(
+        <span class='kw'>let</span> <span class='ident'>byteslice</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Array</span>(
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>ty</span>().<span class='ident'>u8</span>(),
             <span class='self'>self</span>.<span class='ident'>bldr</span>.<span class='ident'>expr</span>().<span class='ident'>usize</span>(<span class='number'>240</span>),    <span class='comment'>// TODO: verify not 256 like others</span>
         ));
@@ -2100,11 +2100,9 @@
     <script>
         window.rootPath = "../../../";
         window.currentCrate = "dynamo";
-        window.playgroundUrl = "";
     </script>
     <script src="../../../jquery.js"></script>
     <script src="../../../main.js"></script>
-    
     <script defer src="../../../search-index.js"></script>
 </body>
 </html>

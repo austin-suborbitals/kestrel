@@ -47,8 +47,8 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-128' class='srclink' href='../../../src/peregrine/libc/structures/bitmap.rs.html#4-8' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct Bitmap { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../peregrine/libc/structures/struct.Bitmap.html' title='peregrine::libc::structures::Bitmap'>Bitmap</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-132' class='srclink' href='../../../src/peregrine/libc/structures/bitmap.rs.html#10-345' title='goto source code'>[src]</a></span></h3>
+               </span><a id='src-97' class='srclink' href='../../../src/peregrine/libc/structures/bitmap.rs.html#4-8' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Bitmap { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../peregrine/libc/structures/struct.Bitmap.html' title='peregrine::libc::structures::Bitmap'>Bitmap</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-101' class='srclink' href='../../../src/peregrine/libc/structures/bitmap.rs.html#10-345' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(addr: *const u8, size: usize) -&gt; <a class='struct' href='../../../peregrine/libc/structures/struct.Bitmap.html' title='peregrine::libc::structures::Bitmap'>Bitmap</a></code></span></h4>
 <div class='docblock'><p>Create a bitmap from the starting pointer and number of bytes.</p>
 
@@ -70,7 +70,7 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <div class='docblock'><p>Get the number of unset bits in the bitmap.</p>
 </div><h4 id='method.is_set' class='method'><span id='is_set.v' class='invisible'><code>fn <a href='#method.is_set' class='fnname'>is_set</a>(&amp;self, index: usize) -&gt; bool</code></span></h4>
 <div class='docblock'><p>Get the state of the Nth bit.</p>
-</div><h4 id='method.set' class='method'><span id='set.v' class='invisible'><code>fn <a href='#method.set' class='fnname'>set</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+</div><h4 id='method.set' class='method'><span id='set.v' class='invisible'><code>fn <a href='#method.set' class='fnname'>set</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Sets the bit at the given index.</p>
 
 <p>An error is returned if the index is out of the bitmap&#39;s bounds.</p>
@@ -81,8 +81,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>bmap</span> <span class='op'>=</span> <span class='ident'>peregrine</span>::<span class='ident'>libc</span>::<span class='ident'>structures</span>::<span class='ident'>Bitmap</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>arr</span>[<span class='number'>0</span>], <span class='ident'>arr</span>.<span class='ident'>len</span>());
 
 <span class='ident'>bmap</span>.<span class='ident'>set</span>(<span class='number'>7</span>); <span class='comment'>// set the 7th bit</span>
-<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>is_set</span>(<span class='number'>7</span>));<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.checked_set' class='method'><span id='checked_set.v' class='invisible'><code>fn <a href='#method.checked_set' class='fnname'>checked_set</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>is_set</span>(<span class='number'>7</span>));</pre>
+</div><h4 id='method.checked_set' class='method'><span id='checked_set.v' class='invisible'><code>fn <a href='#method.checked_set' class='fnname'>checked_set</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Sets the bit at the given index.</p>
 
 <p>An error is returned if the index is out of the bitmap&#39;s bounds or if the bit was already set.</p>
@@ -95,8 +95,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_set</span>(<span class='number'>5</span>).<span class='ident'>is_ok</span>());
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_set</span>(<span class='number'>5</span>).<span class='ident'>is_err</span>());
 <span class='ident'>bmap</span>.<span class='ident'>clear</span>(<span class='number'>5</span>);
-<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_set</span>(<span class='number'>5</span>).<span class='ident'>is_ok</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.set_range' class='method'><span id='set_range.v' class='invisible'><code>fn <a href='#method.set_range' class='fnname'>set_range</a>(&amp;mut self, index: usize, count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_set</span>(<span class='number'>5</span>).<span class='ident'>is_ok</span>());</pre>
+</div><h4 id='method.set_range' class='method'><span id='set_range.v' class='invisible'><code>fn <a href='#method.set_range' class='fnname'>set_range</a>(&amp;mut self, index: usize, count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Sets the bits starting at the given index through the given range.</p>
 
 <p>An error is returned if the index is out of the bitmap&#39;s bounds.</p>
@@ -109,8 +109,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='ident'>bmap</span>.<span class='ident'>set_range</span>(<span class='number'>0</span>, <span class='ident'>arr</span>.<span class='ident'>len</span>()<span class='op'>*</span><span class='number'>8</span>).<span class='ident'>expect</span>(<span class='string'>&quot;could not set&quot;</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>used</span>(), <span class='ident'>bmap</span>.<span class='ident'>count</span>());
 <span class='ident'>bmap</span>.<span class='ident'>clear_range</span>(<span class='number'>0</span>, <span class='ident'>arr</span>.<span class='ident'>len</span>()<span class='op'>*</span><span class='number'>8</span>).<span class='ident'>expect</span>(<span class='string'>&quot;could not clear&quot;</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.clear' class='method'><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());</pre>
+</div><h4 id='method.clear' class='method'><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Clears the bit at the given index.</p>
 
 <p>An error is returned if the index is out of the bitmap&#39;s bounds.</p>
@@ -123,8 +123,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='ident'>bmap</span>.<span class='ident'>set</span>(<span class='number'>1</span>);                            <span class='comment'>// mark #1 as set</span>
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>find</span>(<span class='number'>1</span>).<span class='ident'>unwrap</span>());    <span class='comment'>// look for 1 bit, and assert we get bit 0</span>
 <span class='ident'>bmap</span>.<span class='ident'>clear</span>(<span class='number'>1</span>);                          <span class='comment'>// clear bit 1</span>
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());                <span class='comment'>// assert nothing is used</span><a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.clear_range' class='method'><span id='clear_range.v' class='invisible'><code>fn <a href='#method.clear_range' class='fnname'>clear_range</a>(&amp;mut self, index: usize, count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());                <span class='comment'>// assert nothing is used</span></pre>
+</div><h4 id='method.clear_range' class='method'><span id='clear_range.v' class='invisible'><code>fn <a href='#method.clear_range' class='fnname'>clear_range</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; index: usize,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count: usize)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Clears the bits starting at the given index through the given range.</p>
 
 <p>An error is returned if the index is out of the bitmap&#39;s bounds.</p>
@@ -137,8 +137,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='ident'>bmap</span>.<span class='ident'>set_range</span>(<span class='number'>0</span>, <span class='ident'>arr</span>.<span class='ident'>len</span>()<span class='op'>*</span><span class='number'>8</span>).<span class='ident'>expect</span>(<span class='string'>&quot;could not set&quot;</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>used</span>(), <span class='ident'>bmap</span>.<span class='ident'>count</span>());
 <span class='ident'>bmap</span>.<span class='ident'>clear_range</span>(<span class='number'>0</span>, <span class='ident'>arr</span>.<span class='ident'>len</span>()<span class='op'>*</span><span class='number'>8</span>).<span class='ident'>expect</span>(<span class='string'>&quot;could not clear&quot;</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.checked_clear' class='method'><span id='checked_clear.v' class='invisible'><code>fn <a href='#method.checked_clear' class='fnname'>checked_clear</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());</pre>
+</div><h4 id='method.checked_clear' class='method'><span id='checked_clear.v' class='invisible'><code>fn <a href='#method.checked_clear' class='fnname'>checked_clear</a>(&amp;mut self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Clears the bit at the given index.</p>
 
 <p>An error is returned if the index is out of the bitmap&#39;s bounds or if the bit was already unset.</p>
@@ -150,7 +150,7 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_clear</span>(<span class='number'>5</span>).<span class='ident'>is_err</span>());
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>set</span>(<span class='number'>5</span>).<span class='ident'>is_ok</span>());
-<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_clear</span>(<span class='number'>5</span>).<span class='ident'>is_ok</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>checked_clear</span>(<span class='number'>5</span>).<span class='ident'>is_ok</span>());</pre>
 </div><h4 id='method.find' class='method'><span id='find.v' class='invisible'><code>fn <a href='#method.find' class='fnname'>find</a>(&amp;self, count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;usize&gt;</code></span></h4>
 <div class='docblock'><p>Search the bitmap for <code>count</code> contiguous unset bits. If found, return the bit number that starts the region.</p>
 
@@ -163,8 +163,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='ident'>bmap</span>.<span class='ident'>set</span>(<span class='number'>5</span>);                        <span class='comment'>// set bit 5, giving us 0b100001</span>
 <span class='kw'>let</span> <span class='ident'>first</span> <span class='op'>=</span> <span class='ident'>bmap</span>.<span class='ident'>find</span>(<span class='number'>5</span>).<span class='ident'>unwrap</span>();  <span class='comment'>// one larger than our gap</span>
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>6</span>, <span class='ident'>first</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='ident'>bmap</span>.<span class='ident'>find</span>(<span class='number'>4</span>).<span class='ident'>expect</span>(<span class='string'>&quot;could not find the gap&quot;</span>));<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.find_and_set' class='method'><span id='find_and_set.v' class='invisible'><code>fn <a href='#method.find_and_set' class='fnname'>find_and_set</a>(&amp;mut self, count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;usize,&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='ident'>bmap</span>.<span class='ident'>find</span>(<span class='number'>4</span>).<span class='ident'>expect</span>(<span class='string'>&quot;could not find the gap&quot;</span>));</pre>
+</div><h4 id='method.find_and_set' class='method'><span id='find_and_set.v' class='invisible'><code>fn <a href='#method.find_and_set' class='fnname'>find_and_set</a>(&amp;mut self, count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;usize, &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Search the bitmap for <code>count</code> contiguous unset bits. If found, set them.</p>
 
 <p><strong>NOTE:</strong> This function uses <code>.set(...)</code> and not <code>.checked_set(...)</code> so safety is on the user.</p>
@@ -177,8 +177,8 @@ The bitmap is initialized (memset to zero) before the bitmap is returned.</p>
 <span class='ident'>bmap</span>.<span class='ident'>set</span>(<span class='number'>0</span>);                        <span class='comment'>// set bit 0</span>
 <span class='ident'>bmap</span>.<span class='ident'>set</span>(<span class='number'>5</span>);                        <span class='comment'>// set bit 5, giving us 0b100001</span>
 <span class='ident'>bmap</span>.<span class='ident'>find_and_set</span>(<span class='number'>4</span>).<span class='ident'>unwrap</span>();      <span class='comment'>// find and set the gap</span>
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>6</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.bounded_find_and_set' class='method'><span id='bounded_find_and_set.v' class='invisible'><code>fn <a href='#method.bounded_find_and_set' class='fnname'>bounded_find_and_set</a>(&amp;mut self, count: usize, bound: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;usize,&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>6</span>, <span class='ident'>bmap</span>.<span class='ident'>used</span>());</pre>
+</div><h4 id='method.bounded_find_and_set' class='method'><span id='bounded_find_and_set.v' class='invisible'><code>fn <a href='#method.bounded_find_and_set' class='fnname'>bounded_find_and_set</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count: usize,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bound: usize)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;usize, &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Search the bitmap for <code>count</code> contiguous unset bits in the range [0, bound]. If found, set them.</p>
 
 <p>If the bound is beyond the limits of the bitmap an error is returned.</p>
@@ -203,7 +203,7 @@ However, adding another size-describing member variable adds space and time requ
 <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>bounded_find_and_set</span>(<span class='number'>2</span>, <span class='number'>1000</span>).<span class='ident'>is_err</span>());
 
 <span class='comment'>// but we CAN find it unbounded</span>
-<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>find_and_set</span>(<span class='number'>2</span>).<span class='ident'>is_ok</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+<span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>bmap</span>.<span class='ident'>find_and_set</span>(<span class='number'>2</span>).<span class='ident'>is_ok</span>());</pre>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -260,11 +260,9 @@ However, adding another size-describing member variable adds space and time requ
     <script>
         window.rootPath = "../../../";
         window.currentCrate = "peregrine";
-        window.playgroundUrl = "";
     </script>
     <script src="../../../jquery.js"></script>
     <script src="../../../main.js"></script>
-    
     <script defer src="../../../search-index.js"></script>
 </body>
 </html>

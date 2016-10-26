@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.29.0/src/ty.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.31.0/src/ty.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>ty.rs.html -- source</title>
@@ -836,12 +836,12 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_slice</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
-        <span class='self'>self</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Vec</span>(<span class='ident'>ty</span>))
+        <span class='self'>self</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Slice</span>(<span class='ident'>ty</span>))
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build_array</span>(<span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>ast</span>::<span class='ident'>Ty</span><span class='op'>&gt;</span>, <span class='ident'>len</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>len_expr</span> <span class='op'>=</span> <span class='ident'>ExprBuilder</span>::<span class='ident'>new</span>().<span class='ident'>usize</span>(<span class='ident'>len</span>);
-        <span class='self'>self</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>FixedLengthVec</span>(<span class='ident'>ty</span>, <span class='ident'>len_expr</span>))
+        <span class='self'>self</span>.<span class='ident'>build_ty_kind</span>(<span class='ident'>ast</span>::<span class='ident'>TyKind</span>::<span class='ident'>Array</span>(<span class='ident'>ty</span>, <span class='ident'>len_expr</span>))
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>slice</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>TyBuilder</span><span class='op'>&lt;</span><span class='ident'>TySliceBuilder</span><span class='op'>&lt;</span><span class='ident'>F</span><span class='op'>&gt;&gt;</span> {
@@ -1392,11 +1392,9 @@
     <script>
         window.rootPath = "../../";
         window.currentCrate = "aster";
-        window.playgroundUrl = "";
     </script>
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
-    
     <script defer src="../../search-index.js"></script>
 </body>
 </html>

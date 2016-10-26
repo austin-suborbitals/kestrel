@@ -47,19 +47,19 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-1747' class='srclink' href='../../../src/peregrine/os/mman/slab.rs.html#4-9' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct SlabAllocator { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../peregrine/os/mman/struct.SlabAllocator.html' title='peregrine::os::mman::SlabAllocator'>SlabAllocator</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-1752' class='srclink' href='../../../src/peregrine/os/mman/slab.rs.html#10-121' title='goto source code'>[src]</a></span></h3>
+               </span><a id='src-289' class='srclink' href='../../../src/peregrine/os/mman/slab.rs.html#4-9' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct SlabAllocator { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class='struct' href='../../../peregrine/os/mman/struct.SlabAllocator.html' title='peregrine::os::mman::SlabAllocator'>SlabAllocator</a></code></span><span class='out-of-band'><div class='ghost'></div><a id='src-294' class='srclink' href='../../../src/peregrine/os/mman/slab.rs.html#10-121' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(iov: <a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>, block_size: usize) -&gt; <a class='struct' href='../../../peregrine/os/mman/struct.SlabAllocator.html' title='peregrine::os::mman::SlabAllocator'>SlabAllocator</a></code></span></h4>
 <div class='docblock'><p>Instantiates a new slab allocator managing the region defined by the <code>IOVec</code>.</p>
 
 <p>A bitmap is used to track used blocks, thus <code>buffer_length / block_size</code> will not always give you the proper
 block count. If the buffer has enough room for the bitmap, but not another block, this dead space will be
 used for the bitmap.</p>
-</div><h4 id='method.alloc' class='method'><span id='alloc.v' class='invisible'><code>fn <a href='#method.alloc' class='fnname'>alloc</a>(&amp;mut self, block_count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>,&nbsp;&amp;'static str&gt;</code></span></h4>
+</div><h4 id='method.alloc' class='method'><span id='alloc.v' class='invisible'><code>fn <a href='#method.alloc' class='fnname'>alloc</a>(&amp;mut self, block_count: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>, &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Allocate the given number of blocks. The returned IOVec should be &quot;given back&quot; to the allocator when freed.</p>
 
 <p>Errors occur from bounds checking, internal failures, or unavailability of memory.</p>
-</div><h4 id='method.free' class='method'><span id='free.v' class='invisible'><code>fn <a href='#method.free' class='fnname'>free</a>(&amp;mut self, iov: <a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(),&nbsp;&amp;'static str&gt;</code></span></h4>
+</div><h4 id='method.free' class='method'><span id='free.v' class='invisible'><code>fn <a href='#method.free' class='fnname'>free</a>(&amp;mut self, iov: <a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;(), &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Free the given region of allocated memory. The input ideally should come from a previous <code>::alloc()</code>.</p>
 
 <p>Errors occur from bounds checking, freeing unallocated/unmanaged memory, or unaligned <code>IOVec</code> pointer and/or size.</p>
@@ -129,11 +129,9 @@ return a <code>Vec</code> of errors for instance.</p>
     <script>
         window.rootPath = "../../../";
         window.currentCrate = "peregrine";
-        window.playgroundUrl = "";
     </script>
     <script src="../../../jquery.js"></script>
     <script src="../../../main.js"></script>
-    
     <script defer src="../../../search-index.js"></script>
 </body>
 </html>

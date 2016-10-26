@@ -47,8 +47,8 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-206' class='srclink' href='../../../src/peregrine/libc/structures/ring_buffer.rs.html#5-10' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct RingBuffer&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a>&gt; { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class='struct' href='../../../peregrine/libc/structures/struct.RingBuffer.html' title='peregrine::libc::structures::RingBuffer'>RingBuffer</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-212' class='srclink' href='../../../src/peregrine/libc/structures/ring_buffer.rs.html#11-224' title='goto source code'>[src]</a></span></h3>
+               </span><a id='src-171' class='srclink' href='../../../src/peregrine/libc/structures/ring_buffer.rs.html#5-10' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct RingBuffer&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a>&gt; { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class='struct' href='../../../peregrine/libc/structures/struct.RingBuffer.html' title='peregrine::libc::structures::RingBuffer'>RingBuffer</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-177' class='srclink' href='../../../src/peregrine/libc/structures/ring_buffer.rs.html#11-224' title='goto source code'>[src]</a></span></h3>
 <div class='impl-items'><h4 id='method.new' class='method'><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(mem: <a class='struct' href='../../../peregrine/libc/memory/struct.IOVec.html' title='peregrine::libc::memory::IOVec'>IOVec</a>) -&gt; <a class='struct' href='../../../peregrine/libc/structures/struct.RingBuffer.html' title='peregrine::libc::structures::RingBuffer'>RingBuffer</a>&lt;T&gt;</code></span></h4>
 <div class='docblock'><p>Creates a new ring buffer spanning the region defined by the IOVec.</p>
 
@@ -62,7 +62,7 @@ first index.</p>
 a buffer larger than 2<sup>31</sup> elements.</p>
 </div><h4 id='method.size' class='method'><span id='size.v' class='invisible'><code>fn <a href='#method.size' class='fnname'>size</a>(&amp;self) -&gt; usize</code></span></h4>
 <div class='docblock'><p>Returns the (1-indexed) number of items the ring buffer can hold.</p>
-</div><h4 id='method.get' class='method'><span id='get.v' class='invisible'><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T,&nbsp;&amp;'static str&gt;</code></span></h4>
+</div><h4 id='method.get' class='method'><span id='get.v' class='invisible'><code>fn <a href='#method.get' class='fnname'>get</a>(&amp;self, index: usize) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T, &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Get the value at the &quot;relative index&quot; of the ring buffer.</p>
 
 <p>By &quot;relative index&quot;, the API means the following contract:</p>
@@ -125,7 +125,7 @@ to 2<sup>31.</sup></p>
     <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>oldest</span>().<span class='ident'>expect</span>(<span class='string'>&quot;failed to get oldest&quot;</span>),
     <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>get</span>(<span class='number'>0</span>).<span class='ident'>expect</span>(<span class='string'>&quot;failed to get index 0&quot;</span>),
     <span class='string'>&quot;incorrect value for get-oldest case&quot;</span>
-);<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+);</pre>
 </div><h4 id='method.push' class='method'><span id='push.v' class='invisible'><code>fn <a href='#method.push' class='fnname'>push</a>(&amp;mut self, val: T)</code></span></h4>
 <div class='docblock'><p>Pushes a value into the ring buffer, overwriting the oldest value in the buffer.</p>
 
@@ -150,8 +150,8 @@ at &quot;index 0&quot;.</p>
 <span class='comment'>// now loop, and overwrite</span>
 <span class='ident'>buff</span>.<span class='ident'>push</span>(<span class='number'>0xDEADBEEF</span>);
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0xDEADBEEF</span>, <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>newest</span>().<span class='ident'>unwrap</span>());
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0xDEADBEEF</span>, <span class='ident'>arr</span>[<span class='number'>0</span>]);<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.newest' class='method'><span id='newest.v' class='invisible'><code>fn <a href='#method.newest' class='fnname'>newest</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T,&nbsp;&amp;'static str&gt;</code></span></h4>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0xDEADBEEF</span>, <span class='ident'>arr</span>[<span class='number'>0</span>]);</pre>
+</div><h4 id='method.newest' class='method'><span id='newest.v' class='invisible'><code>fn <a href='#method.newest' class='fnname'>newest</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T, &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Returns the newest element in the buffer.</p>
 
 <p><strong>NOTE:</strong> calling <code>.newest()</code> on an empty buffer will result in an error.</p>
@@ -169,8 +169,8 @@ at &quot;index 0&quot;.</p>
     <span class='kw'>if</span> <span class='ident'>i</span> <span class='op'>&gt;</span> <span class='number'>0</span> { <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>i</span><span class='op'>-</span><span class='number'>1</span>, <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>newest</span>().<span class='ident'>unwrap</span>()); }
     <span class='ident'>buff</span>.<span class='ident'>push</span>(<span class='ident'>i</span>);
     <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>i</span>, <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>newest</span>().<span class='ident'>unwrap</span>());
-}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
-</div><h4 id='method.oldest' class='method'><span id='oldest.v' class='invisible'><code>fn <a href='#method.oldest' class='fnname'>oldest</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T,&nbsp;&amp;'static str&gt;</code></span></h4>
+}</pre>
+</div><h4 id='method.oldest' class='method'><span id='oldest.v' class='invisible'><code>fn <a href='#method.oldest' class='fnname'>oldest</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T, &amp;'static str&gt;</code></span></h4>
 <div class='docblock'><p>Returns the oldest element in the buffer.</p>
 
 <p><strong>NOTE:</strong> calling <code>.oldest()</code> on an empty buffer will result in an error.</p>
@@ -191,7 +191,7 @@ at &quot;index 0&quot;.</p>
 
 <span class='comment'>// roll the buffer and do a new assert</span>
 <span class='ident'>buff</span>.<span class='ident'>push</span>(<span class='number'>0xDEADBEEF</span>);
-<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>oldest</span>().<span class='ident'>unwrap</span>());<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>1</span>, <span class='op'>*</span><span class='ident'>buff</span>.<span class='ident'>oldest</span>().<span class='ident'>unwrap</span>());</pre>
 </div></div></section>
     <section id='search' class="content hidden"></section>
 
@@ -248,11 +248,9 @@ at &quot;index 0&quot;.</p>
     <script>
         window.rootPath = "../../../";
         window.currentCrate = "peregrine";
-        window.playgroundUrl = "";
     </script>
     <script src="../../../jquery.js"></script>
     <script src="../../../main.js"></script>
-    
     <script defer src="../../../search-index.js"></script>
 </body>
 </html>

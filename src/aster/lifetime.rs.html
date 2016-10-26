@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.29.0/src/lifetime.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.31.0/src/lifetime.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lifetime.rs.html -- source</title>
@@ -158,6 +158,8 @@
 <span id="114">114</span>
 <span id="115">115</span>
 <span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ast</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>codemap</span>::{<span class='ident'>DUMMY_SP</span>};
@@ -202,6 +204,7 @@
 <span class='kw'>impl</span> <span class='ident'>IntoLifetimeDef</span> <span class='kw'>for</span> <span class='ident'>ast</span>::<span class='ident'>Lifetime</span> {
     <span class='kw'>fn</span> <span class='ident'>into_lifetime_def</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ast</span>::<span class='ident'>LifetimeDef</span> {
         <span class='ident'>ast</span>::<span class='ident'>LifetimeDef</span> {
+            <span class='ident'>attrs</span>: <span class='ident'>ast</span>::<span class='ident'>ThinVec</span>::<span class='ident'>new</span>(),
             <span class='ident'>lifetime</span>: <span class='self'>self</span>,
             <span class='ident'>bounds</span>: <span class='macro'>vec</span><span class='macro'>!</span>[],
         }
@@ -270,6 +273,7 @@
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='self'>self</span>.<span class='ident'>callback</span>.<span class='ident'>invoke</span>(<span class='ident'>ast</span>::<span class='ident'>LifetimeDef</span> {
+            <span class='ident'>attrs</span>: <span class='ident'>ast</span>::<span class='ident'>ThinVec</span>::<span class='ident'>new</span>(),
             <span class='ident'>lifetime</span>: <span class='self'>self</span>.<span class='ident'>lifetime</span>,
             <span class='ident'>bounds</span>: <span class='self'>self</span>.<span class='ident'>bounds</span>,
         })
@@ -332,11 +336,9 @@
     <script>
         window.rootPath = "../../";
         window.currentCrate = "aster";
-        window.playgroundUrl = "";
     </script>
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
-    
     <script defer src="../../search-index.js"></script>
 </body>
 </html>

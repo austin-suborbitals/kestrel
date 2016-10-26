@@ -776,7 +776,7 @@
                 <span class='comment'>// if we have a literal, we expect it to be an integral, so parse that</span>
                 <span class='ident'>token</span>::<span class='ident'>Token</span>::<span class='ident'>Literal</span>(<span class='ident'>token</span>::<span class='ident'>Lit</span>::<span class='ident'>Integer</span>(_), _) <span class='op'>=&gt;</span> {  <span class='comment'>// TODO: consider float</span>
                     <span class='kw'>match</span> <span class='macro'>read_uint_for_register</span><span class='macro'>!</span>(<span class='self'>self</span>, <span class='ident'>width</span>) {
-                        <span class='prelude-val'>Ok</span>(<span class='ident'>i</span>) <span class='op'>=&gt;</span> { <span class='ident'>result</span>.<span class='ident'>values</span>.<span class='ident'>push</span>(<span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Static</span>(<span class='ident'>i</span> <span class='kw'>as</span> <span class='ident'>u32</span>, <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>last_span</span>)); }
+                        <span class='prelude-val'>Ok</span>(<span class='ident'>i</span>) <span class='op'>=&gt;</span> { <span class='ident'>result</span>.<span class='ident'>values</span>.<span class='ident'>push</span>(<span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Static</span>(<span class='ident'>i</span> <span class='kw'>as</span> <span class='ident'>u32</span>, <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>prev_span</span>)); }
                         <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> {
                             <span class='self'>self</span>.<span class='ident'>set_err</span>(<span class='ident'>e</span>.<span class='ident'>as_str</span>());
                             <span class='kw'>break</span>;  <span class='comment'>// TODO: better return</span>
@@ -786,7 +786,7 @@
 
                 <span class='comment'>// otherwise, we expect an ident to reference a defined variable</span>
                 <span class='ident'>token</span>::<span class='ident'>Ident</span>(_) <span class='op'>=&gt;</span> {
-                    <span class='ident'>result</span>.<span class='ident'>values</span>.<span class='ident'>push</span>(<span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Reference</span>(<span class='self'>self</span>.<span class='ident'>parse_ident_string</span>(), <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>last_span</span>));
+                    <span class='ident'>result</span>.<span class='ident'>values</span>.<span class='ident'>push</span>(<span class='ident'>common</span>::<span class='ident'>FunctionValueType</span>::<span class='ident'>Reference</span>(<span class='self'>self</span>.<span class='ident'>parse_ident_string</span>(), <span class='self'>self</span>.<span class='ident'>parser</span>.<span class='ident'>prev_span</span>));
                 }
 
                 <span class='comment'>// consider everything else an error</span>
@@ -944,11 +944,9 @@
     <script>
         window.rootPath = "../../../";
         window.currentCrate = "dynamo";
-        window.playgroundUrl = "";
     </script>
     <script src="../../../jquery.js"></script>
     <script src="../../../main.js"></script>
-    
     <script defer src="../../../search-index.js"></script>
 </body>
 </html>

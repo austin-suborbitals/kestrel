@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.29.0/src/ty_param.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/aster-0.31.0/src/ty_param.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>ty_param.rs.html -- source</title>
@@ -345,6 +345,7 @@
 <span id="301">301</span>
 <span id="302">302</span>
 <span id="303">303</span>
+<span id="304">304</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>ast</span>;
 <span class='kw'>use</span> <span class='ident'>syntax</span>::<span class='ident'>codemap</span>::{<span class='ident'>DUMMY_SP</span>, <span class='ident'>Span</span>};
@@ -449,6 +450,7 @@
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>build</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>F</span>::<span class='prelude-ty'>Result</span> {
         <span class='self'>self</span>.<span class='ident'>callback</span>.<span class='ident'>invoke</span>(<span class='ident'>ast</span>::<span class='ident'>TyParam</span> {
+            <span class='ident'>attrs</span>: <span class='ident'>ast</span>::<span class='ident'>ThinVec</span>::<span class='ident'>new</span>(),
             <span class='ident'>ident</span>: <span class='self'>self</span>.<span class='ident'>id</span>,
             <span class='ident'>id</span>: <span class='ident'>ast</span>::<span class='ident'>DUMMY_NODE_ID</span>,
             <span class='ident'>bounds</span>: <span class='ident'>P</span>::<span class='ident'>from_vec</span>(<span class='self'>self</span>.<span class='ident'>bounds</span>),
@@ -706,11 +708,9 @@
     <script>
         window.rootPath = "../../";
         window.currentCrate = "aster";
-        window.playgroundUrl = "";
     </script>
     <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
-    
     <script defer src="../../search-index.js"></script>
 </body>
 </html>
